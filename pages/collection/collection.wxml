@@ -25,38 +25,18 @@
       </view>
     </swiper-item>
     <swiper-item>
-
       <view class='house-cont'>
-        <navigator url='/pages/store/store'>
+      <block wx:for="{{shopCollect}}" wx:key='index'>
+        <navigator url='/pages/store/store?shop_id={{item.collect_id}}'>
           <view class='goods-col-list'>
-            <image src='../../img/collect-pic.jpg'></image>
+            <image src='{{imgurl+item.img}}'></image>
             <view class='goods-col-info'>
-              <text class='goods-col-title'>裸板大自然野生原木地板纯实木地板</text>
+              <text class='goods-col-title'>{{item.name}}</text>
               <text class='goods-col-enter'>进入店铺</text>
             </view>
           </view>
         </navigator>
-        <view class='goods-col-list'>
-          <image src='../../img/collect-pic.jpg'></image>
-          <view class='goods-col-info'>
-            <text class='goods-col-title'>裸板大自然野生原木地板纯实木地板</text>
-            <text class='goods-col-enter'>进入店铺</text>
-          </view>
-        </view>
-        <view class='goods-col-list'>
-          <image src='../../img/collect-pic.jpg'></image>
-          <view class='goods-col-info'>
-            <text class='goods-col-title'>裸板大自然野生原木地板纯实木地板</text>
-            <text class='goods-col-enter'>进入店铺</text>
-          </view>
-        </view>
-        <view class='goods-col-list'>
-          <image src='../../img/collect-pic.jpg'></image>
-          <view class='goods-col-info'>
-            <text class='goods-col-title'>裸板大自然野生原木地板纯实木地板</text>
-            <text class='goods-col-enter'>进入店铺</text>
-          </view>
-        </view>
+        </block>
       </view>
 
     </swiper-item>
