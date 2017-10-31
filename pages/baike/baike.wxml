@@ -4,8 +4,11 @@
   <view class='article-title'>
     <text>{{articleList.name}}</text>
   </view>
-
-  <text class='article-time'>{{articleList.update_time}}</text>
+  <view class='article-subTitle'>
+    <text class='article-time'>{{articleList.update_time}}</text>
+    <image src='../../img/eye.png'></image>
+    <text>311</text>
+  </view>
 
   <view class='article-cont'>
     <image src='{{imgurl+articleList.img}}'></image>

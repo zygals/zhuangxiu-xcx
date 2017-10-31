@@ -36,7 +36,7 @@
 
 .conlumn .nav-pic .icon-wrap {
   position: absolute;
-  left: 30%;
+  left: 32%;
   top: 25%;
   text-align: center;
 }

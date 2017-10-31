@@ -7,15 +7,14 @@ page {
 .g-wrap {
   background-color: #fff;
 }
-
+.g-wrap .g-wrap-pic {
+  width: 100%;
+  height: 600rpx;
+}
 .g-ad {
   position: relative;
 }
 
-.g-ad image{
-  width: 100%;
-  height: 600rpx;
-}
 
 .g-ad .g-count {
   position: absolute;
@@ -90,7 +89,6 @@ page {
 
 .g-detail-cont image {
   width: 100%;
-  height: 600rpx;
 }
 
 .g-detail-bottom {
