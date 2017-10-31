@@ -15,10 +15,8 @@ Page({
     cateSlt: 0,
     isAll: 1,
     showNav: false,
-    busNav: 0,
+    busNav: '', //为空表示默认销量
     keywords: '',
-    cateSlt: 0,
-    busNav: '',
     current_page: 1,
     last_page: 1,
   },
@@ -77,7 +75,8 @@ Page({
         }
         that.setData({
           getBus: res.data.data.data,
-          last_page: res.data.data.last_page
+          last_page: res.data.data.last_page,
+          current_page: 1,
         })
       },
     })
@@ -125,7 +124,8 @@ Page({
     var that = this;
     // 获取当前点击的导航ID值
     that.setData({
-      busNav: e.target.dataset.nav
+      busNav: e.target.dataset.nav,
+
     });
     // 调用接口数据
     this.getBus();
@@ -159,7 +159,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+     
   },
 
   /**
