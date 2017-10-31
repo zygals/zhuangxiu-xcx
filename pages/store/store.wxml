@@ -163,9 +163,9 @@
     <text>留言</text>
   </view>
   <view class='b-favorate' bindtap='tapCollectShop' data-shop_id="{{shop_id}}">
-        <image src='../../img/{{collect_star}}'></image>
-        <text class="{{Collect ? 'isCollect' : ''}}">收藏</text>
-    </view>
+    <image src='../../img/{{collect_star}}'></image>
+    <text class="{{Collect ? 'isCollect' : ''}}">收藏</text>
+  </view>
   <view class='earnest'>付定金</view>
   <view class='purchase'>付全款</view>
 </view>

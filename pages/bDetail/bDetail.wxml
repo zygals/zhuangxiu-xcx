@@ -21,7 +21,7 @@
     <text class='b-inner-title'>{{good.desc}}</text>
   </block>
   <block wx:else>
-    <image src='{{imgurl+good.imgs}}'></image>
+    <image src='{{imgurl+good.imgs}}' mode='widthFix'></image>
   </block>
 
 </view>

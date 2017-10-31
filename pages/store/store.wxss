@@ -72,8 +72,9 @@ page {
 
 .store-tag {
   font-size: 28rpx;
-  margin-left: 20rpx;
+  margin-left: 30rpx;
   margin-top: 15rpx;
+  padding-bottom: 20rpx;
   color: #666;
 }
 
@@ -175,8 +176,6 @@ page {
 }
 
 .store-address-wrap image {
-  width: 270rpx;
-  height: 216rpx;
   margin-right: 15rpx;
   margin-top: 20rpx;
   margin-bottom: 20rpx;
@@ -185,7 +184,7 @@ page {
 .address-msg {
   display: flex;
   flex-direction: column;
-  margin-left: 15rpx;
+  margin-left: 34rpx;
   width: 55%;
   flex-wrap: wrap;
 }
@@ -293,6 +292,7 @@ page {
   display: flex;
   padding: 14rpx;
   border-bottom: 1px solid #eee;
+  margin-left: 20rpx;
 }
 
 .bussiness-detail .bus-list text:last-child {

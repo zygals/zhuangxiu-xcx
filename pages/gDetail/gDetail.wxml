@@ -1,8 +1,8 @@
 <!--pages/gDetail/gDetail.wxml-->
 
 <view class='g-wrap'>
+  <image src='{{imgurl+list.img_big}}' class='g-wrap-pic'></image>
   <view class='g-ad'>
-    <image src='{{imgurl+list.img_big}}'>
       <view class='g-count'>
         <image src='../../img/count-bg.png'>
           <view class='g-count-txt'>
@@ -11,7 +11,6 @@
           </view>
         </image>
       </view>
-    </image>
   </view>
   <view class='g-ad-wrap'>
     <text class='g-ad-title'>{{list.name}}</text>
@@ -32,7 +31,7 @@
 </block>
 <block wx:if='{{list.which_info == 2}}'>
   <view class='g-detail-cont'>
-    <image src='{{imgurl+list.imgs}}'></image>
+    <image src='{{imgurl+list.imgs}}' mode='widthFix'></image>
   </view>
 </block>
 <view class='g-detail-bottom'>立即抢购</view>

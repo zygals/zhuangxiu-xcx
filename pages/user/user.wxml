@@ -1,7 +1,10 @@
 <!-- header -->
 <view class='user-head'>
-  <image src='{{userInfo.avatarUrl}}' class='user-head-pic'></image>
+  <image src='../../img/mine-bg.jpg' class='mine-bg'></image>
+  <view class='user-head-pic-wrap'>
+    <image src='{{userInfo.avatarUrl}}' class='user-head-pic'></image>
   <text class='user-name'>{{userInfo.nickName}}</text>
+  </view>
 </view>
 
 <!-- nav -->

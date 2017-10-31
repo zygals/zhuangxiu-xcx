@@ -22,7 +22,8 @@
     "pages/cancel/cancel",
     "pages/group/group",
     "pages/register/register",
-    "pages/address/address"
+    "pages/address/address",
+    "pages/baike/baike"
   ],
   "window": {
     "backgroundTextStyle": "light",
