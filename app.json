@@ -1,6 +1,7 @@
 {
   "pages": [
-    "pages/index/index",
+       "pages/index/index",
+        "pages/house/house",
     "pages/orders/orders",
     "pages/goodDetail/goodDetail",
     "pages/bDetail/bDetail",
@@ -14,7 +15,7 @@
     "pages/gDetail/gDetail",
     "pages/article/article",
     "pages/teamBuy/teamBuy",
-    "pages/house/house",
+
     "pages/collection/collection",
     "pages/about/about",
     "pages/assess/assess",
