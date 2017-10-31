@@ -1,0 +1,63 @@
+<!--pages/assess/assess.wxml-->
+
+<view class='assess-nav'>
+  <view class='assess-total'>全部</view>
+  <view>有图(12)</view>
+  <view>好评(123)</view>
+  <view>差评(1231)</view>
+</view>
+
+<view class='assess-wrap'>
+  <view class='evalution-list'>
+        <view class='evalution-title'>
+          <view class='evalution-user'>
+            <image src='../../img/evalution-user.png'></image>
+            <text>总有刁民想害朕</text>
+          </view>
+          <view class='evalution-date'>2017-05-21</view>      
+        </view>
+        <view class='textarea'>
+          此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论
+        </view>
+        <view class='evalution-pic'>
+        </view>
+      </view>
+      <view class='evalution-list'>
+        <view class='evalution-title'>
+          <view class='evalution-user'>
+            <image src='../../img/evalution-user.png'></image>
+            <text>总有刁民想害朕</text>
+          </view>
+          <view class='evalution-date'>2017-05-21</view>      
+        </view>
+        <view class='textarea'>
+          此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用
+        </view>
+        <view class='evalution-pic'>
+        </view>
+      </view>
+      <view class='evalution-list'>
+        <view class='evalution-title'>
+          <view class='evalution-user'>
+            <image src='../../img/evalution-user.png'></image>
+            <text>总有刁民想害朕</text>
+          </view>
+          <view class='evalution-date'>2017-05-21</view>      
+        </view>
+        <view class='textarea'>
+          此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户
+        </view>
+      </view>
+      <view class='evalution-list'>
+        <view class='evalution-title'>
+          <view class='evalution-user'>
+            <image src='../../img/evalution-user.png'></image>
+            <text>总有刁民想害朕</text>
+          </view>
+          <view class='evalution-date'>2017-05-21</view>      
+        </view>
+        <view class='textarea'>
+          此用户没有任何评论此用户没
+        </view>
+      </view>
+</view>

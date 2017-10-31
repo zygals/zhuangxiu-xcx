@@ -1,0 +1,13 @@
+/**app.wxss**/
+
+page {
+  font-size: 30rpx;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}

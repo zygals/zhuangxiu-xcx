@@ -1,0 +1,170 @@
+/* pages/goods/goods.wxss */
+
+page {
+  background-color: #f8f8f8;
+}
+/* searchBar */
+.search-bar {
+  position: relative;
+  width: 94%;
+  margin: 0 auto;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 30rpx;
+  background-color: #fff;
+  margin-top: 20rpx;
+}
+
+.search-bar .input {
+  font-size: 30rpx;
+  color: #999;
+}
+
+.search-bar input {
+  margin-left: 65rpx; 
+  font-size: 30rpx;
+  height: 60rpx;
+}
+
+.search-bar image {
+  position: absolute;
+  left: 3%;
+  top: 13rpx;
+  width: 30rpx;
+  height: 34rpx;
+}
+
+/* scroll-nav */
+.nav-area {
+  position: relative;
+   margin-top: 30rpx;
+}
+
+.goods-nav {
+  overflow: hidden;
+  background-color: #fff;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  padding: 10rpx 0;
+}
+.goods-total {
+  float: left;
+  margin-left: 20rpx;
+}
+
+.classify {
+  float: left;
+  width: 70%;
+  margin-left: 20rpx;
+  white-space: nowrap;
+}
+
+.classify view {
+  display: inline-block;
+  margin-right: 20rpx;
+}
+
+.goods-nav .cateColor {
+  color: #ff6920;
+}
+
+.classify-icon {
+  float: left;
+  margin-left: 20rpx;
+}
+
+.classify-icon image {
+  width: 26rpx;
+  height: 16rpx;
+}
+
+/* subnav */
+
+.subnav {
+  display: flex;
+  flex-direction: row;
+  margin-top: 4rpx;
+  background-color: #fff;
+  padding: 10rpx 0;
+  padding-left: 20rpx;
+}
+
+.subnav view {
+  margin-right: 20rpx;
+  font-size: 32rpx;
+}
+
+.subnav .active {
+  color: #ff6920;
+}
+
+.nav-area .modal-nav {
+  position: absolute;
+  left: 0;
+  top: 100rpx;
+  background-color: #fff;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 30rpx;
+}
+
+.nav-area .modal-nav view {
+  margin-right: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.nav-area .modal-nav-hide {
+  display: none;
+}
+/* content */
+.goods-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 98%;
+  margin: 10rpx auto;
+  background-color: #fff;
+  padding-left: 34rpx;
+}
+
+.goods-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #eee;
+  font-size: 30rpx;
+  padding: 20rpx 16rpx;
+  margin: 20rpx 0; 
+}
+.goods-wrap .goods-list:nth-child(1n) {
+  margin-right: 10rpx;
+}
+
+.goods-list image {
+  width: 300rpx;
+  height: 300rpx;
+}
+
+.goods-list .store-name {
+  font-size: 32rpx;
+  margin-top: 12rpx;
+}
+
+.goods-list .store-info {
+  display: flex;
+  margin-top: 12rpx;
+  color: #666;
+}
+.store-info .goods-order {
+  margin-right: 20rpx;
+}
+
+.goods-list .enter {
+  margin: 18rpx 0;
+  padding: 5rpx 30rpx;
+  color: #ff6920;
+  border: 1px solid #ff6920;
+  border-radius: 30rpx;
+}

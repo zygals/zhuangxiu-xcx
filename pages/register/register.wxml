@@ -1,0 +1,38 @@
+<!--pages/register/register.wxml-->
+
+<view class='sign-list'>
+  <view class='sign-pic'>
+    <image src='../../img/inspection-pic.jpg'></image>
+  </view>
+  <view class='sign-info'>
+    <text class='sign-title'>活动标题活动标题活动标题活动标题活动标题活动标题</text>
+    <text class='sign-time'>验房时间: 2017-5-21</text>
+  </view>
+</view>
+<view class='sign-list'>
+  <view class='sign-pic'>
+    <image src='../../img/inspection-pic.jpg'></image>
+  </view>
+  <view class='sign-info'>
+    <text class='sign-title'>活动标题活动标题活动标题活动标题</text>
+    <text class='sign-time'>验房时间: 2017-5-21</text>
+  </view>
+</view>
+<view class='sign-list'>
+  <view class='sign-pic'>
+    <image src='../../img/inspection-pic.jpg'></image>
+  </view>
+  <view class='sign-info'>
+    <text class='sign-title'>活动标题活动标题活动标题活动标题</text>
+    <text class='sign-time'>验房时间: 2017-5-21</text>
+  </view>
+</view>
+<view class='sign-list'>
+  <view class='sign-pic'>
+    <image src='../../img/inspection-pic.jpg'></image>
+  </view>
+  <view class='sign-info'>
+    <text class='sign-title'>活动标题活动标题活动标题活动标题</text>
+    <text class='sign-time'>验房时间: 2017-5-21</text>
+  </view>
+</view>

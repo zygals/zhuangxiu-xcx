@@ -1,0 +1,18 @@
+<!--pages/about/about.wxml-->
+<view class='about-banner'> 
+  <image src='../../img/banner-1.jpg'></image>
+</view>
+<view class='about-list'>
+  <view class='customer-phone'>
+    <image src='../../img/telephone-icon.png'></image>
+    <text>客服电话 : 13418567267</text>
+  </view>
+  <view class='contact-phone'>
+    <image src='../../img/contact.png'></image>
+    <text>联系电话 : 13418567267</text>
+  </view>
+  <view class='address-us'>
+    <image src='../../img/address-icon.png'></image>
+    <text>公司地址 : 北京市大兴区西红门嘉悦广场2-1316</text>
+  </view>
+</view>

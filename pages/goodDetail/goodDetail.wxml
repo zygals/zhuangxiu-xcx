@@ -1,0 +1,39 @@
+<!--pages/goodDetail/goodDetail.wxml-->
+
+<view class='g-wrap'>
+  <view class='g-banner'>
+    <image src='{{imgurl+getList.img_big}}'></image>
+    <view class='count-down'>
+      <text class='count-title'>距活动结束还有: </text>
+      <text class='count-down-time'>02天 : 03时 : 38分 : 50秒</text>
+    </view>
+    <text class='g-group'>【{{getList.pnum}}人团】 <text class='g-group-title'>{{getList.name}}</text></text>
+    <view class='g-info'>
+      <text class='g-price'>¥{{getList.price_group}} <text class='g-price-line'>¥{{getList.good_price}}</text></text>
+      <text class='g-people'>已有{{getList.attend_pnum}}人参团</text>
+    </view>
+  </view>
+
+  <text class='good-detail-title'>宝贝详情</text>
+  <block wx:if='{{getList.which_info == 1}}'>
+    <view class='good-detail'>
+      <text>{{getList.desc}}</text>
+    </view>
+  </block>
+  <block wx:if='{{getList.which_info == 2}}'>
+    <view class='good-detail'>
+      <image src='{{getList.imgs}}'></image>
+    </view>
+  </block>
+
+</view>
+
+<view class='bottom-option'>
+  <view class='good-favorate'>
+    <image src='../../img/collect2-icon.png'></image>
+    <text>收藏</text>
+  </view>
+  <view class='good-enter'>
+    <text>我要参团</text>
+  </view>
+</view>

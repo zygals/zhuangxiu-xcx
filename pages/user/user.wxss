@@ -1,0 +1,91 @@
+/* user */
+page {
+  background-color: #f8f8f8;
+}
+/* 头部 */
+
+.user-head {
+  background-color: #448aca;
+  text-align: center;
+  height: 350rpx;
+}
+.user-head-pic  {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  margin-top: 60rpx;
+}
+
+.user-name {
+  display: block;
+  margin-top: 16rpx;
+  font-size: 32rpx;
+  color: #fff;
+}
+
+
+/* nav */
+
+.user-nav {
+  display: flex;
+  justify-content: center;
+  padding: 25rpx 0;
+  background-color: #fff;
+}
+
+.nav-list {
+  flex: 1;
+  text-align: center;
+}
+
+.nav-list image{
+  width: 68rpx;
+  height: 68rpx;
+}
+.nav-name {
+  font-size: 30rpx;
+  margin-top: 15rpx;
+}
+
+.nav-list .order-pic {
+  width: 58rpx;
+}
+
+
+/* optin-list */
+
+.option-cont {
+  margin-top: 20rpx;
+  background-color: #fff;
+}
+
+.option-list {
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx 0;
+  border-bottom: 1px solid #eee;
+}
+
+.left-list {
+  display: flex;
+  align-items: center;
+}
+
+.option-list image {
+  width: 40rpx;
+  height: 36rpx;
+  margin-left: 20rpx;
+}
+
+.option-list .option-name {
+  display: inline-block;
+  font-size: 32rpx;
+  margin-left: 20rpx;
+}
+
+.right-list image{
+  width: 20rpx;
+  height: 28rpx;
+  margin-right: 20rpx;
+}
+

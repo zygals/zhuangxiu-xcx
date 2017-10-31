@@ -1,0 +1,94 @@
+<!-- header -->
+<view class='user-head'>
+  <image src='{{userInfo.avatarUrl}}' class='user-head-pic'></image>
+  <text class='user-name'>{{userInfo.nickName}}</text>
+</view>
+
+<!-- nav -->
+
+<view class='user-nav'>
+  <view class='nav-list'>
+    <navigator url='/pages/collection/collection'>
+      <image src='../../img/collect1-icon.png'></image>
+      <view class='nav-name'>收藏</view>
+    </navigator>
+  </view>
+  <view class='nav-list'>
+    <navigator url='/pages/orders/orders'>
+      <image src='../../img/order-icon.png' class='order-pic'></image>
+      <view class='nav-name'>全部订单</view>
+    </navigator>
+  </view>
+  <view class='nav-list'>
+    <navigator url='/pages/cancel/cancel'>
+      <image src='../../img/return-icon.png'></image>
+      <view class='nav-name'>退货</view>
+    </navigator>
+  </view>
+  <view class='nav-list'>
+    <navigator url='/pages/assess/assess'>
+      <image src='../../img/appraise-icon.png'></image>
+      <view class='nav-name'>评价</view>
+      </navigator>
+  </view>
+</view>
+
+<!-- option-list -->
+
+<view class='option-cont'>
+<navigator url='/pages/register/register'>
+    <view class='option-list'>
+      <view class='left-list'>
+        <image src='../../img/sign-icon.png'></image>
+        <text class='option-name'>我的报名</text>
+      </view>
+      <view class='right-list'>
+        <image src='../../img/enter-icon.png'></image>
+      </view>
+    </view>
+  </navigator>
+  <navigator url='/pages/address/address'>
+    <view class='option-list'>
+      <view class='left-list'>
+        <image src='../../img/add1-icon.png'></image>
+        <text class='option-name'>地址管理</text>
+      </view>
+      <view class='right-list'>
+        <image src='../../img/enter-icon.png'></image>
+      </view>
+    </view>
+  </navigator>
+  <navigator>
+    <view class='option-list'>
+      <view class='left-list'>
+        <image src='../../img/consulting-icon.png'></image>
+        <text class='option-name'>在线咨询</text>
+      </view>
+      <view class='right-list'>
+        <image src='../../img/enter-icon.png'></image>
+      </view>
+    </view>
+  </navigator>
+  <navigator>
+    <view class='option-list'>
+      <view class='left-list'>
+        <image src='../../img/service-icon.png'></image>
+        <text class='option-name'>联系客服</text>
+      </view>
+      <view class='right-list'>
+        <image src='../../img/enter-icon.png'></image>
+      </view>
+    </view>
+  </navigator>
+  <navigator url='/pages/about/about'>
+    <view class='option-list'>
+      <view class='left-list'>
+        <image src='../../img/about-icon.png'></image>
+        <text class='option-name'>关于我们</text>
+      </view>
+      <view class='right-list'>
+        <image src='../../img/enter-icon.png'></image>
+      </view>
+    </view>
+  </navigator>
+</view>
