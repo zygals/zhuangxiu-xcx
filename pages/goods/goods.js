@@ -165,30 +165,30 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-    wx.showToast({
-      title: '正在加载',
-      icon: 'loading',
-      duration: 10000
-    })
-    var that = this;
-    wx.request({
-      url: WXURL + 'shop/index',
-      success: (res) => {
-        that.setData({
-          getBus: res.data.data.data
-        });
-      },
-      complete: () => {
-        //结束下拉刷新
-        wx.stopPullDownRefresh();
-        setTimeout(() => {
-          wx.hideToast();
-        }, 600)
-      }
-    })
+  // onPullDownRefresh: function () {
+  //   wx.showToast({
+  //     title: '正在加载',
+  //     icon: 'loading',
+  //     duration: 10000
+  //   })
+  //   var that = this;
+  //   wx.request({
+  //     url: WXURL + 'shop/index',
+  //     success: (res) => {
+  //       that.setData({
+  //         getBus: res.data.data.data
+  //       });
+  //     },
+  //     complete: () => {
+  //       //结束下拉刷新
+  //       wx.stopPullDownRefresh();
+  //       setTimeout(() => {
+  //         wx.hideToast();
+  //       }, 600)
+  //     }
+  //   })
 
-  },
+  // },
 
   /**
    * 页面上拉触底事件的处理函数
@@ -216,13 +216,9 @@ Page({
         complete: () => {
           setTimeout(() => {
             wx.hideToast();
-          }, 600)
+          }, 1000)
         }
       });
-    } else {
-      wx.showToast({
-        title: '没有更多啦',
-      })
     }
   },
 

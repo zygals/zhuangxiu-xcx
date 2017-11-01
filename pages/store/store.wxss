@@ -1,8 +1,19 @@
 /* pages/store/store.wxss */
 @import "../goods/goods.wxss";
+@import "../../weui/weui.wxss";
 /* header */
 page {
   background-color: #f8f8f8;
+}
+
+.goods-detail-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 98%;
+  margin: 10rpx auto;
+  background-color: #fff;
+  padding-left: 34rpx;
 }
 
 .store-header {
@@ -173,6 +184,7 @@ page {
   align-items: center;
   background-color: #fff;
   margin-top: 10rpx;
+  margin-right: 10rpx;
 }
 
 .store-address-wrap image {
@@ -295,8 +307,16 @@ page {
   margin-left: 20rpx;
 }
 
+.bussiness-detail .bus-list .bus-list-info {
+  width: 22%;
+}
+.bussiness-detail .bus-list .bus-list-sub {
+  width: 78%;
+}
+
 .bussiness-detail .bus-list text:last-child {
-  margin:0 20rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
 }
 
 .bottom-goods-slt .b-favorate {

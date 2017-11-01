@@ -13,6 +13,7 @@ page {
   text-align: left;
   font-size: 40rpx;
   margin-left: 20rpx;
+  line-height: 56rpx;
 }
 
 .article-subTitle {

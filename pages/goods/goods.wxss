@@ -1,5 +1,7 @@
 /* pages/goods/goods.wxss */
 
+@import '../../weui/weui.wxss';
+
 page {
   background-color: #f8f8f8;
 }
@@ -71,7 +73,7 @@ page {
 
 .classify-icon {
   float: left;
-  margin-left: 20rpx;
+  padding-left: 20rpx;
 }
 
 .classify-icon image {
@@ -102,12 +104,13 @@ page {
 .nav-area .modal-nav {
   position: absolute;
   left: 0;
-  top: 100rpx;
+  top: 80rpx;
   background-color: #fff;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  padding: 0 30rpx;
+  padding: 20rpx;
+  z-index: 99;
 }
 
 .nav-area .modal-nav view {
@@ -123,7 +126,7 @@ page {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 98%;
+  width: 94%;
   margin: 10rpx auto;
   background-color: #fff;
   padding-left: 34rpx;
@@ -149,12 +152,12 @@ page {
 
 .goods-list .store-name {
   font-size: 32rpx;
-  margin-top: 12rpx;
+  margin-top: 10rpx;
 }
 
 .goods-list .store-info {
   display: flex;
-  margin-top: 12rpx;
+  margin-top: 10rpx;
   color: #666;
 }
 .store-info .goods-order {
@@ -162,7 +165,7 @@ page {
 }
 
 .goods-list .enter {
-  margin: 18rpx 0;
+  margin: 10rpx 0;
   padding: 5rpx 30rpx;
   color: #ff6920;
   border: 1px solid #ff6920;

@@ -50,7 +50,7 @@
 
   <!-- total-goods -->
   <swiper-item>
-    <view class='goods-wrap '>
+    <view class='goods-detail-wrap '>
 
       <block wx:if="{{shopGoods.length>0}}">
         <view class='store-address-wrap' wx:for="{{shopGoods}}" wx:key="id">
@@ -62,6 +62,17 @@
             </view>
           </navigator>
         </view>
+        <block wx:if='{{current_page < last_page}}'>
+          <view class="weui-loadmore">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在加载</view>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="weui-loadmore weui-loadmore_line">
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+          </view>
+        </block>
       </block>
 
     </view>
@@ -94,8 +105,8 @@
         <text>{{shopInfo.phone}}</text>
       </view>
       <view class='bus-list'>
-        <text>商家简介 :</text>
-        <text> {{shopInfo.info}}</text>
+        <text class='bus-list-info'>商家简介 :</text>
+        <text class='bus-list-sub'> {{shopInfo.info}}</text>
       </view>
       <view class='bus-list'>
         <text>经营品牌 :</text>
@@ -163,9 +174,9 @@
     <text>留言</text>
   </view>
   <view class='b-favorate' bindtap='tapCollectShop' data-shop_id="{{shop_id}}">
-        <image src='../../img/{{collect_star}}'></image>
-        <text class="{{Collect ? 'isCollect' : ''}}">收藏</text>
-    </view>
+    <image src='../../img/{{collect_star}}'></image>
+    <text class="{{Collect ? 'isCollect' : ''}}">收藏</text>
+  </view>
   <view class='earnest'>付定金</view>
   <view class='purchase'>付全款</view>
 </view>
