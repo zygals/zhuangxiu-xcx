@@ -13,6 +13,7 @@ Page({
         winWidth: '',
         currentTab: 0,
         baomingNum: 0, //报名人数
+        yanfangList: [], //验房列表
     },
 
     /**
@@ -29,6 +30,19 @@ Page({
         })
         //取报名人数
         this.getBaomingNum()
+        //取验房列表
+        this.getYanfangList()
+    },
+    //取验房列表
+    getYanfangList: function () {
+        var that = this
+        common.httpG('article/article_yanfang', {}, function (data) {
+            if (data.code == 0) {
+                that.setData({
+                    yanfangList: data.data.data
+                })
+            }
+        })
     },
     //添加报名 
     addBaoming: function (event) {

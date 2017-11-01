@@ -36,7 +36,7 @@
                 <view class='bottom-goods'>
                     <view class='goods-price'>
                         <text class='price'> ¥ {{good.price}} </text>
-                        <text class='number'> x {{good.num}}{{good.unit}}</text>
+                        <text class='number'> x {{good.num}}</text>
                     </view>
                 </view>
             </view>
