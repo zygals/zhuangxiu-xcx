@@ -56,7 +56,7 @@
         <view class='store-address-wrap' wx:for="{{shopGoods}}" wx:key="id">
           <navigator url='/pages/bDetail/bDetail?good_id={{item.id}}'>
             <view class='goods-list '>
-              <image src="{{imgurl+item.img}}"></image>
+              <image src="{{imgurl+item.img}}" mode='aspectFill' ></image>
               <text class='store-name '>{{item.name}}</text>
               <view class='store-price'>{{item.price}}/{{item.unit}}</view>
             </view>

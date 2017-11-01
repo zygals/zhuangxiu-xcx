@@ -15,9 +15,7 @@ Page({
     cateSlt: 0,
     isAll: 1,
     showNav: false,
-    busNav: 0,
     keywords: '',
-    cateSlt: 0,
     busNav: '',
     current_page: 1,
     last_page: 1,
@@ -77,7 +75,8 @@ Page({
         }
         that.setData({
           getBus: res.data.data.data,
-          last_page: res.data.data.last_page
+          last_page: res.data.data.last_page,
+          current_page: 1,
         })
       },
     })

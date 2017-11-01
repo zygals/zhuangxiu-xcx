@@ -21,9 +21,9 @@
   </view>
   <view class='subnav '>
     <view>商家排行</view>
-    <view data-nav='0' class="{{busNav =='0' ? 'active' : '' }}" bindtap='busNav'>销量</view>
-    <view data-nav='1' class="{{busNav =='1' ? 'active' : '' }}" bindtap='busNav'>好评</view>
-    <view data-nav='2' class="{{busNav =='2' ? 'active' : '' }}" bindtap='busNav'>热门</view>
+    <view data-nav='' class="{{busNav =='' ? 'active' : '' }}" bindtap='busNav'>销量</view>
+    <view data-nav='fankuinum' class="{{busNav =='fankuinum' ? 'active' : '' }}" bindtap='busNav'>好评</view>
+    <view data-nav='hot' class="{{busNav =='hot' ? 'active' : '' }}" bindtap='busNav'>热门</view>
   </view>
   <view class="{{showNav ? 'modal-nav' : 'modal-nav-hide' }}">
     <block wx:for='{{getCate}}' wx:key='index'>
@@ -38,7 +38,7 @@
     <block wx:for='{{getBus}}' wx:key='shop_id'>
       <navigator url='/pages/store/store?shop_id={{item.shop_id}}'>
         <view class='goods-list '>
-          <image src='{{IMGURL + item.img}}'></image>
+          <image src='{{IMGURL + item.img}}' mode='aspectFill' ></image>
           <text class='store-name'>{{item.shop_name}}</text>
           <view class='store-info'>
             <text class='goods-order'>订单数: {{item.ordernum}}</text>
