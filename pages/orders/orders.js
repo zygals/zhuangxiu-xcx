@@ -43,13 +43,14 @@ Page({
                 that.setData({
                     orders: data.data
                 })
-                //缓存所有订单。。。
-                wx.setStorageSync('orders_all', data.data)
+              
             } else {
                 that.setData({
                     orders: []
                 })
             }
+            //缓存所有订单。。。
+            wx.setStorageSync('orders_all', data.data)
         })
     },
     //查看订单详情

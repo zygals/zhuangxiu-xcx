@@ -124,14 +124,23 @@ page {
 /* content */
 .goods-wrap {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  width: 94%;
+  justify-content: center;
+  width: 100%;
   margin: 10rpx auto;
   background-color: #fff;
-  padding-left: 34rpx;
 }
-
+.store-address-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  margin-top: 10rpx;
+  margin-right: 16rpx;
+}
+.store-address-wrap:nth-of-type(2n) {
+  margin-right: 0;
+}
 .goods-list {
   display: flex;
   flex-direction: column;
@@ -140,9 +149,6 @@ page {
   font-size: 30rpx;
   padding: 20rpx 16rpx;
   margin: 20rpx 0; 
-}
-.goods-wrap .goods-list:nth-child(1n) {
-  margin-right: 10rpx;
 }
 
 .goods-list image {
@@ -153,6 +159,8 @@ page {
 .goods-list .store-name {
   font-size: 32rpx;
   margin-top: 10rpx;
+  width: 300rpx;
+  text-align: center;
 }
 
 .goods-list .store-info {

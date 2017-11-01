@@ -1,8 +1,9 @@
-// pages/submit/submit.js
+// pages/submit/submit.js  由购物车来
 
 var common = require("../../utils/util.js");
 var app = getApp();
 const imgurl = app.globalData.imgUrl;
+const wxurl = app.globalData.wxUrl;
 const CART_GOOD = app.globalData.cart_good
 Page({
 
@@ -14,7 +15,7 @@ Page({
 		address: null,     //收货地址
 		shopGoodList: [],  //店铺 + 商品数据
 		sum_price_all: 0,
-		sumitOrderSt: false,
+		sumitOrderSt: false, //默认没有提交，提交后变为true
 	},
 
 	/**
@@ -49,7 +50,7 @@ Page({
 			url: '/pages/address/address?from_=orderConfirm',
 		})
 	},
-	//提交订单
+	//提交订单:添加成功后则发起支付
 	tapAddOrder: function () {
 		if (this.data.address == null) {
 			wx.showToast({
@@ -73,7 +74,7 @@ Page({
 
 			if (data.code == 0) {
 				//发起支付
-
+                that.payNow(data.type, data.data, username)
 
 			} else {
 				that.setData({
@@ -85,34 +86,36 @@ Page({
 	},
 
 	//立即支付,多商家:可能一次支付多个订单
-	payNow: function (order_ids) {
-
+    payNow: function (type_, order_id, username) {
 		wx.showLoading({
 			title: '请求支付中...',
 		})
 		wx.request({
 			url: wxurl + 'pay/pay_now',
 			data: {
-				order_ids: order_ids,
-				user_name: user_name
+                order_id: order_id,
+				username: username,
+                type_: type_, //  类型：shop_order 或是 contact_order 
 			},
 			success: function (res) {
-				if (res.data.code == 0) {
+                var data = res.data;
+				if (data.code == 0) {
 					wx.hideLoading();
 					wx.requestPayment({
-						'timeStamp': res.data.timeStamp,
-						'nonceStr': res.data.nonceStr,
-						'package': res.data.package,
+						'timeStamp': data.timeStamp,
+						'nonceStr': data.nonceStr,
+						'package': data.package,
 						'signType': 'MD5',
-						'paySign': res.data.paySign,//签名,
+						'paySign': data.paySign,//签名,
 						'success': function (res) {
 							//更改订单状态为已支付
 							console.log('payok', res)
 							wx.request({
-								url: wxurl + 'dingdan/update_st',
+								url: wxurl + 'dingdan/update_pay_st',
 								data: {
 									order_id: order_id,
-									st: 'paid'
+									st: 'paid',
+                                    type_:type_,
 								},
 								success: function (res) {
 									console.log(res.data.msg);

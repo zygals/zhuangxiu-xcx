@@ -65,7 +65,7 @@ page {
   text-align: center;
 }
 .b-format text {
-  display: inline-block;
+  display: flex;
   padding: 10rpx;
 }
 

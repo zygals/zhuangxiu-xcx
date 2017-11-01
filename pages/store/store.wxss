@@ -8,12 +8,11 @@ page {
 
 .goods-detail-wrap {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  width: 98%;
+  justify-content: center;
+  width: 100%;
   margin: 10rpx auto;
   background-color: #fff;
-  padding-left: 34rpx;
 }
 
 .store-header {
@@ -146,7 +145,6 @@ page {
   border-bottom: 2px solid #b0814d;
 }
 .store-name {
-  white-space: nowrap;
   overflow: hidden;
   margin-top: 15rpx;
   
@@ -184,11 +182,14 @@ page {
   align-items: center;
   background-color: #fff;
   margin-top: 10rpx;
-  margin-right: 10rpx;
+  margin-right: 16rpx;
+}
+.store-address-wrap:nth-of-type(2n) {
+  margin-right: 0;
 }
 
 .store-address-wrap image {
-  margin-right: 15rpx;
+  /* margin-right: 15rpx; */
   margin-top: 20rpx;
   margin-bottom: 20rpx;
 }

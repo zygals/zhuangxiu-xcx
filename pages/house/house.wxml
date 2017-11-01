@@ -63,8 +63,8 @@
                             <input type='text' name='time_to' placeholder='请输入验房时间'></input>
                         </view>
                         <view class='reg-people'>
-                            <text>已参加人数 : 88</text>
-                            <input type='text'>88</input>
+                            <text>已参加人数 : {{BaomingNum}}</text>
+                            <input type='text'></input>
                         </view>
                     </view>
                     <view class='right-now-wrap'>

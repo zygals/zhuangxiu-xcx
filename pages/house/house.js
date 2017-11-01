@@ -9,9 +9,10 @@ Page({
      * 页面的初始数据
      */
     data: {
-        imgurl:imgurl,
+        imgurl: imgurl,
         winWidth: '',
-        currentTab: 0
+        currentTab: 0,
+        baomingNum: 0, //报名人数
     },
 
     /**
@@ -26,6 +27,8 @@ Page({
                 });
             },
         })
+        //取报名人数
+        this.getBaomingNum()
     },
     //添加报名 
     addBaoming: function (event) {
@@ -34,11 +37,11 @@ Page({
         var username = common.getUserName();
         var truename = data_baoming.truename, mobile = data_baoming.mobile, time_to = data_baoming.time_to, address = data_baoming.address;
         common.httpP('baoming/save', {
-            truename:truename,
+            truename: truename,
             mobile: mobile,
             time_to: time_to,
             address: address,
-            username:username,
+            username: username,
         }, function (data) {
             if (data.code == 0) {
                 wx.showToast({
@@ -46,7 +49,20 @@ Page({
                 })
             }
         })
-
+    },
+    //取报名人数
+    getBaomingNum: function () {
+        var that = this
+        var username = common.getUserName();
+        common.httpG('baoming/getnum', {
+            'username': username,
+        }, function (data) {
+            if (data.code == 0) {
+                that.setData({
+                    baomingNum: data.data,
+                })
+            }
+        })
     },
     houseChange(e) {
         var that = this;

@@ -124,7 +124,8 @@ Page({
     var that = this;
     // 获取当前点击的导航ID值
     that.setData({
-      busNav: e.target.dataset.nav
+      busNav: e.target.dataset.nav,
+
     });
     // 调用接口数据
     this.getBus();
@@ -158,7 +159,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+     
   },
 
   /**
