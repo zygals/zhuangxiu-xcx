@@ -38,6 +38,7 @@ Page({
   },
   countDown() {
     var that = this;
+    var timer =null;
     let now_time = Math.floor(new Date().getTime()/1000);
     let total_micro_time = that.data.endTime - now_time;
     let dateClock = that.dateFormate(total_micro_time)
@@ -48,7 +49,7 @@ Page({
       })
       return
     };
-    var timer = setTimeout(()=> {
+   timer = setTimeout(()=> {
       that.setData({
         clock: dateClock
       })
