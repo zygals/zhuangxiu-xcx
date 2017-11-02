@@ -13,6 +13,7 @@ page {
   width: 100%;
   margin: 10rpx auto;
   background-color: #fff;
+  margin-bottom: 100rpx;
 }
 
 .store-header {
@@ -148,6 +149,7 @@ page {
 .goods-detail-wrap .store-name {
   margin-top: 15rpx;
   height: 94rpx;
+  text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
   /* white-space: nowrap; */
@@ -168,11 +170,10 @@ page {
   height: 100%;
   overflow: hidden;
   background-color: #f8f8f8;
-  padding-bottom: 100rpx;
 }
 
 .store-content-swiper swiper-item {
-  /* overflow: scroll; */
+   overflow: scroll; 
 }
 
 ::-webkit-scrollbar {
@@ -343,4 +344,15 @@ page {
 
 .b-favorate .isCollect {
   color: #ff5917;
+}
+.switch-wrap .show {
+  display: block;
+}
+
+.switch-wrap .hide {
+  display: none;
+}
+
+.evalution-wrap {
+  margin-bottom: 100rpx;
 }

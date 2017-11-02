@@ -76,7 +76,7 @@
     <view class='option-list'>
       <view class='left-list'>
         <image src='../../img/service-icon.png'></image>
-        <text class='option-name'>联系客服</text>
+        <button class='option-name' open-type='contact'>联系客服</button>
       </view>
       <view class='right-list'>
         <image src='../../img/enter-icon.png'></image>

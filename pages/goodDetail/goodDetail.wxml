@@ -5,7 +5,7 @@
     <image src='{{imgurl+getList.img_big}}'></image>
     <view class='count-down'>
       <text class='count-title'>距活动结束还有: </text>
-      <text class='count-down-time'>02天 : 03时 : 38分 : 50秒</text>
+      <text class='count-down-time'>{{clock}}</text>
     </view>
     <text class='g-group'>【{{getList.pnum}}人团】 <text class='g-group-title'>{{getList.name}}</text></text>
     <view class='g-info'>
