@@ -52,5 +52,7 @@ App({
     wxUrl: 'https://huahui.qingyy.net/zhuangxiutp/public/api/', 
     imgUrl: 'https://huahui.qingyy.net/zhuangxiutp/public',
 	cart_good:'cartShopGoodList', //缓存购物车数据的key
+    orders_all: 'orders_all', //缓存所有订单的key
+    group_limit_store: 'groupLimitStore', //缓存团购-限量详情key
   }
 })

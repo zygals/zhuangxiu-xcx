@@ -4,7 +4,7 @@ var common = require("../../utils/util.js");
 var app = getApp();
 
 const imgurl = app.globalData.imgUrl;
-
+const groupLimitStore = app.globalData.group_limit_store;
 Page({
 
   /**
@@ -26,6 +26,12 @@ Page({
     var t_id = options.t_id
     that.list(t_id);
   },
+  //立即抢购
+  tapGoOrderConfirm:function(){
+    wx.navigateTo({
+        url: '/pages/submit_from_group2/submit_from_group2',
+    })
+  },
   //查看限量团购商品详情页 
   list(t_id) {
     var that = this;
@@ -34,6 +40,9 @@ Page({
         list: res.data,
         endTime: res.data.end_time
       })
+      //缓存详情
+      console.log(res.data)
+      wx.setStorageSync(groupLimitStore, res.data)
       that.countDown();
     })
   },
@@ -43,7 +52,7 @@ Page({
     var that = this;
     let now_time = Math.floor(new Date().getTime()/1000);  // 获取当前时间戳（毫秒）
     let total_micro_time = that.data.endTime - now_time;  // 后台返回的时间戳 — 当前时间戳 = 剩余的时间戳
-    console.log(total_micro_time);   
+  //  console.log(total_micro_time);   
     let dateClock = that.dateFormate(total_micro_time)    // 调用日期格式化函数
     that.data.timer = setTimeout(()=> {                  // 每隔一秒调用一次定时器，递归
       that.setData({
