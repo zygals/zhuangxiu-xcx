@@ -89,6 +89,7 @@ page {
 
 .g-detail-cont image {
   width: 750rpx;
+  margin-bottom: 100rpx;
 }
 
 .g-detail-bottom {

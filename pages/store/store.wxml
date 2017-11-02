@@ -50,6 +50,7 @@
 
   <!-- total-goods -->
   <swiper-item>
+  <scroll-view scroll-y style="height: {{winHeight+'px'}}">
     <view class='goods-detail-wrap '>
 
       <block wx:if="{{shopGoods.length>0}}">
@@ -76,6 +77,7 @@
       </block>
 
     </view>
+    </scroll-view>
   </swiper-item>
 
   <!-- store-address -->

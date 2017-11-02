@@ -158,10 +158,14 @@ page {
   height: 300rpx;
 }
 
-.goods-list .store-name {
+.goods-wrap .goods-list .store-name {
   font-size: 32rpx;
   margin-top: 10rpx;
   text-align: center;
+  /* height: 40rpx; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+   white-space: nowrap; 
 }
 
 .goods-list .store-info {

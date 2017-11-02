@@ -144,10 +144,16 @@ page {
   color: #b0814d;
   border-bottom: 2px solid #b0814d;
 }
-.store-name {
-  overflow: hidden;
+
+.goods-detail-wrap .store-name {
   margin-top: 15rpx;
-  
+  height: 94rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* white-space: nowrap; */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .store-price {
@@ -162,10 +168,11 @@ page {
   height: 100%;
   overflow: hidden;
   background-color: #f8f8f8;
+  padding-bottom: 100rpx;
 }
 
 .store-content-swiper swiper-item {
-  overflow: scroll;
+  /* overflow: scroll; */
 }
 
 ::-webkit-scrollbar {
