@@ -55,8 +55,7 @@
                         </view>
                     </view>
                     <view class='right-now-wrap'>
-                        <button formType='submit'>
-                            <text class='right-now'>立即报名</text> </button>
+                        <button formType='submit' size='mini' >立即报名</button>
                     </view>
                 </view>
             </form>

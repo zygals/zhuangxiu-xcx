@@ -130,6 +130,7 @@ page {
   margin: 10rpx auto;
   background-color: #fff;
 }
+
 .store-address-wrap {
   display: flex;
   justify-content: space-between;
@@ -147,8 +148,9 @@ page {
   align-items: center;
   border: 1px solid #eee;
   font-size: 30rpx;
-  padding: 20rpx 16rpx;
+  padding: 10rpx 16rpx;
   margin: 20rpx 0; 
+  width: 300rpx;
 }
 
 .goods-list image {
@@ -159,7 +161,6 @@ page {
 .goods-list .store-name {
   font-size: 32rpx;
   margin-top: 10rpx;
-  width: 300rpx;
   text-align: center;
 }
 
@@ -167,6 +168,7 @@ page {
   display: flex;
   margin-top: 10rpx;
   color: #666;
+  font-size: 26rpx;
 }
 .store-info .goods-order {
   margin-right: 20rpx;

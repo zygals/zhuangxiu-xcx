@@ -36,7 +36,7 @@ Page({
 
     getGood: function (good_id) {
         var that = this
-        var username = common.getUserName()
+        var username = common.getUserName();
         common.httpG('good/read',
             {
                 good_id: good_id, username: username
@@ -48,9 +48,7 @@ Page({
                         collect_star: 'collect-icon-slt.png',
                         Collect: 'isCollect'
                     })
-
                 }
-
             })
     },
     decrease() {

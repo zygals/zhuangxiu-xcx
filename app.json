@@ -1,58 +1,59 @@
 {
-    "pages": [
-        "pages/index/index",
-        "pages/register/register",
-        "pages/house/house",
-        "pages/orders/orders",
-        "pages/goodDetail/goodDetail",
-        "pages/bDetail/bDetail",
-        "pages/submit/submit",
-        "pages/submit_from_orders/submit_from_orders",
-        "pages/shopCart/shopCart",
-        "pages/user/user",
-        "pages/store/store",
-        "pages/goods/goods",
-        "pages/newAdd/newAdd",
-        "pages/gDetail/gDetail",
-        "pages/article/article",
-        "pages/teamBuy/teamBuy",
-        "pages/collection/collection",
-        "pages/about/about",
-        "pages/assess/assess",
-        "pages/cancel/cancel",
-        "pages/group/group",
-        "pages/address/address",
-        "pages/baike/baike"
-    ],
-    "window": {
-        "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#d1a87a",
-        "navigationBarTitleText": "55家居",
-        "navigationBarTextStyle": "white"
-    },
-    "tabBar": {
-        "color": "#000",
-        "selectedColor": "#d1a87a",
-        "position": "bottom",
-        "list": [
-            {
-                "pagePath": "pages/index/index",
-                "text": "首页",
-                "iconPath": "img/index.png",
-                "selectedIconPath": "img/slt-index.png"
-            },
-            {
-                "pagePath": "pages/shopCart/shopCart",
-                "text": "购物车",
-                "iconPath": "img/cart.png",
-                "selectedIconPath": "img/slt-cart.png"
-            },
-            {
-                "pagePath": "pages/user/user",
-                "text": "我的",
-                "iconPath": "img/mine.png",
-                "selectedIconPath": "img/slt-mine.png"
-            }
-        ]
-    }
+  "pages": [
+    "pages/index/index",
+    "pages/addCommen/addCommen",
+    "pages/register/register",
+    "pages/house/house",
+    "pages/orders/orders",
+    "pages/goodDetail/goodDetail",
+    "pages/bDetail/bDetail",
+    "pages/submit/submit",
+    "pages/submit_from_orders/submit_from_orders",
+    "pages/shopCart/shopCart",
+    "pages/user/user",
+    "pages/store/store",
+    "pages/goods/goods",
+    "pages/newAdd/newAdd",
+    "pages/gDetail/gDetail",
+    "pages/article/article",
+    "pages/teamBuy/teamBuy",
+    "pages/collection/collection",
+    "pages/about/about",
+    "pages/assess/assess",
+    "pages/cancel/cancel",
+    "pages/group/group",
+    "pages/address/address",
+    "pages/baike/baike"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#d1a87a",
+    "navigationBarTitleText": "55家居",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#d1a87a",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "img/index.png",
+        "selectedIconPath": "img/slt-index.png"
+      },
+      {
+        "pagePath": "pages/shopCart/shopCart",
+        "text": "购物车",
+        "iconPath": "img/cart.png",
+        "selectedIconPath": "img/slt-cart.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "img/mine.png",
+        "selectedIconPath": "img/slt-mine.png"
+      }
+    ]
+  }
 }

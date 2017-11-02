@@ -11,25 +11,25 @@
 
 <view class='user-nav'>
   <view class='nav-list'>
-    <navigator url='/pages/collection/collection'>
+    <navigator url='/pages/collection/collection' hover-class='none' >
       <image src='../../img/collect1-icon.png'></image>
       <view class='nav-name'>收藏</view>
     </navigator>
   </view>
   <view class='nav-list'>
-    <navigator url='/pages/orders/orders'>
+    <navigator url='/pages/orders/orders' hover-class='none'>
       <image src='../../img/order-icon.png' class='order-pic'></image>
       <view class='nav-name'>全部订单</view>
     </navigator>
   </view>
   <view class='nav-list'>
-    <navigator url='/pages/cancel/cancel'>
+    <navigator url='/pages/cancel/cancel' hover-class='none'>
       <image src='../../img/return-icon.png'></image>
       <view class='nav-name'>退货</view>
     </navigator>
   </view>
   <view class='nav-list'>
-    <navigator url='/pages/assess/assess'>
+    <navigator url='/pages/assess/assess' hover-class='none'>
       <image src='../../img/appraise-icon.png'></image>
       <view class='nav-name'>评价</view>
       </navigator>
@@ -39,7 +39,7 @@
 <!-- option-list -->
 
 <view class='option-cont'>
-<navigator url='/pages/register/register'>
+<navigator url='/pages/register/register' hover-class='none'>
     <view class='option-list'>
       <view class='left-list'>
         <image src='../../img/sign-icon.png'></image>
@@ -50,7 +50,7 @@
       </view>
     </view>
   </navigator>
-  <navigator url='/pages/address/address'>
+  <navigator url='/pages/address/address' hover-class='none'>
     <view class='option-list'>
       <view class='left-list'>
         <image src='../../img/add1-icon.png'></image>
@@ -83,7 +83,7 @@
       </view>
     </view>
   </navigator>
-  <navigator url='/pages/about/about'>
+  <navigator url='/pages/about/about' hover-class='none'>
     <view class='option-list'>
       <view class='left-list'>
         <image src='../../img/about-icon.png'></image>

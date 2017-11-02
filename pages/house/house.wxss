@@ -1,5 +1,6 @@
 /* pages/house/house.wxss */
 @import '../index/index.wxss';
+@import '../../weui/weui.wxss';
 
 page {
   background-color: #eee;
@@ -54,7 +55,7 @@ page {
 
 .house-list image {
   width: 710rpx;
-  height: 350rpx;
+  height: 600rpx;
   margin: 0 auto;
   margin-top: 20rpx;
 }
@@ -124,6 +125,10 @@ page {
   border-bottom: 1px solid #eee;
 }
 
+.reg-list view:last-child {
+  border: none;
+}
+
 .reg-list view input {
   margin-left: 20rpx;
 }
@@ -142,5 +147,7 @@ page {
 }
 
 .right-now-wrap {
+  display: flex;
+  justify-content: center;
   padding: 40rpx;
 }
