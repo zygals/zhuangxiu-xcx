@@ -70,12 +70,18 @@ page {
 }
 
 .option-list {
+  position: relative;
   display: flex;
   justify-content: space-between;
   padding: 30rpx 0;
   border-bottom: 1px solid #eee;
 }
-
+.option-list .contact-wrap {
+  position: absolute;
+  left: 0;
+  top: 28%;
+  opacity: 0;
+}
 .left-list {
   display: flex;
   align-items: center;

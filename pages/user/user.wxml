@@ -61,7 +61,6 @@
       </view>
     </view>
   </navigator>
-  <navigator>
     <view class='option-list'>
       <view class='left-list'>
         <image src='../../img/consulting-icon.png'></image>
@@ -70,19 +69,35 @@
       <view class='right-list'>
         <image src='../../img/enter-icon.png'></image>
       </view>
-    </view>
-  </navigator>
-  <navigator>
+      <view class='contact-wrap'>
+        <contact-button type='default-light' size="20" session-from="weapp"></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp"></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp"></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp"></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp"></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp"></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp"></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp"></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp"></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp"></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp"></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp"></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp"></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp"></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp"></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp"></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp"></contact-button>
+      </view>
+    </view> 
     <view class='option-list'>
       <view class='left-list'>
         <image src='../../img/service-icon.png'></image>
-        <button class='option-name' open-type='contact'>联系客服</button>
+        <text class='option-name'>联系客服</text>
       </view>
       <view class='right-list'>
         <image src='../../img/enter-icon.png'></image>
       </view>
-    </view>
-  </navigator>
+    </view> 
   <navigator url='/pages/about/about' hover-class='none'>
     <view class='option-list'>
       <view class='left-list'>
