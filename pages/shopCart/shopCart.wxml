@@ -27,7 +27,7 @@
                             <view class='goods-price'>
                                 <view class='left-price'>
                                     <text class='price'> ¥ {{good.price}} </text>
-                                    <text class='number'>*{{good.num}} {{good.unit}}</text>
+                                    <text class='number'>*{{good.num}}</text>
                                 </view>
                                 <view class='right-price'>
                                     <text class='price'>总价: {{good.num * good.price}}</text>

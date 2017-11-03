@@ -1,0 +1,28 @@
+<view class='commen-wrap'>
+  <view class='commen-detail'>
+    <text class='commen-detail-info'>订单信息：</text>
+    <text class='commen-detail-num'>12131684613</text>
+  </view>
+  <view class='commen-list'>
+    <view class='commen-title'>
+      <image src='../../img/assessment-pic.jpg'></image>
+      <text>裸板大自然野生原木地板纯实木地板</text>
+    </view>
+    <view class='commen-title'>
+      <image src='../../img/assessment-pic.jpg'></image>
+      <text>裸板大自然野木地板</text>
+    </view>
+    <view class='commen-title'>
+      <image src='../../img/assessment-pic.jpg'></image>
+      <text>裸板大实木地板</text>
+    </view>
+    <view class='commen-area'>
+      <textarea placeholder='请输入评价' placeholder-class='place-area'></textarea>
+    </view>
+    <view class='commen-btn'>
+      <button form-type='submit' class="weui-btn" type="default" size='mini'>提交评价</button>
+    </view>
+  </view>
+  
+
+</view>

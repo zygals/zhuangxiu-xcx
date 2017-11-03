@@ -36,7 +36,7 @@
                 <view class='bottom-goods'>
                     <view class='goods-price'>
                         <text class='price'> ¥ {{good.price}} </text>
-                        <text class='number'> x {{good.num}}{{good.unit}}</text>
+                        <text class='number'> x {{good.num}}</text>
                     </view>
                 </view>
             </view>
@@ -48,6 +48,6 @@
         <text> ¥ {{orderGoodList.order.sum_price}}</text>
     </view>
     <block wx:if="{{from_=='to_pay'}}">
-        <button class='right-submit' disabled='{{sumitOrderSt}}' bindtap='tapAddOrder'>立即支付</button>
+        <button class='right-submit' disabled='{{payNowSt}}' bindtap='tapPayNow'>立即支付</button>
     </block>
 </view>

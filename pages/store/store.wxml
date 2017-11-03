@@ -46,127 +46,136 @@
 </view>
 
 <!-- goods-list -->
-<swiper duration='300' current='{{currentTab}}' bindchange='storeChange' class='store-content-swiper' style="height: {{winHeight+'px'}}" bindchange='storeChange'>
+<!-- <swiper duration='300' current='{{currentTab}}' bindchange='storeChange' class='store-content-swiper' style="height: {{winHeight+'px'}}" bindchange='storeChange'> -->
 
-  <!-- total-goods -->
-  <swiper-item>
-    <view class='goods-detail-wrap '>
+<!-- total-goods -->
+<!-- <swiper-item> -->
+<view class='switch-wrap'>
+<view class="{{currentTab==0 ? ' show ' : ' hide '}}" data-current='0'>
+  <view class='goods-detail-wrap '>
 
-      <block wx:if="{{shopGoods.length>0}}">
-        <view class='store-address-wrap' wx:for="{{shopGoods}}" wx:key="id">
-          <navigator url='/pages/bDetail/bDetail?good_id={{item.id}}'>
-            <view class='goods-list '>
-              <image src="{{imgurl+item.img}}"></image>
-              <text class='store-name '>{{item.name}}</text>
-              <view class='store-price'>{{item.price}}/{{item.unit}}</view>
-            </view>
-          </navigator>
+    <block wx:if="{{shopGoods.length>0}}">
+      <view class='store-address-wrap' wx:for="{{shopGoods}}" wx:key="id">
+        <navigator url='/pages/bDetail/bDetail?good_id={{item.id}}'>
+          <view class='goods-list '>
+            <image src="{{imgurl+item.img}}" mode='aspectFill'></image>
+            <text class='store-name '>{{item.name}}</text>
+            <view class='store-price'>{{item.price}}/{{item.unit}}</view>
+          </view>
+        </navigator>
+      </view>
+      <block wx:if='{{current_page < last_page}}'>
+        <view class="weui-loadmore">
+          <view class="weui-loading"></view>
+          <view class="weui-loadmore__tips">正在加载</view>
         </view>
-        <block wx:if='{{current_page < last_page}}'>
-          <view class="weui-loadmore">
-            <view class="weui-loading"></view>
-            <view class="weui-loadmore__tips">正在加载</view>
-          </view>
-        </block>
-        <block wx:else>
-          <view class="weui-loadmore weui-loadmore_line">
-            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
-          </view>
-        </block>
       </block>
-
-    </view>
-  </swiper-item>
-
-  <!-- store-address -->
-  <swiper-item>
-    <block wx:if="{{shopAddr.length>0}}">
-      <view class='store-address-wrap' wx:for="{{shopAddr}}" wx:key="id">
-        <view class='address-msg'>
-          <view class='address-msg-name'>{{item.name_}}</view>
-          <text>联系人: {{item.truename_}}</text>
-          <text>电　话: {{item.mobile_}}</text>
-          <text>地　址: {{item.address_}}</text>
+      <block wx:else>
+        <view class="weui-loadmore weui-loadmore_line">
+          <view class="weui-loadmore__tips weui-loadmore__tips_in-line">我是有底线的</view>
         </view>
-        <!-- <image src='../../img/store.jpg'></image> -->
-      </view>
+      </block>
     </block>
-  </swiper-item>
+  </view>
+</view>
+<!-- </swiper-item> -->
 
-  <!-- bussiness-detail -->
-  <swiper-item>
-    <view class='bussiness-detail'>
-      <view class='bus-list'>
-        <text>所在地 :</text>
-        <text>{{shopInfo.addr}}</text>
+<!-- store-address -->
+<!-- <swiper-item> -->
+<view class="{{currentTab==1 ? ' show ' : ' hide '}}" data-current='1'>
+  <block wx:if="{{shopAddr.length>0}}">
+    <view class='store-address-wrap' wx:for="{{shopAddr}}" wx:key="id">
+      <view class='address-msg'>
+        <view class='address-msg-name'>{{item.name_}}</view>
+        <text>联系人: {{item.truename_}}</text>
+        <text>电　话: {{item.mobile_}}</text>
+        <text>地　址: {{item.address_}}</text>
       </view>
-      <view class='bus-list'>
-        <text>联系电话 :</text>
-        <text>{{shopInfo.phone}}</text>
-      </view>
-      <view class='bus-list'>
-        <text class='bus-list-info'>商家简介 :</text>
-        <text class='bus-list-sub'> {{shopInfo.info}}</text>
-      </view>
-      <view class='bus-list'>
-        <text>经营品牌 :</text>
-        <text> {{shopInfo.brand}}</text>
-      </view>
+      <!-- <image src='../../img/store.jpg'></image> -->
     </view>
-  </swiper-item>
+  </block>
+</view>
+<!-- </swiper-item> -->
 
-  <!-- total-evalution -->
-  <swiper-item>
-    <view class='evalution-list'>
-      <view class='evalution-title'>
-        <view class='evalution-user'>
-          <image src='../../img/evalution-user.png'></image>
-          <text>总有刁民想害朕</text>
-        </view>
-        <view class='evalution-date'>2017-05-21</view>
-      </view>
-      <view class='textarea'>
-        此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论
-      </view>
+<!-- bussiness-detail -->
+<!-- <swiper-item> -->
+<view class="{{currentTab==2 ? ' show ' : ' hide '}}" data-current='2'>
+  <view class='bussiness-detail'>
+    <view class='bus-list'>
+      <text>所在地 :</text>
+      <text>{{shopInfo.addr}}</text>
     </view>
-    <view class='evalution-list'>
-      <view class='evalution-title'>
-        <view class='evalution-user'>
-          <image src='../../img/evalution-user.png'></image>
-          <text>总有刁民想害朕</text>
-        </view>
-        <view class='evalution-date'>2017-05-21</view>
-      </view>
-      <view class='textarea'>
-        此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用
-      </view>
+    <view class='bus-list'>
+      <text>联系电话 :</text>
+      <text>{{shopInfo.phone}}</text>
     </view>
-    <view class='evalution-list'>
-      <view class='evalution-title'>
-        <view class='evalution-user'>
-          <image src='../../img/evalution-user.png'></image>
-          <text>总有刁民想害朕</text>
-        </view>
-        <view class='evalution-date'>2017-05-21</view>
-      </view>
-      <view class='textarea'>
-        此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户
-      </view>
+    <view class='bus-list'>
+      <text class='bus-list-info'>商家简介 :</text>
+      <text class='bus-list-sub'> {{shopInfo.info}}</text>
     </view>
-    <view class='evalution-list'>
-      <view class='evalution-title'>
-        <view class='evalution-user'>
-          <image src='../../img/evalution-user.png'></image>
-          <text>总有刁民想害朕</text>
-        </view>
-        <view class='evalution-date'>2017-05-21</view>
-      </view>
-      <view class='textarea'>
-        此用户没有任何评论此用户没
-      </view>
+    <view class='bus-list'>
+      <text>经营品牌 :</text>
+      <text> {{shopInfo.brand}}</text>
     </view>
-  </swiper-item>
-</swiper>
+  </view>
+</view>
+<!-- </swiper-item> -->
+
+<!-- total-evalution -->
+<!-- <swiper-item> -->
+<view class="evalution-wrap {{currentTab==3 ? ' show ' : ' hide '}}" data-current='3'>
+  <view class='evalution-list'>
+    <view class='evalution-title'>
+      <view class='evalution-user'>
+        <image src='../../img/evalution-user.png'></image>
+        <text>总有刁民想害朕</text>
+      </view>
+      <view class='evalution-date'>2017-05-21</view>
+    </view>
+    <view class='textarea'>
+      此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论
+    </view>
+  </view>
+  <view class='evalution-list'>
+    <view class='evalution-title'>
+      <view class='evalution-user'>
+        <image src='../../img/evalution-user.png'></image>
+        <text>总有刁民想害朕</text>
+      </view>
+      <view class='evalution-date'>2017-05-21</view>
+    </view>
+    <view class='textarea'>
+      此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用
+    </view>
+  </view>
+  <view class='evalution-list'>
+    <view class='evalution-title'>
+      <view class='evalution-user'>
+        <image src='../../img/evalution-user.png'></image>
+        <text>总有刁民想害朕</text>
+      </view>
+      <view class='evalution-date'>2017-05-21</view>
+    </view>
+    <view class='textarea'>
+      此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户
+    </view>
+  </view>
+  <view class='evalution-list'>
+    <view class='evalution-title'>
+      <view class='evalution-user'>
+        <image src='../../img/evalution-user.png'></image>
+        <text>总有刁民想害朕</text>
+      </view>
+      <view class='evalution-date'>2017-05-21</view>
+    </view>
+    <view class='textarea'>
+      此用户没有任何评论此用户没
+    </view>
+  </view>
+</view>
+</view>
+<!-- </swiper-item>
+</swiper> -->
 
 <view class='bottom-goods-slt'>
   <view class='comments'>

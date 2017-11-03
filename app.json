@@ -1,7 +1,9 @@
 {
   "pages": [
-       "pages/index/index",
-        "pages/house/house",
+    "pages/index/index",
+    "pages/addCommen/addCommen",
+    "pages/register/register",
+    "pages/house/house",
     "pages/orders/orders",
     "pages/goodDetail/goodDetail",
     "pages/bDetail/bDetail",
@@ -15,13 +17,11 @@
     "pages/gDetail/gDetail",
     "pages/article/article",
     "pages/teamBuy/teamBuy",
-
     "pages/collection/collection",
     "pages/about/about",
     "pages/assess/assess",
     "pages/cancel/cancel",
     "pages/group/group",
-    "pages/register/register",
     "pages/address/address",
     "pages/baike/baike"
   ],

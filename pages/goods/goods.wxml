@@ -21,9 +21,9 @@
   </view>
   <view class='subnav '>
     <view>商家排行</view>
-    <view data-nav='0' class="{{busNav =='0' ? 'active' : '' }}" bindtap='busNav'>销量</view>
-    <view data-nav='1' class="{{busNav =='1' ? 'active' : '' }}" bindtap='busNav'>好评</view>
-    <view data-nav='2' class="{{busNav =='2' ? 'active' : '' }}" bindtap='busNav'>热门</view>
+    <view data-nav='' class="{{busNav =='' ? 'active' : '' }}" bindtap='busNav'>销量</view>
+    <view data-nav='fankuinum' class="{{busNav =='fankuinum' ? 'active' : '' }}" bindtap='busNav'>好评</view>
+    <view data-nav='hot' class="{{busNav =='hot' ? 'active' : '' }}" bindtap='busNav'>热门</view>
   </view>
   <view class="{{showNav ? 'modal-nav' : 'modal-nav-hide' }}">
     <block wx:for='{{getCate}}' wx:key='index'>
@@ -35,10 +35,11 @@
 <!-- goods-content -->
 <block wx:if='{{getBus.length>0}}'>
   <view class='goods-wrap '>
-    <block wx:for='{{getBus}}' wx:key='shop_id'>
-      <navigator url='/pages/store/store?shop_id={{item.shop_id}}'>
+    <block>
+    <view class='store-address-wrap' wx:for='{{getBus}}' wx:key="id">
+      <navigator url='/pages/store/store?shop_id={{item.shop_id}}' hover-class='none' >
         <view class='goods-list '>
-          <image src='{{IMGURL + item.img}}'></image>
+          <image src='{{IMGURL + item.img}}' mode='aspectFill' ></image>
           <text class='store-name'>{{item.shop_name}}</text>
           <view class='store-info'>
             <text class='goods-order'>订单数: {{item.ordernum}}</text>
@@ -47,6 +48,7 @@
           <view class='enter'>进入店铺</view>
         </view>
       </navigator>
+      </view>
     </block>
     <block wx:if= '{{current_page < last_page}}'>
       <view class="weui-loadmore">
@@ -56,7 +58,7 @@
     </block>
     <block wx:else>
       <view class="weui-loadmore weui-loadmore_line">
-        <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+        <view class="weui-loadmore__tips weui-loadmore__tips_in-line">我是有底线的</view>
       </view>
     </block>
   </view>

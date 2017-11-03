@@ -13,26 +13,13 @@
     <swiper duration='300' current='{{currentTab}}' bindchange='houseChange' class='house-swiper' style="height: {{winHeight+'px'}}">
         <swiper-item>
             <view class='house-cont'>
-                <view class='house-list'>
-                    <image src='../../img/house-pic.jpg'></image>
-                    <text class='house-name'>珠江帝景一号房</text>
-                    <text class='house-sub'>本公司聘请资深权威专家任技术顾问,由专业验房师按照国家规定的建筑工程质量规范本公司聘请资深权威专家任技术顾问,由专业验房师</text>
+
+                <view class='house-list' wx:for="{{yanfangList}}" wx:key='id'>
+                    <image src='{{imgurl+item.img}}'></image>
+                    <text class='house-name'>{{item.name}}</text>
+                    <text class='house-sub'>{{item.cont_limit}}</text>
                 </view>
-                <view class='house-list'>
-                    <image src='../../img/house-pic.jpg'></image>
-                    <text class='house-name'>珠江帝景一号房</text>
-                    <text class='house-sub'>本公司聘请资深权威专家任技术顾问,由专业验房师按照国家规定的建筑工程质量规范本公司聘请资深权威专家任技术顾问,由专业验房师</text>
-                </view>
-                <view class='house-list'>
-                    <image src='../../img/house-pic.jpg'></image>
-                    <text class='house-name'>珠江帝景一号房</text>
-                    <text class='house-sub'>本公司聘请资深权威专家任技术顾问,由专业验房师按照国家规定的建筑工程质量规范本公司聘请资深权威专家任技术顾问,由专业验房师</text>
-                </view>
-                <view class='house-list'>
-                    <image src='../../img/house-pic.jpg'></image>
-                    <text class='house-name'>珠江帝景一号房</text>
-                    <text class='house-sub'>本公司聘请资深权威专家任技术顾问,由专业验房师按照国家规定的建筑工程质量规范本公司聘请资深权威专家任技术顾问,由专业验房师</text>
-                </view>
+                
             </view>
         </swiper-item>
         <swiper-item>
@@ -63,13 +50,12 @@
                             <input type='text' name='time_to' placeholder='请输入验房时间'></input>
                         </view>
                         <view class='reg-people'>
-                            <text>已参加人数 : 88</text>
-                            <input type='text'>88</input>
+                            <text>已参加人数 : {{baomingNum}}</text>
+                            <!-- <input type='text'></input> -->
                         </view>
                     </view>
                     <view class='right-now-wrap'>
-                        <button formType='submit'>
-                            <text class='right-now'>立即报名</text> </button>
+                        <button formType='submit' size='mini' >立即报名</button>
                     </view>
                 </view>
             </form>

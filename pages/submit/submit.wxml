@@ -30,12 +30,12 @@
             <view class='goods'>
                 <view class='top-goods'>
                     <view class='goods-name'>{{good.good_name}}</view>
-                    <view class='format'>unit</view>
+                    <view class='format'>{{good.unit}}</view>
                 </view>
                 <view class='bottom-goods'>
                     <view class='goods-price'>
                         <text class='price'> ¥ {{good.price}} </text>
-                        <text class='number'> x {{good.num}}{{good.unit}}</text>
+                        <text class='number'> x {{good.num}}</text>
                     </view>
                 </view>
             </view>

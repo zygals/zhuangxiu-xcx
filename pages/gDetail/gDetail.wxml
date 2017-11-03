@@ -2,7 +2,7 @@
 
 <view class='g-wrap'>
   <image src='{{imgurl+list.img_big}}' class='g-wrap-pic'></image>
-  <view class='g-ad'>
+    <view class='g-ad'>
       <view class='g-count'>
         <image src='../../img/count-bg.png'>
           <view class='g-count-txt'>
@@ -11,7 +11,7 @@
           </view>
         </image>
       </view>
-  </view>
+  </view>  
   <view class='g-ad-wrap'>
     <text class='g-ad-title'>{{list.name}}</text>
     <text class='g-ad-sale'>已售{{list.already_sales}}件</text>

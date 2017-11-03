@@ -3,9 +3,8 @@
 var common = require("../../utils/util.js");
 var app = getApp();
 const imgurl = app.globalData.imgUrl;
-
+const wxurl = app.globalData.wxUrl;;
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -13,7 +12,8 @@ Page({
         imgurl: imgurl,
         orderAddress: {},
         orderGoodList: [],
-        from_:'to_pay', //默认来自‘去支付’
+        from_: 'to_pay', //默认来自‘去支付’
+        payNowSt: false, //立即支付按扭状态
     },
 
     /**
@@ -24,12 +24,12 @@ Page({
         var address_id = options.address_id
         this.getOrderAddress(address_id)
         this.getOrderGoodList(order_id)
-        if(options.from_=='look_detail'){//
+        if (options.from_ == 'look_detail') {//
             this.setData({
-                from_:options.from_,
+                from_: options.from_,
             })
         }
-        
+
     },
     //取商家订单的商品
     getOrderGoodList: function (order_id) {
@@ -48,7 +48,7 @@ Page({
     //取商家订单的地址
     getOrderAddress: function (address_id) {
         var that = this
-        
+
         common.httpG('address/read', {
             address_id: address_id,
         }, function (data) {
@@ -58,6 +58,70 @@ Page({
                 })
             }
         })
+    },
+    //立即支付
+    tapPayNow: function () {
+        this.setData({
+            payNowSt: true,
+        })
+        var order_id = this.data.orderGoodList.order.id;
+        var username = common.getUserName();
+        var that =this
+        wx.showLoading({
+            title: '请求支付中...',
+        })
+        wx.request({
+            url: wxurl + 'pay/pay_now',
+            data: {
+                order_id: order_id,
+                username: username,
+                type_: 1, //  类型：shop_order 或是 contact_order 
+            },
+            success: function (res) {
+                var data = res.data;
+                if (data.code == 0) {
+                    wx.hideLoading();
+                    wx.requestPayment({
+                        'timeStamp': data.timeStamp,
+                        'nonceStr': data.nonceStr,
+                        'package': data.package,
+                        'signType': 'MD5',
+                        'paySign': data.paySign,//签名,
+                        'success': function (res) {
+                            //更改订单状态为已支付
+                            console.log('payok', res)
+                            wx.request({
+                                url: wxurl + 'dingdan/update_pay_st',
+                                data: {
+                                    order_id: order_id,
+                                    st: 'paid',
+                                    type_: 1,
+                                },
+                                success: function (res) {
+                                    console.log(res.data.msg);
+                                }
+                            })
+                            wx.redirectTo({
+                                url: '/pages/orders/orders',
+                            })
+                        },
+                        'fail': function (res) {
+                            console.log(res)
+                        }
+                    })
+                } else {
+                    that.setData({
+                        payNowSt: false,
+                    })
+                    wx.hideLoading();
+                    wx.showToast({
+                        title: res.data.msg,
+                    })
+                }
+
+            }
+        })
+
     },
     
     /**

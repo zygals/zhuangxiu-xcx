@@ -10,6 +10,7 @@ page {
   margin-bottom: 30rpx;
 }
 .buy-title {
+  padding: 20rpx 0;
   border-bottom: 1px solid #eee;
 }
 
@@ -132,7 +133,7 @@ page {
 .delete {
   display: flex;
   align-items: center;
-  margin-left: 20rpx;
+  margin-left: 80rpx;
   font-size: 28rpx;
 }
 

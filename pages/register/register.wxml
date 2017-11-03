@@ -1,38 +1,11 @@
-<!--pages/register/register.wxml-->
+<!--pages/register/register.wxml 报名列表-->
 
-<view class='sign-list'>
+<view class='sign-list' wx:for="{{baomingList}}" wx:key='id' >
   <view class='sign-pic'>
     <image src='../../img/inspection-pic.jpg'></image>
   </view>
   <view class='sign-info'>
-    <text class='sign-title'>活动标题活动标题活动标题活动标题活动标题活动标题</text>
-    <text class='sign-time'>验房时间: 2017-5-21</text>
-  </view>
-</view>
-<view class='sign-list'>
-  <view class='sign-pic'>
-    <image src='../../img/inspection-pic.jpg'></image>
-  </view>
-  <view class='sign-info'>
-    <text class='sign-title'>活动标题活动标题活动标题活动标题</text>
-    <text class='sign-time'>验房时间: 2017-5-21</text>
-  </view>
-</view>
-<view class='sign-list'>
-  <view class='sign-pic'>
-    <image src='../../img/inspection-pic.jpg'></image>
-  </view>
-  <view class='sign-info'>
-    <text class='sign-title'>活动标题活动标题活动标题活动标题</text>
-    <text class='sign-time'>验房时间: 2017-5-21</text>
-  </view>
-</view>
-<view class='sign-list'>
-  <view class='sign-pic'>
-    <image src='../../img/inspection-pic.jpg'></image>
-  </view>
-  <view class='sign-info'>
-    <text class='sign-title'>活动标题活动标题活动标题活动标题</text>
-    <text class='sign-time'>验房时间: 2017-5-21</text>
+    <text class='sign-title'>{{item.truename}} {{item.mobile}} {{item.address}} {{item.st}}</text>
+    <text class='sign-time'>验房时间: {{item.time_to}}</text>
   </view>
 </view>
