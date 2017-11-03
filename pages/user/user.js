@@ -74,6 +74,22 @@ Page({
 		  }
 	  })
   },
+  contact() {
+    wx.showModal({
+      title: '联系客服',
+      content: '客服电话 : 800-820-8820',
+      cancelText: '关闭',
+      confirmText: '拨打电话',
+      confirmColor: '#18c469',
+      success(res) {
+        if (res.confirm) {
+          wx.makePhoneCall({
+            phoneNumber: '800-820-8820',
+          })
+        }        
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

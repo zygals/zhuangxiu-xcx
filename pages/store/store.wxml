@@ -24,6 +24,7 @@
   <view class='store-tag'>{{shopInfo.info}}</view>
 </view>
 <!-- swiper -->
+<view class='swiper-scroll-wrap'>
 <view class='swiper-wrap'>
   <image src='../../img/bugle-icon.png'></image>
   <text class='discount-info'>优惠资讯 : </text>
@@ -35,7 +36,7 @@
     </block>
   </swiper>
 </view>
-
+</view>
 <!-- store-nav -->
 
 <view class='store-nav'>

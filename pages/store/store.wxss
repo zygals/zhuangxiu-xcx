@@ -9,15 +9,16 @@ page {
 .goods-detail-wrap {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
+  /* justify-content: center; */
+  width: 716rpx;
   margin: 10rpx auto;
-  background-color: #fff;
   margin-bottom: 100rpx;
+  padding-left: 34rpx;
 }
 
 .store-header {
   background-color: #fff;
+  width: 100%;
 }
 
 .store-info {
@@ -91,14 +92,18 @@ page {
 
 /* swiper */
 
+.swiper-scroll-wrap {
+  background-color: #fff;
+  width: 100%;
+}
 .swiper-wrap {
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: #fff;
   height: 60rpx;
   margin-top: 20rpx;
-  padding-left: 20rpx;
+  margin-left: 20rpx;
+  width: 100%;
 }
 
 .swiper-wrap image {
@@ -127,6 +132,7 @@ page {
 /* store-nav */
 
 .store-nav {
+  width: 100%;
   margin-top: 20rpx;
   display: flex;
   justify-content: space-around;
@@ -148,7 +154,7 @@ page {
 
 .goods-detail-wrap .store-name {
   margin-top: 15rpx;
-  height: 94rpx;
+  height: 88rpx;
   text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -160,7 +166,7 @@ page {
 
 .store-price {
   color: #ff4e00;
-  margin-top: 15rpx;
+  margin-top: 10rpx;
 }
 
 /* switch-tab */
@@ -199,7 +205,7 @@ page {
 .store-address-wrap image {
   /* margin-right: 15rpx; */
   margin-top: 20rpx;
-  margin-bottom: 20rpx;
+  /* margin-bottom: 20rpx; */
 }
 
 .address-msg {
@@ -271,7 +277,7 @@ page {
   left: 0;
   bottom: 0;
   display: flex;
-  width: 100%;
+  width: 750rpx;
   height: 100rpx;
 }
 
@@ -345,8 +351,13 @@ page {
 .b-favorate .isCollect {
   color: #ff5917;
 }
+
+.switch-wrap {
+  width: 100%;
+}
 .switch-wrap .show {
   display: block;
+  background-color: #fff;
 }
 
 .switch-wrap .hide {

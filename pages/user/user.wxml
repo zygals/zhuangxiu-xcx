@@ -89,7 +89,7 @@
         <contact-button type='default-light' size="20" session-from="weapp"></contact-button>
       </view>
     </view> 
-    <view class='option-list'>
+    <view class='option-list' bindtap='contact'>
       <view class='left-list'>
         <image src='../../img/service-icon.png'></image>
         <text class='option-name'>联系客服</text>
