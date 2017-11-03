@@ -66,6 +66,13 @@ Page({
     let sec = Math.floor(opt % 60);
     return common.formatNumber(day) + '天' + ':' + common.formatNumber(hr) + '小时' + ':' + common.formatNumber(min) + '分' + ':' + common.formatNumber(sec) + '秒';
   },
+  //立即抢购
+  takePartInGroup:function(e){
+    console.log(e);
+    var that = this;
+    
+    // var group_all = e.target.
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

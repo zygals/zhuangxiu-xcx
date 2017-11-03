@@ -34,4 +34,4 @@
     <image src='{{imgurl+list.imgs}}' mode='widthFix'></image>
   </view>
 </block>
-<view class='g-detail-bottom'>立即抢购</view>
+<view class='g-detail-bottom' bindtap='takePartInGroup' data-t_id="{{list.t_id}}">立即抢购</view>
