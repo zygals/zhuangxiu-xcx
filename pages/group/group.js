@@ -32,7 +32,7 @@ Page({
   history:function(){
     var that = this;
     common.httpG('group/history', {}, function (data) {
-      that.setData({ history: data.data })
+      that.setData({ history: data.data.data })
 
     })
   },

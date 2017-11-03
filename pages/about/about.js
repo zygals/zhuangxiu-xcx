@@ -1,20 +1,33 @@
 // pages/about/about.js
+var common = require("../../utils/util.js");
+var app = getApp();
+
+const imgurl = app.globalData.imgUrl;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    imgurl: imgurl,
+    about:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.getAbout();
   },
-
+  
+  getAbout:function(){
+    var that = this
+    common.httpG('setting/get_set', {}, function (data) {
+      that.setData({
+        about: data.data
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

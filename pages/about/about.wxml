@@ -1,18 +1,18 @@
 <!--pages/about/about.wxml-->
 <view class='about-banner'> 
-  <image src='../../img/banner-1.jpg'></image>
+  <image src='{{imgurl+about.img}}'></image>
 </view>
 <view class='about-list'>
   <view class='customer-phone'>
     <image src='../../img/telephone-icon.png'></image>
-    <text>客服电话 : 13418567267</text>
+    <text>客服电话 : {{about.mobile}}</text>
   </view>
   <view class='contact-phone'>
     <image src='../../img/contact.png'></image>
-    <text>联系电话 : 13418567267</text>
+    <text>联系电话 : {{about.telephone}}</text>
   </view>
   <view class='address-us'>
     <image src='../../img/address-icon.png'></image>
-    <text>公司地址 : 北京市大兴区西红门嘉悦广场2-1316</text>
+    <text>公司地址 : {{about.address}}</text>
   </view>
 </view>
