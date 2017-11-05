@@ -14,7 +14,7 @@
   </view>  
   <view class='g-ad-wrap'>
     <text class='g-ad-title'>{{list.name}}</text>
-    <text class='g-ad-sale'>已售{{list.already_sales}}件</text>
+    <text class='g-ad-sale'>已售 {{list.already_sales}} 件</text>
   </view>
   <view class='g-ad-info'>装修无需苦等，上午买漆下午送到，多乐士邀您极速焕新家！店内优惠券/赠品/活动不间断</view>
 </view>
@@ -34,4 +34,5 @@
     <image src='{{imgurl+list.imgs}}' mode='widthFix'></image>
   </view>
 </block>
-<view class='g-detail-bottom' bindtap='takePartInGroup' data-t_id="{{list.t_id}}">立即抢购</view>
+
+<view class='g-detail-bottom' bindtap='tapGoOrderConfirm'>立即抢购</view>

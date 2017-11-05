@@ -3,6 +3,7 @@
 var common = require("../../utils/util.js");
 var app = getApp();
 const imgurl = app.globalData.imgUrl;
+const ordersAll = app.globalData.orders_all;
 Page({
     /**
      * 页面的初始数据
@@ -43,14 +44,14 @@ Page({
                 that.setData({
                     orders: data.data
                 })
-              
+
             } else {
                 that.setData({
                     orders: []
                 })
             }
             //缓存所有订单。。。
-            wx.setStorageSync('orders_all', data.data)
+            wx.setStorageSync(ordersAll, data.data)
         })
     },
     //查看订单详情
@@ -112,9 +113,9 @@ Page({
                 }
             }
         })
-  
+
     },
-    tapGoodConfirm:function(e){
+    tapGoodConfirm: function (e) {
         var that = this;
         var order_id = e.target.dataset.order_id;
         wx.showModal({
@@ -206,7 +207,11 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
+        //异步清订单缓存
+        wx.removeStorage({
+            key: ordersAll,
+            success: function (res) { },
+        })
     },
 
     /**
