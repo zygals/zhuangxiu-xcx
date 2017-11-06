@@ -17,7 +17,7 @@ page {
 
 .user-head .user-head-pic-wrap {
   position: absolute;
-  left: 42%;
+  left: 40%;
   top: 10%;
 }
 .user-head .user-head-pic  {
@@ -32,6 +32,7 @@ page {
   margin-top: 16rpx;
   font-size: 32rpx;
   color: #fff;
+  width: 150rpx;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;

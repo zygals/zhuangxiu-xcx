@@ -46,6 +46,7 @@ page {
   margin-top: 20rpx;
   display: flex;
   justify-content: space-around;
+  border-bottom: 1px solid #eee;
 }
 
 .order-info image {
@@ -58,7 +59,6 @@ page {
   flex-direction: column;
   justify-content: space-between;
   padding-bottom: 6rpx;
-  border-bottom: 1px solid #eee;
 }
 
 .order-cont .order-format {
