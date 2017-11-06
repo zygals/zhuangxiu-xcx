@@ -1,7 +1,19 @@
 <!--pages/bDetail/bDetail.wxml 商品详情-->
 
 <view class='b-banner'>
-  <image src='{{imgurl+good.img_big}}'></image>
+<swiper indicator-dots="true" class='swiper' indicator-color="#fff" indicator-active-color="#d1a87a" interval="true" duration="1000" circular='true'>
+  <block>
+    <swiper-item>
+      <image src="{{imgurl+good.img_big}}" class="slide-image" />
+    </swiper-item>
+    <swiper-item>
+      <image src="{{imgurl+good.img_big}}" class="slide-image" />
+    </swiper-item>
+    <swiper-item>
+      <image src="{{imgurl+good.img_big}}" class="slide-image" />
+    </swiper-item>
+  </block>
+</swiper>
   <text class='b-title'>{{good.name}}</text>
   <text class='b-price'>¥ {{good.price}}</text>
 </view>
