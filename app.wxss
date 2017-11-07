@@ -87,7 +87,23 @@ page {
 .buy-list {
   display: flex;
   padding: 20rpx 0;
+  align-items: center;
 }
+
+.buy-list text {
+  width: 25%;
+}
+
+.buy-list input {
+  width: 72%;
+  margin-left: 30rpx;
+}
+
+.buy-list .deposit {
+  margin-left: 30rpx;
+  color: #f30;
+}
+
 
 .buy-list .goods-pic image {
   width: 180rpx;

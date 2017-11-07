@@ -1,9 +1,10 @@
-// pages/groupPurchase/groupPurchase.js
+// pages/groupList/groupList.js
 
 var common = require("../../utils/util.js");
 var app = getApp();
 
 const imgurl = app.globalData.imgUrl;
+
 Page({
 
 	/**
@@ -11,38 +12,39 @@ Page({
 	 */
 	data: {
 		imgurl: imgurl,
-		rowActivity: {},
-		type_: '',
-
+		activityNow: [],
+		activityHistory: [],
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		var activity_id = options.activity_id;
-		if (options.type && options.type == 'history') {
-			this.setData({
-				type_: options.type
-			})
-		}
-		this.getActivity(activity_id)
+		this.getActivityNow();
+		this.getActivityHistory()
 	},
-	//取活动详情
-	getActivity: function (activity_id) {
+	//取活动正在进行
+	getActivityNow: function () {
 		var that = this
-		common.httpG('activity/read', { activity_id: activity_id }, function (data) {
+		common.httpG('activity/index', {}, function (data) {
 			if (data.code == 0) {
-				that.setData({ rowActivity: data.data })
-				wx.setStorage({
-					key: 'rowActivity',
-					data: data.data,
+				that.setData({
+					activityNow: data.data
 				})
 			}
-		
 		})
 	},
-
+	//取活动历史
+	getActivityHistory: function () {
+		var that = this
+		common.httpG('activity/history_activity', {}, function (data) {
+			if (data.code == 0) {
+				that.setData({
+					activityHistory: data.data
+				})
+			}
+		})
+	},
 	/**
 	 * 生命周期函数--监听页面初次渲染完成
 	 */

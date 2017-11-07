@@ -88,8 +88,9 @@ page {
 .b-inner text {
   display: flex;
   justify-content: center;
-  padding: 30rpx 0;
-  font-size: 36rpx;
+  padding: 30rpx 20rpx;
+  font-size: 32rpx;
+  color: #666;
 }
 
 .b-inner image {

@@ -54,14 +54,13 @@
 <view class='switch-wrap'>
   <view class="{{currentTab==0 ? ' show ' : ' hide '}}" data-current='0'>
     <view class='goods-detail-wrap '>
-
       <block wx:if="{{shopGoods.length>0}}">
         <view class='store-address-wrap' wx:for="{{shopGoods}}" wx:key="id">
           <navigator url='/pages/bDetail/bDetail?good_id={{item.id}}'>
             <view class='goods-list '>
               <image src="{{imgurl+item.img}}" mode='aspectFill'></image>
               <text class='store-name '>{{item.name}}</text>
-              <view class='store-price'>{{item.price}}/{{item.unit}}</view>
+              <view class='store-price'>{{item.price}}<block wx:if="{{item.unit}}">/{{item.unit}}</block></view>
             </view>
           </navigator>
         </view>

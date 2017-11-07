@@ -35,19 +35,19 @@
                     <view class='reg-list'>
                         <view class='reg-name'>
                             <text>姓名 : </text>
-                            <input type='text' name='truename' placeholder='请输入报名姓名'></input>
+                            <input type='text' name='truename' value='{{baoming.truename}}' placeholder='请输入报名姓名'></input>
                         </view>
                         <view class='reg-phone'>
                             <text>电话 : </text>
-                            <input type='text' name='mobile' placeholder='请输入电话'></input>
+                            <input type='number' name='mobile' maxlength='20'  value='{{baoming.mobile}}'placeholder='请输入电话'></input>
                         </view>
                         <view class='reg-address'>
                             <text>地址 : </text>
-                            <input type='text' name='address' placeholder='请输入地址'></input>
+                            <input type='text' name='address' value='{{baoming.address}}' placeholder='请输入地址'></input>
                         </view>
                         <view class='reg-time'>
                             <text>验房时间 : </text>
-                            <input type='text' name='time_to' placeholder='请输入验房时间'></input>
+                            <input type='text' name='time_to' value='{{baoming.time_to}}' placeholder='请输入验房时间'></input>
                         </view>
                         <view class='reg-people'>
                             <text>已参加人数 : {{baomingNum}}</text>
@@ -55,7 +55,7 @@
                         </view>
                     </view>
                     <view class='right-now-wrap'>
-                        <button formType='submit' size='mini' >立即报名</button>
+                        <button formType='submit' size='mini' ><block wx:if="{{baoming}}">修改报名</block><block wx:else>立即报名</block></button>
                     </view>
                 </view>
             </form>

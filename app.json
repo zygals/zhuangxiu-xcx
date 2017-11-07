@@ -1,7 +1,9 @@
 {
 	"pages": [
-		"pages/index/index",
+    "pages/index/index",
+    "pages/submit_from_deposit/submit_from_deposit",
 		"pages/group/group",
+			"pages/groupList/groupList",
 		"pages/addCommen/addCommen",
 		"pages/register/register",
 		"pages/house/house",
@@ -11,7 +13,6 @@
 		"pages/submit/submit",
 		"pages/submit_from_orders/submit_from_orders",
 		"pages/submit_from_group2/submit_from_group2",
-		"pages/submit_from_deposit/submit_from_deposit",
 		"pages/shopCart/shopCart",
 		"pages/user/user",
 		"pages/store/store",
