@@ -22,7 +22,7 @@
                 </view>
             </image>
         </navigator>
-        <navigator url='/pages/group/group' hover-class='none'>
+        <navigator url='/pages/groupList/groupList' hover-class='none'>
             <image src='../../img/activity-bg.png' class='nav-pic'>
                 <view class='icon-wrap'>
                     <image src='../../img/activity-icon.png'></image>

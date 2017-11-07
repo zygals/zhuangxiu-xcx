@@ -61,7 +61,7 @@
                         <view class='goods-list '>
                             <image src="{{imgurl+item.img}}" mode='aspectFill'></image>
                             <text class='store-name '>{{item.name}}</text>
-                            <view class='store-price'>{{item.price}}/{{item.unit}}</view>
+                            <view class='store-price'>{{item.price}}<block wx:if="{{item.unit}}">/{{item.unit}}</block></view>
                         </view>
                     </navigator>
                 </view>

@@ -2,6 +2,7 @@
 	"pages": [
 		"pages/index/index",
 		"pages/group/group",
+			"pages/groupList/groupList",
 		"pages/addCommen/addCommen",
 		"pages/register/register",
 		"pages/house/house",
