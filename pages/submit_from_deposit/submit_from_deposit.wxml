@@ -1,5 +1,6 @@
-<!--pages/submit/submit.wxml 这个抢购订单页不要了 -->
+<!--pages/submit/submit.wxml 付订金-->
 <view class='shop-wrap'>
+
         <view class='shop-title' bindtap='tapAddress'>
             <image src='../../img/location-icon.png'></image>
             <view class='shop-info'>
@@ -17,33 +18,19 @@
             <image src='../../img/enter-icon.png'></image>
         </view>
 	
-    <view class='buy' >
+    <view class='buy'>
         <view class='buy-title'>
-            <!-- <image src='../../img/shop-iconBlack.png'></image>
-            <text class='store-name'>shop--name</text> -->
+            <image src='../../img/shop-iconBlack.png'></image>
+            <text class='store-name'>shopname</text>
         </view>
-        <view class='buy-list' >
-            <view class='goods-pic'>
-                <image src='{{imgurl+goodGroup.img}}'></image>
-            </view>
-            <view class='goods'>
-                <view class='top-goods'>
-                    <view class='goods-name'>{{goodGroup.name}}</view>
-                    <view class='format'>{{goodGroup.unit}}</view>
-                </view>
-                <view class='bottom-goods'>
-                    <view class='goods-price'>
-                        <text class='price'> ¥ {{goodGroup.price_group}} </text>
-                        <!-- <text class='number'> x {{goodGroup.num}}</text> -->
-                    </view>
-                </view>
-            </view>
+        <view class='buy-list'>
+            
         </view>
     </view>
 </view>
 <view class='submit-btn'>
     <view class='left-submit'>合计金额 :
-        <text> ¥ {{goodGroup.price_group}}</text>
+        <text> ¥ {{sum_price_all}}</text>
     </view>
     <button class='right-submit' disabled='{{sumitOrderSt}}' bindtap='tapAddOrder'>提交订单</button>
 </view>

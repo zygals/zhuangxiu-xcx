@@ -23,6 +23,5 @@
       <button form-type='submit' class="weui-btn" type="default" size='mini'>提交评价</button>
     </view>
   </view>
-  
 
 </view>
