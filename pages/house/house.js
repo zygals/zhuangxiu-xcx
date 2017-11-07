@@ -83,11 +83,10 @@ Page({
 					title: data.msg,
 				})
 				if (jiekou =='baoming/save'){
-					wx.navigateTo({
-						url: '/pages/register/register',
-					})
+		wx.navigateTo({
+					url: '/pages/register/register',
+				})
 				}
-		
 			}
 		})
 	},

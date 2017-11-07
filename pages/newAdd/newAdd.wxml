@@ -28,5 +28,4 @@
         </view> -->
     </view>
     <button formType="submit" hover-class='none' class='add-btn'>确认地址</button>
-
 </form>
