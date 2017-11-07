@@ -71,12 +71,9 @@ Page({
 	tapEditAddress: function (e) {
 		var that = this;
 		var address_id = e.target.dataset.address_id;
-
 		wx.navigateTo({
 			url: '/pages/newAdd/newAdd?address_id=' + address_id,
-
 		})
-
 	},
 	//删除地址
 	tapDelAddress: function (e) {

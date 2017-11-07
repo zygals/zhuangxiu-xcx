@@ -47,7 +47,7 @@ Page({
               console.log('add group order ok');
               return ;
               //发起支付
-              that.payNow(data.type, data.data, username)
+              that.payNow(data.data, username)
 
           } else {
               that.setData({
@@ -59,16 +59,17 @@ Page({
   },
 
   //立即支付,多商家:可能一次支付多个订单
-  payNow: function (type_, order_id, username) {
+  payNow: function (data_group, username) {
       wx.showLoading({
           title: '请求支付中...',
       })
       wx.request({
           url: wxurl + 'pay/pay_now',
           data: {
-              order_id: order_id,
+              order_id: data.order_id,
               username: username,
-              type_: type_, //  类型：shop_order 或是 contact_order 
+			  type_: data_group.type_shop, //  类型：shop_order 或是 contact_order 
+		
           },
           success: function (res) {
               var data = res.data;
@@ -89,6 +90,7 @@ Page({
                                   order_id: order_id,
                                   st: 'paid',
                                   type_: type_,
+								  type_group: data_group.type_group,
                               },
                               success: function (res) {
                                   console.log(res.data.msg);
