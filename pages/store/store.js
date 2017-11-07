@@ -24,8 +24,9 @@ Page({
     last_page: 1,
     shop_id: '',
     collect_star: 'collect-icon.png',
-    username:'',
-    Collect:""
+    username: '',
+    Collect: "",
+    ShopEvalute: [],
   },
 
   /**
@@ -53,6 +54,7 @@ Page({
     this.shopGoods(shop_id)
     //调用shop/addr
     this.shopAddr(shop_id)
+    this.getShopEvalute(shop_id)
     console.log(shop_id)
   },
   shopInfo: function (shop_id) {
@@ -64,7 +66,7 @@ Page({
     }
     common.httpG('shop/read', {
       shop_id: shop_id,
-      username:username
+      username: username
 
     }, function (data) {
 
@@ -74,7 +76,7 @@ Page({
       if (data.is_collect == 'true') {
         that.setData({
           collect_star: 'collect-icon-slt.png',
-          Collect:'isCollect'
+          Collect: 'isCollect'
         })
 
       }
@@ -108,6 +110,20 @@ Page({
         shopAddr: data.data,
 
 
+      });
+    });
+  },
+
+  //遍历店铺所有评价
+  getShopEvalute: function (shop_id) {
+    var that = this;
+    common.httpG('fankui/getShop', {
+      shop_id: shop_id,
+
+    }, function (data) {
+
+      that.setData({
+        ShopEvalute: data.data,
       });
     });
   },

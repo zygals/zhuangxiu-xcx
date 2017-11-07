@@ -16,10 +16,11 @@ Page({
         inputNum: 1,
         decrease: 'decrease',
         imgurl: imgurl,
-        good: {},
+        good: [],
         username: '',
         collect_star: 'collect-icon.png',
-        Collect: ""
+        Collect: "",
+        img_big:[]
     },
 
 
@@ -30,6 +31,7 @@ Page({
         var good_id = options.good_id;
         // good_id = 19;
         this.getGood(good_id)
+        this.getGoodBigImg(good_id)
 
 
     },
@@ -50,6 +52,17 @@ Page({
                     })
                 }
             })
+    },
+    getGoodBigImg: function (good_id){
+      var that = this
+      common.httpG('good/images',
+        {
+          good_id: good_id
+        },
+        function (data) {
+          that.setData({ goodImg: data.data })
+          
+        })
     },
     decrease() {
         var that = this;
