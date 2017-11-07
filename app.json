@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/groupPurchase/groupPurchase",
+    "pages/acRegister/acRegister",
     "pages/index/index",
     "pages/addCommen/addCommen",
     "pages/group/group",
