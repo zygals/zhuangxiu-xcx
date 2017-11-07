@@ -43,10 +43,16 @@ Page({
 	addActivityAttend: function (e) {
 		var that = this
 		var data_post = e.detail.value
-		data_post.activity_id = this.data.activity_id
-
+		var username=common.getUserName()
+		data_post.activity_id = this.data.activity_id;
+		data_post.username = username;
+         
 		common.httpP('activity/save', data_post, function (data) {
-
+			if (data.code == 0 && that.data.rowAttend==null){
+				wx.navigateTo({
+					url: '/pages/register/register',
+				})
+			 }
 		})
 	},
 	/**

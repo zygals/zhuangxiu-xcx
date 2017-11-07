@@ -35,6 +35,15 @@
                 <input type='text' name='nigou' value="{{rowAttend.nigou}}" placeholder='请输入购买商'></input>
             </view>
         </view>
-        <button type='primary' form-type='submit'>立即报名</button>
+
+        <button type='primary' form-type='submit'>
+            <block wx:if="{{rowAttend!=null}}">
+                 修改报名
+            </block>
+            <block wx:else>
+                立即报名
+            </block>
+        </button>
+
     </form>
 </view>

@@ -1,6 +1,5 @@
 <!--pages/newAdd/newAdd.wxml-->
 <form bindsubmit="{{action}}">
-  <template name="add"> 
     <view class='new-add'>
         <view class='new-add-list'>
             <text>收货人</text>
@@ -28,7 +27,6 @@
             </view>
         </view> -->
     </view>
-  </template>
     <button formType="submit" hover-class='none' class='add-btn'>确认地址</button>
 
 </form>
