@@ -46,7 +46,7 @@
                     <block wx:if="{{shop.st=='已支付' && shop.goodst=='已发货'}}">
                         <text class='point-slt' bindtap="tapGoodConfirm" data-order_id="{{shop.id}}">确认收货</text>
                     </block>
-                    <block wx:if="{{(shop.st=='用户取消') || shop.goodst=='已收货'}}">
+                    <block wx:if="{{(shop.st=='用户取消') || shop.goodst=='已收货' || shop.goodst=='已评价'}}">
                         <text class='point-slt' bindtap="tapOrderDelete" data-order_id="{{shop.id}}">删除</text>
                     </block>
                     <text data-order_id="{{shop.id}}" data-address_id="{{shop.address_id}}" bindtap="tapLookDetail">订单详情</text>
@@ -121,7 +121,7 @@
                 <view class='select-btn'>
                     <text data-order_id="{{shop.id}}" data-address_id="{{shop.address_id}}" bindtap="tapLookDetail">订单详情</text>
                     <block wx:if="{{shop.st=='已支付' && shop.goodst=='已收货'}}">
-                        <text class='point-slt' bindtap="tapOrderFankui" data-order_id="{{shop.id}}">评价</text>
+                        <text class='point-slt' bindtap="tapOrderFankui" data-order_id="{{shop.id}}" data-shop_id="{{shop.shop_id}}">评价</text>
                     </block>
                          <block wx:if="{{shop.goodst=='已收货'}}">
                         <text class='point-slt' bindtap="tapOrderDelete" data-order_id="{{shop.id}}">删除</text>

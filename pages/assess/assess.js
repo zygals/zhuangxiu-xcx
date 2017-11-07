@@ -1,18 +1,38 @@
 // pages/assess/assess.js
+var common = require("../../utils/util.js");
+var app = getApp();
+const imgurl = app.globalData.imgUrl;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    imgurl: imgurl,
+    List:[],
+    username:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    var username = common.getUserName();
+    this.getList(username);
+  },
+  getList:function(username){
+    var that = this;
+    common.httpG('fankui/getFankui', {
+      username: username,
+    }, function (data) {
+      if (data.code == 0) {
+        that.setData({
+          List: data.data
+        })
+      }
+    })
   },
 
   /**

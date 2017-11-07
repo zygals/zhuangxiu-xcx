@@ -25,17 +25,17 @@
 </view>
 <!-- swiper -->
 <view class='swiper-scroll-wrap'>
-    <view class='swiper-wrap'>
-        <image src='../../img/bugle-icon.png'></image>
-        <text class='discount-info'>优惠资讯 : </text>
-        <swiper circular='true' autoplay="true" interval="3000" duration="500" class='store-swiper' vertical='true'>
-            <block wx:for="{{information}}" wx:key='index'>
-                <swiper-item>
-                    <text>{{item.textUrl}}</text>
-                </swiper-item>
-            </block>
-        </swiper>
-    </view>
+  <view class='swiper-wrap'>
+    <image src='../../img/bugle-icon.png'></image>
+    <text class='discount-info'>优惠资讯 : </text>
+    <swiper circular='true' autoplay="true" interval="3000" duration="500" class='store-swiper' vertical='true'>
+      <block wx:for="{{information}}" wx:key='index'>
+        <swiper-item>
+          <text>{{item.textUrl}}</text>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
 </view>
 <!-- store-nav -->
 
@@ -52,137 +52,93 @@
 <!-- total-goods -->
 <!-- <swiper-item> -->
 <view class='switch-wrap'>
-    <view class="{{currentTab==0 ? ' show ' : ' hide '}}" data-current='0'>
-        <view class='goods-detail-wrap '>
-
-            <block wx:if="{{shopGoods.length>0}}">
-                <view class='store-address-wrap' wx:for="{{shopGoods}}" wx:key="id">
-                    <navigator url='/pages/bDetail/bDetail?good_id={{item.id}}'>
-                        <view class='goods-list '>
-                            <image src="{{imgurl+item.img}}" mode='aspectFill'></image>
-                            <text class='store-name '>{{item.name}}</text>
-                            <view class='store-price'>{{item.price}}<block wx:if="{{item.unit}}">/{{item.unit}}</block></view>
-                        </view>
-                    </navigator>
-                </view>
-                <block wx:if='{{current_page < last_page}}'>
-                    <view class="weui-loadmore">
-                        <view class="weui-loading"></view>
-                        <view class="weui-loadmore__tips">正在加载</view>
-                    </view>
-                </block>
-                <block wx:else>
-                    <view class="weui-loadmore weui-loadmore_line">
-                        <view class="weui-loadmore__tips weui-loadmore__tips_in-line">我是有底线的</view>
-                    </view>
-                </block>
-            </block>
-        </view>
-    </view>
-    <!-- </swiper-item> -->
-
-    <!-- store-address -->
-    <!-- <swiper-item> -->
-    <view class="{{currentTab==1 ? ' show ' : ' hide '}}" data-current='1'>
-        <block wx:if="{{shopAddr.length>0}}">
-            <view class='store-address-wrap' wx:for="{{shopAddr}}" wx:key="id">
-                <view class='address-msg'>
-                    <view class='address-msg-name'>{{item.name_}}</view>
-                    <text>联系人: {{item.truename_}}</text>
-                    <text>手  机: {{item.mobile_}}</text>
-                    <block wx:if="{{item.zuoji!=''}}">
-                        <text>联系电话 :{{item.zuoji}}</text>
-                    </block>
-                    <text>地　址: {{item.address_}}</text>
-                </view>
-                <!-- <image src='../../img/store.jpg'></image> -->
+  <view class="{{currentTab==0 ? ' show ' : ' hide '}}" data-current='0'>
+    <view class='goods-detail-wrap '>
+      <block wx:if="{{shopGoods.length>0}}">
+        <view class='store-address-wrap' wx:for="{{shopGoods}}" wx:key="id">
+          <navigator url='/pages/bDetail/bDetail?good_id={{item.id}}'>
+            <view class='goods-list '>
+              <image src="{{imgurl+item.img}}" mode='aspectFill'></image>
+              <text class='store-name '>{{item.name}}</text>
+              <view class='store-price'>{{item.price}}<block wx:if="{{item.unit}}">/{{item.unit}}</block></view>
             </view>
+          </navigator>
+        </view>
+        <block wx:if='{{current_page < last_page}}'>
+          <view class="weui-loadmore">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在加载</view>
+          </view>
         </block>
+        <block wx:else>
+          <view class="weui-loadmore weui-loadmore_line">
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">我是有底线的</view>
+          </view>
+        </block>
+      </block>
     </view>
-    <!-- </swiper-item> -->
+  </view>
+  <!-- </swiper-item> -->
 
-    <!-- bussiness-detail -->
-    <!-- <swiper-item> -->
-    <view class="{{currentTab==2 ? ' show ' : ' hide '}}" data-current='2'>
-        <view class='bussiness-detail'>
-            <view class='bus-list'>
-                <text>所在地 :</text>
-                <text>{{shopInfo.addr}}</text>
-            </view>
-            <view class='bus-list'>
-                <text>联系电话 :</text>
-                <text>{{shopInfo.phone}}</text>
-            </view>
-            <block wx:if="{{shopInfo.zuoji!=''}}">
-                <view class='bus-list'>
-                    <text>联系电话 :</text>
-                    <text>{{shopInfo.zuoji}}</text>
-                </view>
-            </block>
-            <view class='bus-list'>
-                <text class='bus-list-info'>商家简介 :</text>
-                <text class='bus-list-sub'> {{shopInfo.info}}</text>
-            </view>
-            <view class='bus-list'>
-                <text>经营品牌 :</text>
-                <text> {{shopInfo.brand}}</text>
-            </view>
+  <!-- store-address -->
+  <!-- <swiper-item> -->
+  <view class="{{currentTab==1 ? ' show ' : ' hide '}}" data-current='1'>
+    <block wx:if="{{shopAddr.length>0}}">
+      <view class='store-address-wrap' wx:for="{{shopAddr}}" wx:key="id">
+        <view class='address-msg'>
+          <view class='address-msg-name'>{{item.name_}}</view>
+          <text>联系人: {{item.truename_}}</text>
+          <text>电　话: {{item.mobile_}}</text>
+          <text>地　址: {{item.address_}}</text>
         </view>
-    </view>
-    <!-- </swiper-item> -->
+        <!-- <image src='../../img/store.jpg'></image> -->
+      </view>
+    </block>
+  </view>
+  <!-- </swiper-item> -->
 
-    <!-- total-evalution -->
-    <!-- <swiper-item> -->
-    <view class="evalution-wrap {{currentTab==3 ? ' show ' : ' hide '}}" data-current='3'>
-        <view class='evalution-list'>
-            <view class='evalution-title'>
-                <view class='evalution-user'>
-                    <image src='../../img/evalution-user.png'></image>
-                    <text>总有刁民想害朕</text>
-                </view>
-                <view class='evalution-date'>2017-05-21</view>
-            </view>
-            <view class='textarea'>
-                此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论
-            </view>
-        </view>
-        <view class='evalution-list'>
-            <view class='evalution-title'>
-                <view class='evalution-user'>
-                    <image src='../../img/evalution-user.png'></image>
-                    <text>总有刁民想害朕</text>
-                </view>
-                <view class='evalution-date'>2017-05-21</view>
-            </view>
-            <view class='textarea'>
-                此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用
-            </view>
-        </view>
-        <view class='evalution-list'>
-            <view class='evalution-title'>
-                <view class='evalution-user'>
-                    <image src='../../img/evalution-user.png'></image>
-                    <text>总有刁民想害朕</text>
-                </view>
-                <view class='evalution-date'>2017-05-21</view>
-            </view>
-            <view class='textarea'>
-                此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户没有任何评论此用户
-            </view>
-        </view>
-        <view class='evalution-list'>
-            <view class='evalution-title'>
-                <view class='evalution-user'>
-                    <image src='../../img/evalution-user.png'></image>
-                    <text>总有刁民想害朕</text>
-                </view>
-                <view class='evalution-date'>2017-05-21</view>
-            </view>
-            <view class='textarea'>
-                此用户没有任何评论此用户没
-            </view>
-        </view>
+  <!-- bussiness-detail -->
+  <!-- <swiper-item> -->
+  <view class="{{currentTab==2 ? ' show ' : ' hide '}}" data-current='2'>
+    <view class='bussiness-detail'>
+      <view class='bus-list'>
+        <text>所在地 :</text>
+        <text>{{shopInfo.addr}}</text>
+      </view>
+      <view class='bus-list'>
+        <text>联系电话 :</text>
+        <text>{{shopInfo.phone}}</text>
+      </view>
+      <view class='bus-list'>
+        <text class='bus-list-info'>商家简介 :</text>
+        <text class='bus-list-sub'> {{shopInfo.info}}</text>
+      </view>
+      <view class='bus-list'>
+        <text>经营品牌 :</text>
+        <text> {{shopInfo.brand}}</text>
+      </view>
     </view>
+  </view>
+  <!-- </swiper-item> -->
+
+  <!-- total-evalution -->
+  <!-- <swiper-item> -->
+  <view class="evalution-wrap {{currentTab==3 ? ' show ' : ' hide '}}" data-current='3'>
+    <block wx:if="{{ShopEvalute.length>0}}">
+    <view class='evalution-list' wx:for="{{ShopEvalute}}">
+      <view class='evalution-title'>
+        <view class='evalution-user'>
+          <image src='{{item.vistar}}'></image>
+          <text>{{item.nickname}}</text>
+        </view>
+        <view class='evalution-date'>{{item.create_time}}</view>
+      </view>
+      <view class='textarea'>
+        {{item.cont}}
+      </view>
+    </view>
+    </block>
+  </view>
 </view>
 <!-- </swiper-item>
 </swiper> -->

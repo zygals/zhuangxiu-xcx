@@ -164,6 +164,7 @@ page {
   margin-top: 10rpx;
   text-align: center;
   /* height: 40rpx; */
+  width: 300rpx;
   overflow: hidden;
   text-overflow: ellipsis;
    white-space: nowrap; 

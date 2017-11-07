@@ -2,16 +2,17 @@
 
 <view class='b-banner'>
 <swiper indicator-dots="true" class='swiper' indicator-color="#fff" indicator-active-color="#d1a87a" interval="true" duration="1000" circular='true'>
-  <block>
-    <swiper-item>
-      <image src="{{imgurl+good.img_big}}" class="slide-image" />
-    </swiper-item>
-    <swiper-item>
-      <image src="{{imgurl+good.img_big}}" class="slide-image" />
-    </swiper-item>
-    <swiper-item>
-      <image src="{{imgurl+good.img_big}}" class="slide-image" />
-    </swiper-item>
+  <block wx:if="{{good.img_big_st == 1}}">
+    <block wx:for="{{goodImg}}">
+      <swiper-item>
+        <image src="{{imgurl+item.img_big}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </block>
+  <block wx:else>
+      <swiper-item>
+        <image src="{{imgurl+good.img_big}}" class="slide-image" />
+      </swiper-item>
   </block>
 </swiper>
   <text class='b-title'>{{good.name}}</text>
