@@ -15,7 +15,6 @@ Page({
         orders: [], //所有订单
         order_paid: [], //订单已支付
         order_no_pay: [], //订单待支付
-
     },
 
     /**
@@ -62,6 +61,16 @@ Page({
         wx.navigateTo({
             url: '/pages/submit_from_orders/submit_from_orders?from_=look_detail&order_id=' + order_id + '&address_id=' + address_id,
         })
+    },
+    //确认评价页面
+    tapOrderFankui: function (e){
+      var that = this;
+      var order_id = e.currentTarget.dataset.order_id;
+      var shop_id = e.currentTarget.dataset.shop_id;
+      var username = common.getUserName();
+      wx.navigateTo({
+        url: '/pages/addCommen/addCommen?order_id=' + order_id + 'username=' + username + 'shop_id=' + shop_id
+      })
     },
     //去支付
     tapGoOrderConfirm: function (e) {
