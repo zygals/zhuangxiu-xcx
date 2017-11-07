@@ -24,7 +24,16 @@
             <text class='store-name'>shopname</text>
         </view>
         <view class='buy-list'>
-            
+            <text>备注 : </text>
+            <input type='text' placeholder='请输入备注'></input>
+        </view>
+        <view class='buy-list'>
+            <text>定金金额 : </text>
+            <input type='text' placeholder='请输入备注'></input>
+        </view>
+        <view class='buy-list'>
+            <text>优惠价格 : </text>
+            <text class='deposit'> ¥ 123</text>
         </view>
     </view>
 </view>

@@ -16,3 +16,4 @@
     <text>公司地址 : {{about.address}}</text>
   </view>
 </view>
+
