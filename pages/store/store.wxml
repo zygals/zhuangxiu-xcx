@@ -18,7 +18,7 @@
         </view>
         <view class='right-info'>
             <view class='info-sale'>销量: {{shopInfo.ordernum}}</view>
-            <view class='info-assess'>评价: {{shopInfo.fankuinum/shopInfo.ordernum}}</view>
+            <view class='info-assess'>评价: 0</view>
         </view>
     </view>
     <view class='store-tag'>{{shopInfo.info}}</view>
