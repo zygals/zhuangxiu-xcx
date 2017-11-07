@@ -61,5 +61,5 @@
 </view>
 </block>
 <block wx:else>
-<view>请选择商品</view>
+<view class='no-goods'>没有更多啦~</view>
 </block>

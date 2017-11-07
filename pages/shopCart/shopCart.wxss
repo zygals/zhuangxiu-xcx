@@ -50,6 +50,7 @@ page {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  border-bottom: 1px solid #eee;
 }
 
 .goods-pic {
@@ -60,7 +61,7 @@ page {
 .goods-pic image {
   width: 160rpx;
   height: 160rpx;
-  margin-right: 15rpx;
+  /* margin-right: 15rpx; */
 }
 
 .goods {
@@ -70,7 +71,6 @@ page {
   font-size: 30rpx;
   margin-left: 10rpx;
   padding-bottom: 15rpx;
-  width: 380rpx;
 }
 
 .top-goods .goods-name {
@@ -133,10 +133,12 @@ page {
 .delete {
   display: flex;
   align-items: center;
-  margin-left: 80rpx;
   font-size: 28rpx;
 }
-
+.delete text {
+  width: 100%;
+  margin-left: 32rpx;
+}
 /* shopCartPay */
 
 .pay-wrap {
@@ -184,4 +186,10 @@ page {
 
 .right-count {
   margin-right: 20rpx;
+}
+
+.no-goods {
+  text-align: center;
+  color: #666;
+  margin-top: 30rpx;
 }

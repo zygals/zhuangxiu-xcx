@@ -107,7 +107,7 @@ Page({
         common.httpP('cart/save', { username: username, good_id: good_id, num: num }, function (data) {
             if (data.code == 0) {
                 wx.showToast({
-                    title: data.msg,
+                    title: '加入购物车成功',
                 })
                 if (mai == 'true') {
                     wx.switchTab({

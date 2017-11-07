@@ -42,10 +42,14 @@ page {
 
 .store-header-info {
   margin-left: 20rpx;
+  width: 300rpx;
 }
 
-.store-header-name {
-  font-size: 34rpx;
+.store-header-info .store-header-name {
+  font-size: 30rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .store-header-name .city {

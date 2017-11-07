@@ -91,7 +91,7 @@ page {
 }
 
 .buy-list text {
-  width: 25%;
+   width: 25%; 
 }
 
 .buy-list input {
@@ -114,8 +114,9 @@ page {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-left: 20rpx;
+  /* margin-left: 20rpx; */
   border-bottom: 1px solid #eee;
+  width: 400rpx;
 }
 
 .buy-list .goods .top-goods {
@@ -139,7 +140,7 @@ page {
 
 .buy-list .goods .goods-price .price {
   color: #ff4318;
-  font-size: 32rpx;
+  font-size: 28rpx;
 }
 
 .buy-list .goods .goods-price .number {

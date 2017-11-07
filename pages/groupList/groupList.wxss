@@ -31,6 +31,7 @@ page {
   display: flex;
   flex-direction: column;
   background-color: #fff;
+  margin-bottom: 30rpx;
 }
 
 .group-banner image {

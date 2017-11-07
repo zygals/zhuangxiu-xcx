@@ -65,9 +65,14 @@ page {
 }
 .good-detail {
   background-color: #fff;
+  padding-bottom: 100rpx;
 }
 .good-detail image {
   width: 100%;
+}
+
+.good-detail text {
+  color: #666;
 }
 
 .bottom-option {

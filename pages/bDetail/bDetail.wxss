@@ -50,6 +50,7 @@ page {
   width: 50%;
   border-right: 1px solid #eee;
   background-color: #f8f8f8;
+  text-indent: 10rpx;
 }
 .b-format .input-buy .decrease {
   color: #ccc;
