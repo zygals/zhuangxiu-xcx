@@ -27,7 +27,7 @@
 		"pages/address/address",
 		"pages/baike/baike",
 		"pages/groupPurchase/groupPurchase",
-		"pages/acRegister/acRegister",
+		"pages/acRegister/acRegister"
 	],
 	"window": {
 		"backgroundTextStyle": "light",
