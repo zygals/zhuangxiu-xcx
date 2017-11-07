@@ -2,13 +2,13 @@
 
 <view class='assess-nav'>
   <view class='assess-total'>全部</view>
-  <view>好评({{List.evalute.best}})</view>
-  <view>中评({{List.evalute.mid}})</view>
-  <view>差评({{List.evalute.bad}})</view>
+  <view>好评({{getList.evalute.best}})</view>
+  <view>中评({{getList.evalute.mid}})</view>
+  <view>差评({{getList.evalute.bad}})</view>
 </view>
 
 <view class='assess-wrap'>
-  <block wx:for="{{List}}">
+  <block wx:for="{{getList}}">
     <view class='evalution-list'>
       <view class='evalution-title'>
         <view class='evalution-user'>

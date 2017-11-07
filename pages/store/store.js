@@ -256,7 +256,6 @@ Page({
           that.setData({
             current_page: res.data.data.current_page,
             shopGoods: that.data.shopGoods.concat(res.data.data.data),
-
           })
         },
         complete: () => {

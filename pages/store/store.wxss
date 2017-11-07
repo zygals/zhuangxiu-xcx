@@ -334,7 +334,7 @@ page {
 }
 
 .bussiness-detail .bus-list text:last-child {
-  margin-left: 20rpx;
+  /* margin-left: 20rpx; */
   margin-right: 20rpx;
 }
 
