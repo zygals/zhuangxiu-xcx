@@ -16,6 +16,15 @@
       <image src='../../img/assessment-pic.jpg'></image>
       <text>裸板大实木地板</text>
     </view>
+    <view class='radio-slt'>
+      <radio-group class="radio-group" bindchange="radioChange">
+        <label class="radio">
+          <radio value="好评" checked="true" />好评
+          <radio value="中评" />中评
+          <radio value="差评" />差评
+        </label>
+      </radio-group>
+    </view>
     <view class='commen-area'>
       <textarea placeholder='请输入评价' placeholder-class='place-area'></textarea>
     </view>
@@ -23,5 +32,8 @@
       <button form-type='submit' class="weui-btn" type="default" size='mini'>提交评价</button>
     </view>
   </view>
-
+<<<<<<< HEAD
+=======
 </view>
+>>>>>>> 89bb010eb6d3e605d3420f5adc287a4c9638051a
+

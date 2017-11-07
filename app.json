@@ -25,7 +25,9 @@
 		"pages/assess/assess",
 		"pages/cancel/cancel",
 		"pages/address/address",
-		"pages/baike/baike"
+		"pages/baike/baike",
+		"pages/groupPurchase/groupPurchase",
+		"pages/acRegister/acRegister",
 	],
 	"window": {
 		"backgroundTextStyle": "light",

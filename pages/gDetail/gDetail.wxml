@@ -34,4 +34,5 @@
     <image src='{{imgurl+list.imgs}}' mode='widthFix'></image>
   </view>
 </block>
+
 <view class='g-detail-bottom' bindtap='tapGoOrderConfirm'>立即抢购</view>

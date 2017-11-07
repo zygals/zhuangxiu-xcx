@@ -32,6 +32,14 @@ page {
   font-size: 32rpx;
 }
 
+.radio-slt {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 30rpx;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
 .commen-area textarea {
   width: 90%;
   height: 300rpx;

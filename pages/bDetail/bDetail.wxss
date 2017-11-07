@@ -4,11 +4,16 @@ page {
   background-color: #f8f8f8;
 }
 
+
 .b-banner {
   background-color: #fff;
   display: flex;
   flex-direction: column;
   font-size: 32rpx;
+}
+
+.b-banner swiper {
+  height: 600rpx;
 }
 
 .b-banner image {
