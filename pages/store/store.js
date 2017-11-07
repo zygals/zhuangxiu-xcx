@@ -34,7 +34,6 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    var username = wx.getStorageSync('username');
     wx.getSystemInfo({
       success: function (res) {
         that.setData({
@@ -46,8 +45,6 @@ Page({
     this.setData({
       shop_id: shop_id
     })
-    //  var shop_id = 12;
-    //  console.log(shop_id)
     //shop/read
     this.shopInfo(shop_id)
     //调用good/shop_good
@@ -56,6 +53,18 @@ Page({
     this.shopAddr(shop_id)
     this.getShopEvalute(shop_id)
     console.log(shop_id)
+  },
+  //店铺付订金
+  tapOrderConfirmDeposit:function(e){
+     wx.navigateTo({
+		 url: '/pages/submit_from_deposit/submit_from_deposit',
+	 })
+  },
+//付全款
+  tapOrderConfirmAllMoney: function (e) {
+	  wx.navigateTo({
+		  url: '/pages/submit_from_deposit/submit_from_deposit',
+	  })
   },
   shopInfo: function (shop_id) {
     var that = this;

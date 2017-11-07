@@ -20,7 +20,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        var order_id = options.order_id
+        var order_id = options.order_id;
         var address_id = options.address_id
         this.getOrderAddress(address_id)
         this.getOrderGoodList(order_id)

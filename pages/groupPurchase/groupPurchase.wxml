@@ -1,0 +1,24 @@
+<!--pages/groupPurchase/groupPurchase.wxml-->
+<view class='purchase-wrap'>
+  <image src='../../img/banner.jpg'></image>
+  <view class='purchase-list'>
+    <view class='purchase-item'>
+      <text class='purchase-title'>活动标题 :</text>
+      <text class='purchase-info'>水木监理只需12元每平方米</text>
+    </view>
+    <view class='purchase-item'>
+      <text class='purchase-title'>活动地址 :</text>
+      <text class='purchase-info'>水木监理只需12元每平方米</text>
+    </view>
+    <view class='purchase-item'>
+      <text class='purchase-title'>活动日 :</text>
+      <text class='purchase-info'>水木监理只需12元每平方米</text>
+    </view>
+    <view class='purchase-item'>
+      <text class='purchase-title'>活动内容 :</text>
+      <text class='purchase-info'>水木监理只需12元每平方米水木监理只需12元每平方米水木监理只需12元每平方米水木监理只需12元每平方米水木监理只需12元每平方米水木监理只需12元每平方米水木监理只需12元每平方米水木监理只需12元每平方米</text>
+    </view>
+  </view>  
+</view>
+
+<view class='purchase-btn'>去团购报名</view>
