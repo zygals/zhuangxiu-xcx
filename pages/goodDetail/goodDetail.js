@@ -23,7 +23,7 @@ Page({
     var t_id = options.t_id;
     this.getList(t_id);
   },
-
+//取活动详情
   getList: function (t_id) {
     var that = this;
     common.httpG('group/pnuminfo', { t_id: t_id }, function (data) {
@@ -31,7 +31,12 @@ Page({
         getList: data.data,
         endTime: data.data.end_time
       })
-      that.countDown();
+      //that.countDown();
+      //缓存详情
+      wx.setStorage({
+          key: 'group_detail',
+          data: data.data,
+      })
     })
   },
 

@@ -58,6 +58,13 @@ Page({
         // console.log(e);
         var order_id = e.currentTarget.dataset.order_id;
         var address_id = e.currentTarget.dataset.address_id;
+        var type_ = e.currentTarget.dataset.type_;
+        if (type_ == '商家订金' || type_ == '商家全款') {
+            wx.navigateTo({
+                url: '/pages/submit_from_orders_deposit/submit_from_orders_deposit?from_=look_detail&order_id=' + order_id + '&address_id=' + address_id + "&type_=" + type_,
+            })
+            return;
+        }
         wx.navigateTo({
             url: '/pages/submit_from_orders/submit_from_orders?from_=look_detail&order_id=' + order_id + '&address_id=' + address_id,
         })
@@ -76,7 +83,14 @@ Page({
     tapGoOrderConfirm: function (e) {
         var order_id = e.currentTarget.dataset.order_id;
         var address_id = e.currentTarget.dataset.address_id;
-        // console.log('address++',address_id)
+        var type_ = e.currentTarget.dataset.type_;
+          // console.log('address++',address_id)
+        if (type_ == '商家订金' || type_ == '商家全款'){
+            wx.navigateTo({
+                url: '/pages/submit_from_orders_deposit/submit_from_orders_deposit?from_=to_pay&order_id=' + order_id + '&address_id=' + address_id + "&type_=" + type_,
+            })
+            return ;
+}
         wx.navigateTo({
             url: '/pages/submit_from_orders/submit_from_orders?from_=to_pay&order_id=' + order_id + '&address_id=' + address_id,
         })

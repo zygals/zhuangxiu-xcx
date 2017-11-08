@@ -1,10 +1,8 @@
-// pages/submit_from_deposit/submit_from_deposit.js
-
+// pages/submit_from_orders_deposit/submit_from_orders_deposit.js
 var common = require("../../utils/util.js");
 var app = getApp();
 const imgurl = app.globalData.imgUrl;
 const wxurl = app.globalData.wxUrl;
-
 Page({
 
     /**
@@ -12,88 +10,66 @@ Page({
      */
     data: {
         imgurl: imgurl,
-        address: null,     //收货地址
-        shopInfo: null, //店铺信息
-        sum_price: 0,
-        sumitOrderSt: false,
-        type_: 4, //默认为商家订金类型
+        address: null,
+        from_: 'to_pay', //默认来自‘去支付’
+        payNowSt: false, //立即支付按扭状态
+        orderDetail:null,      //订单详情
+        texttip:'商家订金',
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.setData({
-            shopInfo: wx.getStorageSync('shopInfo'),
-            type_: options.type_
-        })
-        var shopInfo = this.data.shopInfo;
-        var sum = shopInfo.deposit - shopInfo.youhui;
-        if(this.data.type_==5){
-            sum = shopInfo.money_all - shopInfo.youhui_all;
-        }
-        this.setData({
-            sum_price: sum,
-        })
-    },
-    //监测用户输入金
-    inputDeposit: function (e) {
-        var inputDeposit = e.detail.value;
-        if (isNaN(inputDeposit)) {
-            return '';
-        }
-        var sum = inputDeposit - this.data.shopInfo.youhui
-        if(this.data.type_==5){
-            sum = inputDeposit - this.data.shopInfo.youhui_all
-        }
-        this.setData({
-            sum_price: sum,
-        })
-
-    },
-    //提交订单-商家订金
-    submitDeposit: function (e) {
-        if (this.data.address == null) {
-            wx.showToast({
-                title: '请添加地址',
+        var order_id = options.order_id;
+        var address_id = options.address_id
+        var type_ = options.type_;
+        this.getOrderAddress(address_id)
+        if (options.from_ == 'look_detail') {
+            this.setData({
+                from_: options.from_,
             })
-            return;
         }
-        var sum = this.data.sum_price
-        if (sum <= 0) {
-            wx.showToast({
-                title: '总计不能小于0',
+        if(type_=='商家全款'){
+            this.setData({
+                texttip: type_,
             })
-            return;
         }
-        this.setData({
-            sumitOrderSt: true,
-        })
-        //添加订单，成功后直接支付
-        var beizhu = e.detail.value.beizhu
-        var that = this;
-        var username = common.getUserName()
-        var youhui = that.data.shopInfo.youhui;
-        if (this.data.type_ == 5) {
-            youhui = that.data.shopInfo.youhui_all
+        //从订单缓存中取出订单
+        var orders_all = wx.getStorageSync('orders_all');
+        for(var i=0;i<orders_all.length;i++){
+             if(orders_all[i].id==order_id){
+                this.setData({
+                    orderDetail: orders_all[i]
+                })
+             }
         }
-        common.httpP('dingdan/save_deposit', {
-            type_: that.data.type_,
-            username: username,
-            shop_id: that.data.shopInfo.shop_id,
-            sum_price: that.data.sum_price,
-            address_id: that.data.address.id,
-            shop_youhui:youhui,
-            beizhu: beizhu,
+    },
+    //取商家订单的地址
+    getOrderAddress: function (address_id) {
+        var that = this
+        common.httpG('address/read', {
+            address_id: address_id,
         }, function (data) {
             if (data.code == 0) {
-                //添加订单成功
-                that.payNow(data.order_id, data.type, username)
+                that.setData({
+                    address: data.data
+                })
             }
         })
     },
-    //发起支付请示
-    payNow: function (order_id, type_, username) {
+    //立即支付
+    tapPayNow: function () {
+        this.setData({
+            payNowSt: true,
+        })
+        var order_id = this.data.orderDetail.id;
+        var username = common.getUserName();
+        var that = this
+        var type_number=4;//商家订金
+        if (this.data.texttip =='商家全款'){
+            type_number=5;
+        }
         wx.showLoading({
             title: '请求支付中...',
         })
@@ -102,7 +78,7 @@ Page({
             data: {
                 order_id: order_id,
                 username: username,
-                type_: type_,
+                type_: type_number, //  类型：shop_order 或是 contact_order 
             },
             success: function (res) {
                 var data = res.data;
@@ -122,7 +98,7 @@ Page({
                                 data: {
                                     order_id: order_id,
                                     st: 'paid',
-                                    type_: type_,
+                                    type_: 1,
                                 },
                                 success: function (res) {
                                     console.log(res.data.msg);
@@ -137,6 +113,9 @@ Page({
                         }
                     })
                 } else {
+                    that.setData({
+                        payNowSt: false,
+                    })
                     wx.hideLoading();
                     wx.showToast({
                         title: res.data.msg,
@@ -145,34 +124,9 @@ Page({
 
             }
         })
-    },
-    //改地址
-    tapAddress: function (e) {
 
-        if (this.data.address == null) {
-            wx.switchTab({
-                url: '/pages/user/user',
-            })
-            return;
-        }
-        wx.navigateTo({
-            url: '/pages/address/address?from_=orderConfirm',
-        })
     },
-    //取默认地址
-    getAddress: function () {
-        var that = this;
-        var username = common.getUserName()
-        common.httpG('address/default_address', {
-            username: username
-        }, function (data) {
-            if (data.code == 0) {
-                that.setData({
-                    address: data.data,
-                })
-            }
-        })
-    },
+
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -184,7 +138,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        this.getAddress()
+
     },
 
     /**

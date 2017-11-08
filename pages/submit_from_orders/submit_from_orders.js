@@ -24,7 +24,7 @@ Page({
         var address_id = options.address_id
         this.getOrderAddress(address_id)
         this.getOrderGoodList(order_id)
-        if (options.from_ == 'look_detail') {//
+        if (options.from_ == 'look_detail') {
             this.setData({
                 from_: options.from_,
             })
