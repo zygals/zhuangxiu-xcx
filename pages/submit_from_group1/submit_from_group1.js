@@ -3,6 +3,7 @@
 var common = require("../../utils/util.js");
 var app = getApp();
 const imgurl = app.globalData.imgUrl;
+const wxurl = app.globalData.wxUrl;
 const ordersAll = app.globalData.orders_all;
 const groupLimitStore = app.globalData.group_limit_store;
 Page({
