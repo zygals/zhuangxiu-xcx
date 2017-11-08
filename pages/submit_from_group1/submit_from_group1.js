@@ -26,7 +26,6 @@ Page({
   },
   //提交订单:添加成功后则发起支付
   tapAddOrder: function () {
-
       if (this.data.address == null) {
           wx.showToast({
               title: '请添加地址',
@@ -71,7 +70,6 @@ Page({
               order_id: order_id,
               username: username,
 			  type_: 3, //  限人订金类型 
-		
           },
           success: function (res) {
               var data = res.data;
@@ -85,7 +83,6 @@ Page({
                       'paySign': data.paySign,//签名,
                       'success': function (res) {
                           //更改订单状态为已支付
-                          console.log('payok', res)
                           wx.request({
                               url: wxurl + 'dingdan/update_pay_st',
                               data: {
@@ -95,12 +92,12 @@ Page({
 								  type_group: data_group.type_group,
                               },
                               success: function (res) {
-                                  console.log(res.data.msg);
+                                  wx.redirectTo({
+                                      url: '/pages/orders/orders',
+                                  })
                               }
                           })
-                          wx.redirectTo({
-                              url: '/pages/orders/orders',
-                          })
+
                       },
                       'fail': function (res) {
                           console.log(res)
@@ -133,21 +130,6 @@ Page({
           if (data.code == 0) {
               that.setData({
                   address: data.data,
-              })
-          }else{
-              wx.showModal({
-                  title: '暂无默认地址',
-                  content: '请前往我的-地址管理页添加',
-                  cancelText:'关闭',
-                  confirmText:'添加地址',
-                  confirmColor:'#18c469',
-                  success:function(res){
-                      if(res.confirm){
-                          wx.switchTab({
-                              url: '/pages/user/user',
-                          })
-                      }
-                  }
               })
           }
       })

@@ -33,6 +33,11 @@
     <image src='../../img/collect2-icon.png'></image>
     <text>收藏</text>
   </view> -->
+  <block wx:if='{{orderDeposit && orderDeposit.st=='待支付'}}'>
+    <view class='good-enter' bindtap='tapGogoPayDeposit'>
+    <text >您已下了订金订单，请先支付</text>
+  </view>
+  </block>
   <view class='good-enter' bindtap='orderConfirmGroupDeposit'>
     <text >我要参团,付订金（{{getList.deposit}}元）</text>
   </view>

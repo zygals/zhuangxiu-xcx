@@ -30,7 +30,6 @@
                 <view class='top-goods'>
                     <view class='goods-name'>{{goodGroup.good_name}}</view>
                     <view class='format'>单位：{{goodGroup.unit}}</view>
-
                 </view>
                 <view class='bottom-goods'>
                     <view class='goods-price'>
