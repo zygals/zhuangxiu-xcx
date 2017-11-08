@@ -47,6 +47,7 @@ page {
   display: flex;
   justify-content: space-around;
   border-bottom: 1px solid #eee;
+  align-items: center;
 }
 
 .order-info image {
@@ -59,6 +60,7 @@ page {
   flex-direction: column;
   justify-content: space-between;
   padding-bottom: 6rpx;
+  margin-left: 30rpx;
 }
 
 .order-cont .order-format {
@@ -68,7 +70,7 @@ page {
   color: #666;
 }
 
-.order-cont .order-format text:nth-child(1) {
+.order-cont .order-format text {
   margin-bottom: 10rpx;
 }
 

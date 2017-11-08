@@ -2,7 +2,20 @@
 
 <view class='g-wrap'>
   <view class='g-banner'>
-    <image src='{{imgurl+getList.img_big}}'></image>
+    <swiper indicator-dots="true" class='swiper' indicator-color="#fff" indicator-active-color="#d1a87a" interval="true" duration="1000" circular='true'>
+       <block wx:if="{{getList.img_big_st == 1}}">
+        <block wx:for="{{goodImg}}">
+          <swiper-item>
+            <image src="{{imgurl+item.img_big}}" class="slide-image" />
+          </swiper-item>
+        </block>
+      </block>
+      <block wx:else> 
+        <swiper-item>
+          <image src="{{imgurl+getList.img}}" class="slide-image" />
+        </swiper-item>
+       </block> 
+    </swiper>
     <!-- <view class='count-down'>
       <text class='count-title'>距活动结束还有: </text>
       <text class='count-down-time'>{{clock}}</text>
@@ -33,7 +46,7 @@
     <image src='../../img/collect2-icon.png'></image>
     <text>收藏</text>
   </view> -->
-  <block wx:if='{{orderDeposit && orderDeposit.st=='待支付'}}'>
+  <block wx:if='{{orderDeposit && orderDeposit.st=="待支付"}}'>
     <view class='good-enter' bindtap='tapGogoPayDeposit'>
     <text >您已下了订金订单，请先支付</text>
   </view>

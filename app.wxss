@@ -91,7 +91,7 @@ page {
 }
 
 .buy-list text {
-   width: 25%; 
+   width: 28%; 
 }
 
 .buy-list input {
@@ -114,9 +114,10 @@ page {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* margin-left: 20rpx; */
+   margin-left: 30rpx; 
   border-bottom: 1px solid #eee;
-  width: 400rpx;
+  width: 500rpx;
+  height: 180rpx;
 }
 
 .buy-list .goods .top-goods {
@@ -125,7 +126,10 @@ page {
 }
 
 .buy-list .goods .top-goods .goods-name {
-  margin-bottom: 4rpx;
+  margin-bottom: 10rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .buy-list .goods .top-goods .format {
