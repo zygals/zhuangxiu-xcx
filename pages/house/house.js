@@ -15,6 +15,7 @@ Page({
 		baomingNum: 0, //报名人数
 		yanfangList: [], //验房列表
 		baoming: null, //我的验房报名
+        setting:null, //系统设置
 	},
 
     /**
@@ -29,12 +30,15 @@ Page({
 				});
 			},
 		})
-		//取报名人数
-		this.getBaomingNum()
 		//取验房列表
 		this.getYanfangList()
-		//取我的验房报名
-		this.myBaoming()
+
+        //取设置
+        var setting= wx.getStorageSync('setting')
+         this.setData({
+             setting: setting,
+         })
+
 	},
 	//取我的验房报名
 	myBaoming: function () {
@@ -91,19 +95,19 @@ Page({
 		})
 	},
 	//取报名人数
-	getBaomingNum: function () {
-		var that = this
-		var username = common.getUserName();
-		common.httpG('baoming/getnum', {
-			'username': username,
-		}, function (data) {
-			if (data.code == 0) {
-				that.setData({
-					baomingNum: data.data,
-				})
-			}
-		})
-	},
+	// getBaomingNum: function () {
+	// 	var that = this
+	// 	var username = common.getUserName();
+	// 	common.httpG('baoming/getnum', {
+	// 		'username': username,
+	// 	}, function (data) {
+	// 		if (data.code == 0) {
+	// 			that.setData({
+	// 				baomingNum: data.data,
+	// 			})
+	// 		}
+	// 	})
+	// },
 	houseChange(e) {
 		var that = this;
 		that.setData({
@@ -132,7 +136,8 @@ Page({
      * 生命周期函数--监听页面显示
      */
 	onShow: function () {
-
+        //取我的验房报名
+        this.myBaoming()
 	},
 
     /**
