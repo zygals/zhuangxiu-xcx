@@ -1,13 +1,36 @@
 <!--pages/register/register.wxml 报名列表-->
 
-<view class='sign-list' wx:for="{{baomingList}}" wx:key='id' >
-<navigator url='/pages/house/house'>
-  <view class='sign-pic'>
-    <image src='../../img/inspection-pic.jpg'></image>
-  </view>
-  <view class='sign-info'>
-    <text class='sign-title'>{{item.truename}} {{item.mobile}} {{item.address}} {{item.st}}</text>
-    <text class='sign-time'>验房时间: {{item.time_to}}</text>
-  </view>
-</navigator>
+<view class='sign-list' >
+    <!-- <navigator url='/pages/house/house'> -->
+        <view class='sign-pic'>
+            <image src='{{imgurl+setting.baoming_img_big}}'></image>
+        </view>
+        <view class='sign-info'>
+            <text class='sign-title'>
+            {{baoming.truename}} 
+            {{baoming.mobile}} 
+            {{baoming.address}}
+             {{baoming.st}}
+            </text>
+            <text class='sign-time'>验房时间: {{baoming.time_to}}</text>
+        </view>
+    <!-- </navigator> -->
+</view>
+
+
+<view class='sign-list' wx:for='{{attendList}}' wx:key='id'>
+    <!-- <navigator url='/pages/house/house'> -->
+        <view class='sign-pic'>
+            <image src='{{imgurl+setting.baoming_img_big}}'></image>
+        </view>
+        <view class='sign-info'>
+            <text class='sign-title'>
+            {{baoming.truename}} 
+            {{baoming.mobile}} 
+            {{baoming.address}}
+             {{baoming.st}}
+            </text>
+            <text class='sign-time'>验房时间: {{baoming.time_to}}</text>
+        </view>
+    <!-- </navigator> -->
 </view>

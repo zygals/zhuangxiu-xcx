@@ -1,10 +1,12 @@
 //app.js
+
 App({
   onLaunch: function () {
 	  var username = wx.getStorageSync('username');
 	  if (!username) {
 		  this.register();
 	  }
+      this.getAbout() //取系统设置并缓存
   },
   //注册
   register: function () {
@@ -44,9 +46,26 @@ App({
 		  }
 	  });
   },
+  getAbout: function () {
+      var that = this
+      wx.request({
+          url: that.globalData.wxUrl + 'setting/get_set',
+          data: {
+             
+          },
+          success: function (res) {
+              wx.setStorage({
+                  key: 'setting',
+                  data: res.data.data,
+              })
+          }
+      })
+     
+  },
   //隐藏时清除缓存数据
   onHide: function () {
 	  // Do something when hide.
+      wx.clearStorage();
   },
   globalData: {
     wxUrl: 'https://huahui.qingyy.net/zhuangxiutp/public/api/', 
