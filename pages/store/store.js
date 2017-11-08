@@ -13,9 +13,9 @@ Page({
   data: {
     imgurl: imgurl,
     information: [
-      { textUrl: '无最新的资讯啊啊啊' },
-      { textUrl: '有最新的资讯啊啊啊' },
-      { textUrl: '啊最新的资讯啊啊啊' }
+      { textUrl: '双11优惠来啦！' },
+      { textUrl: '55家居微信小程序正式上线啦！' },
+      { textUrl: '全场最低9折起！' }
     ],
     winHeight: '',
     currentTab: 0,
