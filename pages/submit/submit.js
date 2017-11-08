@@ -71,11 +71,9 @@ Page({
 			sum_price_all: sum_price_all,
 			address_id: that.data.address.id,
 		}, function (data) {
-
 			if (data.code == 0) {
 				//发起支付
                 that.payNow(data.type, data.data, username)
-
 			} else {
 				that.setData({
 					sumitOrderSt: false,

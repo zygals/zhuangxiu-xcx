@@ -26,7 +26,7 @@ Page({
     },
     //取我的在线报名
     getAttendList: function () {
-        var that = this
+        var that = this;
         var username = common.getUserName()
         common.httpG('activity/my_attend', {
             username: username,
@@ -42,7 +42,7 @@ Page({
     getBaoming: function () {
         var that = this;
         var username = common.getUserName();
-        common.httpG('baoming/index', {
+        common.httpG('baoming/read', {
             username: username,
         }, function (data) {
             if (data.code == 0) {

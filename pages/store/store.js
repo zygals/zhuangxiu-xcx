@@ -27,6 +27,7 @@ Page({
     username: '',
     Collect: "",
     ShopEvalute: [],
+    shopInfo:{},
   },
 
   /**
@@ -57,22 +58,18 @@ Page({
   //店铺付订金
   tapOrderConfirmDeposit:function(e){
      wx.navigateTo({
-		 url: '/pages/submit_from_deposit/submit_from_deposit',
+		 url: '/pages/submit_from_deposit/submit_from_deposit?type_=4',
 	 })
   },
 //付全款
   tapOrderConfirmAllMoney: function (e) {
 	  wx.navigateTo({
-		  url: '/pages/submit_from_deposit/submit_from_deposit',
+		  url: '/pages/submit_from_deposit/submit_from_deposit?type_=5',
 	  })
   },
   shopInfo: function (shop_id) {
     var that = this;
-    var username = wx.getStorageSync('username')
-    if (!username) {
-      app.register()
-      username = wx.getStorageSync('username');
-    }
+    var username = common.getUserName()
     common.httpG('shop/read', {
       shop_id: shop_id,
       username: username
@@ -81,6 +78,10 @@ Page({
 
       that.setData({
         shopInfo: data.data,
+      })
+      wx.setStorage({
+          key: 'shopInfo',
+          data: data.data,
       })
       if (data.is_collect == 'true') {
         that.setData({

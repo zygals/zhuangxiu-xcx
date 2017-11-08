@@ -35,7 +35,12 @@
                     </view>
                 </view>
                 <view class='order-total'>
-                    <text>共{{shop.good_num}}件商品</text>
+<block wx:if="{{shop.type=='普通'}}">
+   <text>共{{shop.good_num}}件商品</text>
+</block>
+                 
+   <text>类型:</text>
+                    <text>{{shop.type}}</text>
                     <text>合计:</text>
                     <text>¥{{shop.sum_price}}</text>
                 </view>

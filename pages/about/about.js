@@ -10,28 +10,19 @@ Page({
    */
   data: {
     imgurl: imgurl,
-    about:[]
+    setting:null, //系统设置
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getAbout();
+    this.setData({
+        setting:wx.getStorageSync('setting')
+    });
   },
   
-  getAbout:function(){
-    var that = this
-    common.httpG('setting/get_set', {}, function (data) {
-      that.setData({
-        about: data.data
-      })
-      wx.setStorage({
-          key: 'setting',
-          data: data.data,
-      })
-    })
-  },
+ 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
