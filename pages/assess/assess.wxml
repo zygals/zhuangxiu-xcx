@@ -8,7 +8,7 @@
 </view>
 
 <view class='assess-wrap'>
-  <block wx:for="{{getList}}">
+  <block wx:for="{{getList}}" wx:key="id">
     <view class='evalution-list'>
       <view class='evalution-title'>
         <view class='evalution-user'>

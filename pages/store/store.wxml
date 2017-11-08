@@ -89,6 +89,7 @@
           <view class='address-msg-name'>{{item.name_}}</view>
           <text>联系人: {{item.truename_}}</text>
           <text>电　话: {{item.mobile_}}</text>
+          <text>座　机: {{item.zuoji}}</text>
           <text>地　址: {{item.address_}}</text>
         </view>
         <!-- <image src='../../img/store.jpg'></image> -->

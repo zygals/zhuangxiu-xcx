@@ -114,7 +114,7 @@ Page({
         success: (res) => {
           that.setData({
             current_page: res.data.current_page,
-            getList: that.data.getList.concat(res.data.data.data),
+            // getList: that.data.getList.concat(res.data.data.data),
           })
         },
         complete: () => {
