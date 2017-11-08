@@ -10,7 +10,7 @@ page {
   display: flex;
   flex-wrap: wrap;
   /* justify-content: center; */
-  width: 716rpx;
+  /* width: 716rpx; */
   margin: 10rpx auto;
   margin-bottom: 100rpx;
   padding-left: 34rpx;
@@ -107,7 +107,7 @@ page {
   height: 60rpx;
   margin-top: 20rpx;
   margin-left: 20rpx;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .swiper-wrap image {
@@ -288,7 +288,7 @@ page {
 .bottom-goods-slt .comments {
   display: flex;
   flex-direction: column;
-  width: 18%;
+  width: 12%;
   justify-content: center;
   align-items: center;
   background-color: #fff;
@@ -300,7 +300,7 @@ page {
 }
 
 .bottom-goods-slt .earnest {
-  width: 41%;
+  width: 38%;
   text-align: center;
   line-height: 100rpx;
   background-color: #fe9a24;
@@ -308,7 +308,7 @@ page {
 }
 
 .bottom-goods-slt .purchase {
-  width: 41%;
+  width: 38%;
   background-color: #ff6e1f;
   text-align: center;
   line-height: 100rpx;
@@ -326,6 +326,9 @@ page {
   margin-left: 20rpx;
 }
 
+ .bussiness-detail .bus-list text:first-child {
+  width: 28%;
+} 
 .bussiness-detail .bus-list .bus-list-info {
   width: 22%;
 }
@@ -336,10 +339,11 @@ page {
 .bussiness-detail .bus-list text:last-child {
   /* margin-left: 20rpx; */
   margin-right: 20rpx;
+  width: 100%;
 }
 
 .bottom-goods-slt .b-favorate {
-  width: 18%;
+  width: 12%;
   background-color: #fff;
   display: flex;
   flex-direction: column;

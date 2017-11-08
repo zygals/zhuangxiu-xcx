@@ -22,7 +22,7 @@
   </block>
   <block wx:if='{{getList.which_info == 2}}'>
     <view class='good-detail'>
-      <image src='{{imgurl+getList.imgs}}'></image>
+      <image src='{{imgurl+getList.imgs}}' mode='widthFix'></image>
     </view>
   </block>
 
