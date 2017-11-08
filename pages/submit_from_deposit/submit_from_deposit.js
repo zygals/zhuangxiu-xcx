@@ -89,6 +89,10 @@ Page({
             if (data.code == 0) {
                 //添加订单成功
                 that.payNow(data.order_id, data.type, username)
+            }else{
+                that.setData({
+                    sumitOrderSt: false,
+                })
             }
         })
     },

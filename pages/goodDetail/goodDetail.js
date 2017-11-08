@@ -39,7 +39,12 @@ Page({
       })
     })
   },
-
+  //参团付订金,跳至订单确认页
+    orderConfirmGroupDeposit:function(){
+wx.navigateTo({
+    url: '/pages/submit_from_group1/submit_from_group1?type_=deposit',
+})
+    },
   countDown() {
     var that = this;
     let now_time = Math.floor(new Date().getTime() / 1000);  // 获取当前时间戳（毫秒）

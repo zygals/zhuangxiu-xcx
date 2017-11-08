@@ -29,11 +29,11 @@
 </view>
 
 <view class='bottom-option'>
-  <view class='good-favorate'>
+  <!-- <view class='good-favorate'>
     <image src='../../img/collect2-icon.png'></image>
     <text>收藏</text>
-  </view>
-  <view class='good-enter'>
-    <text >我要参团</text>
+  </view> -->
+  <view class='good-enter' bindtap='orderConfirmGroupDeposit'>
+    <text >我要参团,付订金（{{getList.deposit}}元）</text>
   </view>
 </view>
