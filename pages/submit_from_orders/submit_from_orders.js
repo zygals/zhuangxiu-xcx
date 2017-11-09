@@ -14,6 +14,7 @@ Page({
         orderGoodList: [],
         from_: 'to_pay', //默认来自‘去支付’
         payNowSt: false, //立即支付按扭状态
+        type_:1,  //默认为1：表示一般商品
     },
 
     /**
@@ -22,6 +23,13 @@ Page({
     onLoad: function (options) {
         var order_id = options.order_id;
         var address_id = options.address_id
+        var type_= options.type_ ;
+       if(type_=='限人'){   //
+           this.setData({
+               type_: 3,
+           })
+       }
+      
         this.getOrderAddress(address_id)
         this.getOrderGoodList(order_id)
         if (options.from_ == 'look_detail') {
@@ -75,7 +83,7 @@ Page({
             data: {
                 order_id: order_id,
                 username: username,
-                type_: 1, //  类型：shop_order 或是 contact_order 
+                type_: that.data.type_, //  类型：shop_order 或是 contact_order 
             },
             success: function (res) {
                 var data = res.data;
@@ -95,15 +103,17 @@ Page({
                                 data: {
                                     order_id: order_id,
                                     st: 'paid',
-                                    type_: 1,
+                                    type_: that.data.type_,
                                 },
                                 success: function (res) {
-                                    console.log(res.data.msg);
+                                    wx.redirectTo({
+                                        url: '/pages/orders/orders',
+                                    })
                                 }
                             })
-                            wx.redirectTo({
-                                url: '/pages/orders/orders',
-                            })
+                            // wx.redirectTo({
+                            //     url: '/pages/orders/orders',
+                            // })
                         },
                         'fail': function (res) {
                             console.log(res)

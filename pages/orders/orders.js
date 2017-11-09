@@ -92,7 +92,7 @@ Page({
             return ;
 }
         wx.navigateTo({
-            url: '/pages/submit_from_orders/submit_from_orders?from_=to_pay&order_id=' + order_id + '&address_id=' + address_id,
+            url: '/pages/submit_from_orders/submit_from_orders?from_=to_pay&order_id=' + order_id + '&address_id=' + address_id + "&type_=" + type_,
         })
     },
     //取消订单，取消后用户不能能看见此订单

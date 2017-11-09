@@ -14,7 +14,9 @@ Page({
     clock: '',
     timer: null,
     endTime: '',
-    good_id: ''
+
+    good_id:'',
+      orderDeposit: null, //订金订单
   },
 
   /**
@@ -24,8 +26,38 @@ Page({
     var t_id = options.t_id;
     this.getList(t_id);
     this.getGoodBigImg(t_id);
+        //我是否有此订金订单？
+        this.hasOrderDeposit(t_id);
   },
-
+//我的订单有没有？
+    hasOrderDeposit: function (t_id) {
+        var that = this
+        var username = common.getUserName()
+        common.httpG('dingdan/has_order_group_deposit', {
+            username: username,
+            t_id: t_id,
+        }, function (data) {
+            if (data.code == 0) {
+                that.setData({
+                    orderDeposit: data.data
+                })
+            }
+        })
+    },
+    //付尾款 
+    tapOrderGroupFinal:function(){
+        wx.navigateTo({
+            url: '/pages/submit_from_group1/submit_from_group1?type_=deposit&type_=final',
+        })
+    },
+    //继续支付我的订单-团购订金
+    tapGogoPayDeposit: function () {
+        var order_id = this.data.orderDeposit.id;
+        var address_id = this.data.orderDeposit.address_id;
+        wx.navigateTo({
+            url: '/pages/submit_from_orders/submit_from_orders?from_=to_pay&order_id=' + order_id + '&address_id=' + address_id + "&type_=3",
+        })
+    },
   getList: function (t_id) {
     var that = this;
     common.httpG('group/pnuminfo', { t_id: t_id }, function (data) {
@@ -42,8 +74,7 @@ Page({
         key: 'group_detail',
         data: data.data,
       })
-      // that.countDown();
-      // that.getGoodBigImg()
+
     })
   },
   //获取大图
@@ -57,7 +88,6 @@ Page({
         that.setData({ goodImg: data.data })
       })
   },
-
 
 
 

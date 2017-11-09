@@ -216,7 +216,7 @@ page {
   display: flex;
   flex-direction: column;
   margin-left: 34rpx;
-  width: 55%;
+  width: 100%;
   flex-wrap: wrap;
 }
 
@@ -341,6 +341,11 @@ page {
   margin-right: 20rpx;
   width: 100%;
 }
+
+ .bussiness-detail .bus-list image {
+   width: 180rpx;
+   height: 180rpx;
+ }
 
 .bottom-goods-slt .b-favorate {
   width: 12%;

@@ -31,12 +31,16 @@
             <view class='goods'>
                 <view class='top-goods'>
                     <view class='goods-name'>{{good.good_name}}</view>
-                    <view class='format'>{{good.unit}}</view>
+                    <view class='format'>单位：{{good.unit}}</view>
                 </view>
                 <view class='bottom-goods'>
                     <view class='goods-price'>
-                        <text class='price'> ¥ {{good.price}} </text>
-                        <text class='number'> x {{good.num}}</text>
+                        <text class='price'> 原价：¥{{good.price}} x{{good.num}} </text>
+                           <!-- <text class='price'>{{good.num}} </text> -->
+                      <block wx:if="{{orderGoodList.order.type=='限人'}}">
+                       <text class='price'> 团购价：¥{{good.price_group}}</text>
+                       <text class='price'> 订金：¥{{good.group_deposit}}</text>
+                      </block>
                     </view>
                 </view>
             </view>

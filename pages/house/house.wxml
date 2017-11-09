@@ -13,7 +13,7 @@
     <swiper duration='300' current='{{currentTab}}' bindchange='houseChange' class='house-swiper' style="height: {{winHeight+'px'}}">
         <swiper-item>
             <view class='house-cont'wx:for="{{yanfangList}}" wx:key='id'>
-              <navigator url="/pages/baike/baike?art_id='{{item.id}}'">
+              <navigator url="/pages/baike/baike?art_id={{item.id}}">
                 <view class='house-list'>
                     <image src='{{imgurl+item.img}}'></image>
                     <text class='house-name'>{{item.name}}</text>
