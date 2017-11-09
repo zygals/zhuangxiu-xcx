@@ -17,21 +17,18 @@ Page({
         address: null,//默认地址
         goodGroup: {}, //团购物商品
         sumitOrderSt: false,
-        type_: 'deposit',  //默认先付订金
-        type_number:3, //订单类型默认为订金
+        type_: '3',  //默认先付订金
+     
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        var type_ = options.type_;
-        if (type_) {
+        var type_ = options.type_; //3 or 6
             this.setData({
                 type_: type_,
-                type_number:6, //为尾款 
             })
-        }
         this.getGroupGood()
     },
     //提交订单前验证一下
@@ -59,7 +56,7 @@ Page({
             username: username,
             t_id: that.data.goodGroup.t_id,
             address_id: that.data.address.id,
-            type_: that.data.type_number, //限人订金类型或是尾款类型
+            type_: that.data.type_, //限人订金类型或是尾款类型
         }, function (data) {
             if (data.code == 0) {
                 //   console.log('add group order ok');

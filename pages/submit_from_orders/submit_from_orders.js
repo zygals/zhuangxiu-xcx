@@ -28,6 +28,10 @@ Page({
            this.setData({
                type_: 3,
            })
+       } else if (type_ == '限人尾款'){
+           this.setData({
+               type_: 6,
+           })
        }
       
         this.getOrderAddress(address_id)
