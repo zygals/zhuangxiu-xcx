@@ -4,19 +4,18 @@ var app = getApp();
 const imgurl = app.globalData.imgUrl;
 const wxurl = app.globalData.wxUrl;
 Page({
-
     /**
      * 页面的初始数据
+     * 
      */
     data: {
         imgurl: imgurl,
         address: null,
         from_: 'to_pay', //默认来自‘去支付’
         payNowSt: false, //立即支付按扭状态
-        orderDetail:null,      //订单详情
-        texttip:'商家订金',
+        orderDetail: null,      //订单详情
+        texttip: '商家订金',
     },
-
     /**
      * 生命周期函数--监听页面加载
      */
@@ -30,19 +29,19 @@ Page({
                 from_: options.from_,
             })
         }
-        if(type_=='商家全款'){
+        if (type_ == '商家全款') {
             this.setData({
                 texttip: type_,
             })
         }
         //从订单缓存中取出订单
         var orders_all = wx.getStorageSync('orders_all');
-        for(var i=0;i<orders_all.length;i++){
-             if(orders_all[i].id==order_id){
+        for (var i = 0; i < orders_all.length; i++) {
+            if (orders_all[i].id == order_id) {
                 this.setData({
                     orderDetail: orders_all[i]
                 })
-             }
+            }
         }
     },
     //取商家订单的地址
@@ -66,9 +65,9 @@ Page({
         var order_id = this.data.orderDetail.id;
         var username = common.getUserName();
         var that = this
-        var type_number=4;//商家订金
-        if (this.data.texttip =='商家全款'){
-            type_number=5;
+        var type_number = 4;//商家订金
+        if (this.data.texttip == '商家全款') {
+            type_number = 5;
         }
         wx.showLoading({
             title: '请求支付中...',
