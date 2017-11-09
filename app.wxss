@@ -184,3 +184,6 @@ page {
   background-color: #ff4318;
   color: #fff;
 }
+.submit-btn .s-submit {
+    width: 100%;
+}

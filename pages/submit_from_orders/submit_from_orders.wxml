@@ -48,7 +48,7 @@
     </view>
 </view>
 <view class='submit-btn'>
-    <view class='left-submit'>合计金额 :
+    <view class='left-submit {{from_=="look_detail" ? "s-submit" : ""}}' >合计金额 :
         <text> ¥ {{orderGoodList.order.sum_price}}</text>
     </view>
     <block wx:if="{{from_=='to_pay'}}">

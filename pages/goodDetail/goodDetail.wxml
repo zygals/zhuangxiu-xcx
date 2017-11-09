@@ -61,6 +61,11 @@
             <text>您的团购已成功，商家会在48小时内发货</text>
         </view>
     </block>
+      <block wx:if='{{orderFinal && orderFinal.st=="已收货" || orderFinal.st=="已评价" }}'>
+        <view class='good-enter' >
+            <text>您的团购已成功</text>
+        </view>
+    </block>
       <block wx:if='{{orderDeposit && orderDeposit.st=="已支付"  && orderFinal==null && getList.group_st=="正在进行"}}'>
         <view class='good-enter' >
             <text>您已支付过订金，请等待活动成功再付尾款</text>
