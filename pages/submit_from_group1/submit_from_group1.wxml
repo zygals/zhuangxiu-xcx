@@ -34,7 +34,7 @@
                 <view class='bottom-goods'>
                     <view class='goods-price'>
                         <text class='price'>团购价： ¥{{goodGroup.price_group}} </text>
-                        <text class='price'>原价 ¥{{goodGroup.good_price}} </text>
+                        <text class='price'>原价： ¥{{goodGroup.good_price}} </text>
                         <text class='price'>订金： ¥{{goodGroup.deposit}} </text>
                         <!-- <text class='number'> x {{goodGroup.num}}</text> -->
                     </view>

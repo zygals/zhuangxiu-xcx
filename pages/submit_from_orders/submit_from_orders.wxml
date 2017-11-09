@@ -35,7 +35,8 @@
                 </view>
                 <view class='bottom-goods'>
                     <view class='goods-price'>
-                        <text class='price'> 原价：¥{{good.price}} x{{good.num}} </text>
+                        <text class='price'> 原价： ¥{{good.price}}</text>
+                        <text class='price'>x{{good.num}}</text>
                            <!-- <text class='price'>{{good.num}} </text> -->
                       <block wx:if="{{orderGoodList.order.type=='限人' ||orderGoodList.order.type=='限人尾款'}}">
                        <text class='price'> 团购价：¥{{good.price_group}}</text>

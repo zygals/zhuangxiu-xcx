@@ -31,8 +31,8 @@ page {
 }
 
 .shop-title image:nth-child(1) {
-  width: 66rpx;
-  height: 66rpx;
+  width: 50rpx;
+  height: 60rpx;
   padding: 0 20rpx;
 }
 
@@ -114,9 +114,8 @@ page {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-   margin-left: 30rpx; 
-  border-bottom: 1px solid #eee;
-  width: 500rpx;
+  margin-left: 30rpx; 
+  width: 400rpx; 
   height: 180rpx;
 }
 
@@ -140,6 +139,7 @@ page {
 .buy-list .goods .goods-price {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .buy-list .goods .goods-price .price {

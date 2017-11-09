@@ -90,8 +90,14 @@ page {
   font-size: 28rpx;
   margin-left: 30rpx;
   margin-top: 15rpx;
-  padding-bottom: 20rpx;
+  /* padding-bottom: 20rpx; */
   color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* white-space: nowrap; */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 /* swiper */
@@ -215,15 +221,17 @@ page {
 .address-msg {
   display: flex;
   flex-direction: column;
-  margin-left: 34rpx;
+  /* margin-left: 34rpx; */
   width: 100%;
   flex-wrap: wrap;
+  /* padding-bottom: 100rpx; */
 }
 
 .address-msg-name {
   margin-top: 20rpx;
   margin-bottom: 30rpx;
   font-size: 32rpx;
+  margin-left: 34rpx;
 }
 
 .address-msg text {
@@ -345,6 +353,7 @@ page {
  .bussiness-detail .bus-list image {
    width: 180rpx;
    height: 180rpx;
+   margin-left: -46rpx;
  }
 
 .bottom-goods-slt .b-favorate {
@@ -367,6 +376,7 @@ page {
 
 .switch-wrap {
   width: 100%;
+  padding-bottom: 100rpx;
 }
 .switch-wrap .show {
   display: block;

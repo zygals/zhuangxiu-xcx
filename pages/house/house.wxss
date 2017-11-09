@@ -99,6 +99,12 @@ page {
   padding-bottom: 15rpx;
   color: #0e88e5;
   font-size: 30rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* white-space: nowrap; */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .register-online {
@@ -131,6 +137,7 @@ page {
 
 .reg-list view input {
   margin-left: 20rpx;
+  width: 78%;
 }
 
 .register-online .right-now {

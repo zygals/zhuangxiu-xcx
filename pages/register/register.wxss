@@ -25,7 +25,12 @@ page {
   flex-direction: column;
   justify-content: space-around;
   margin-left: 30rpx;
-  font-size: 32rpx;
+  width: 480rpx;
+}
+.sign-info text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .sign-info .sign-title {

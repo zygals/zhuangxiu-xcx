@@ -33,9 +33,7 @@ function httpG(url, data, callback) {
 		url: wxurl+url,
 		data: data,
 		success: function (res) {
-			//if (res.data.code == 0) {
-				callback(res.data);
-			//}
+			callback(res.data);
 		},
 		fail: function (res) {
 			console.log('request-get error:', res);
@@ -44,9 +42,9 @@ function httpG(url, data, callback) {
 			wx.hideLoading();
 			  console.log("get-complete:", res.data)
 			  if (res.data.code && res.data.code != 0) {
-			//	wx.showToast({
-					// title: res.data.msg,
-			//	})
+				wx.showToast({
+					 title: res.data.msg,
+				})
 			}
 		}
 	})
@@ -66,10 +64,10 @@ function httpP(url, data, callback) {
     },
     complete: function (res) {
       console.log("post-complete:", res.data)
-      if (res.data.code != 0) {
-       // wx.showToast({
-          // title: res.data.msg,
-       // })
+      if (res.data.code  && res.data.code != 0) {
+        wx.showToast({
+           title: res.data.msg,
+       })
       }
     }
   })

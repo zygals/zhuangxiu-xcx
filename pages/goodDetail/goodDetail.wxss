@@ -7,6 +7,10 @@ page {
   background-color: #fff;
 }
 
+.g-banner swiper {
+  height: 750rpx;
+  width: 100%;
+}
 .g-banner image{
   width: 750rpx;
   height: 750rpx;

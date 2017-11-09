@@ -28,11 +28,16 @@
   flex-direction: column;
   justify-content: space-around;
   margin: 20rpx;
-  width: 500rpx;
+  width: 460rpx;
   height: 180rpx;
   border-bottom: 1px solid #eee;
 }
 
+.goods-col-info text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .goods-col-info .goods-col-price {
   color: #ff4310;
   margin-bottom: 10rpx;

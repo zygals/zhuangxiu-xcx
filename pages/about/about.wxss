@@ -34,4 +34,5 @@ page {
 
 .about-list text {
   margin-left: 20rpx;
+  width: 78%;
 }
