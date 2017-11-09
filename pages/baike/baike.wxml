@@ -7,7 +7,7 @@
   <view class='article-subTitle'>
     <text class='article-time'>{{articleList.update_time}}</text>
     <image src='../../img/eye.png'></image>
-    <text>311</text>
+    <text>{{articleList.clicks}}</text>
   </view>
 
   <view class='article-cont'>
