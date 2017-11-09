@@ -13,7 +13,8 @@ Page({
     imgurl: imgurl,
     clock: '',
     timer: null,
-    endTime: ''
+    endTime: '',
+    good_id:''
   },
 
   /**
@@ -22,24 +23,40 @@ Page({
   onLoad: function (options) {
     var t_id = options.t_id;
     this.getList(t_id);
+    this.getGoodBigImg(t_id);
   },
 
+  //获取团购详情页信息
   getList: function (t_id) {
     var that = this;
     common.httpG('group/pnuminfo', { t_id: t_id }, function (data) {
       that.setData({
         getList: data.data,
-        endTime: data.data.end_time
+        endTime: data.data.end_time,
+        good_id:data.data.good_id
       })
-      that.countDown();
+      console.log(that.data.good_id);
+      // that.countDown();
+      // that.getGoodBigImg()
     })
+  },
+  //获取大图
+  getGoodBigImg(t_id){
+    var that = this;
+    common.httpG('good/getImages',
+      {
+        t_id: t_id
+      },
+      function (data) {
+        that.setData({ goodImg: data.data })
+      })
   },
 
   countDown() {
     var that = this;
     let now_time = Math.floor(new Date().getTime() / 1000);  // 获取当前时间戳（毫秒）
     let total_micro_time = that.data.endTime - now_time;  // 后台返回的时间戳 — 当前时间戳 = 剩余的时间戳
-    console.log(total_micro_time);
+    // console.log(total_micro_time);
     let dateClock = that.dateFormate(total_micro_time)    // 调用日期格式化函数
     that.data.timer = setTimeout(() => {                  // 每隔一秒调用一次定时器，递归
       that.setData({

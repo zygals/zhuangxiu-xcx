@@ -53,7 +53,8 @@ Page({
     //调用shop/addr
     this.shopAddr(shop_id)
     this.getShopEvalute(shop_id)
-    console.log(shop_id)
+    // this.isGroup(shop_id)
+    // console.log(shop_id)
   },
   //店铺付订金
   tapOrderConfirmDeposit:function(e){
@@ -78,6 +79,7 @@ Page({
 
       that.setData({
         shopInfo: data.data,
+        isGroup:data.data.isGroup.data
       })
       wx.setStorage({
           key: 'shopInfo',
@@ -92,6 +94,18 @@ Page({
       }
     });
   },
+
+  //是否参加团购
+  // isGroup: function (shop_id){
+  //   var that = this;
+  //   common.httpG('shop/isGroup'),{
+  //     shop_id: shop_id,
+  //   },function(data){
+  //     that.setData({
+  //       isGroup:data
+  //     })
+  //   }
+  // },
 
   shopGoods: function (shop_id) {
     var that = this;
