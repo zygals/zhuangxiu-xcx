@@ -44,7 +44,7 @@
     </view>
 </view>
 <view class='submit-btn'>
-    <block wx:if="{{type_=='final'}}">
+    <block wx:if="{{type_=='6'}}">
     <view class='left-submit'>付尾款:
         <text> ¥ {{goodGroup.price_group-goodGroup.deposit}}</text>
     </view>

@@ -51,28 +51,28 @@
             <text>您已下了订金订单，请先支付</text>
         </view>
     </block>
-     <block wx:elif='{{orderDeposit && orderFinal && orderFinal.st=="待支付" && orderDeposit.st=="已支付" && getList.group_st=="活动成功"}}'>
+     <block wx:if='{{orderDeposit && orderFinal && orderFinal.st=="待支付" && orderDeposit.st=="已支付" && getList.group_st=="活动成功"}}'>
         <view class='good-enter' bindtap='tapGogoPayFinal'>
             <text>您已下了尾款订单，请先支付</text>
         </view>
     </block>
-        <block wx:elif='{{orderDeposit && orderFinal && orderFinal.st=="已支付" && orderDeposit.st=="已支付" && getList.group_st=="活动成功"}}'>
+        <block wx:if='{{orderFinal && orderFinal.st=="已支付" }}'>
         <view class='good-enter' bindtap='tapGoToOrders'>
             <text>您的团购已成功，商家会在48小时内发货</text>
         </view>
     </block>
-      <block wx:elif='{{orderDeposit && orderFinal==null && orderDeposit.st=="已支付" && getList.group_st=="正在进行"}}'>
+      <block wx:if='{{orderDeposit && orderDeposit.st=="已支付"  && orderFinal==null && getList.group_st=="正在进行"}}'>
         <view class='good-enter' >
             <text>您已支付过订金，请等待活动成功再付尾款</text>
         </view>
     </block>
-      <block wx:elif='{{orderDeposit && orderFinal==null && orderDeposit.st=="已支付" && getList.group_st=="活动成功"}}'>
+      <block wx:if='{{orderDeposit && orderFinal==null && orderDeposit.st=="已支付" && getList.group_st=="活动成功"}}' >
         <view class='good-enter' bindtap='tapOrderGroupFinal'>
             <text>已付订金，活动成功，去付尾款</text>
         </view>
     </block>
          
-    <block wx:else>
+    <block wx:if='{{orderDeposit==null && orderFinal==null}}'>
         <view class='good-enter' bindtap='orderConfirmGroupDeposit'>
             <text>我要参团,付订金（{{getList.deposit}}元）</text>
         </view>

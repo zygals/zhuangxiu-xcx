@@ -1,4 +1,5 @@
 // pages/submit_from_orders_deposit/submit_from_orders_deposit.js
+//商家订金或全款继续支付
 var common = require("../../utils/util.js");
 var app = getApp();
 const imgurl = app.globalData.imgUrl;
