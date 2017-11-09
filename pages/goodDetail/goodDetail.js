@@ -43,6 +43,12 @@ Page({
             }
         })
     },
+    //付尾款 
+    tapOrderGroupFinal:function(){
+        wx.navigateTo({
+            url: '/pages/submit_from_group1/submit_from_group1?type_=deposit&type_=final',
+        })
+    },
     //继续支付我的订单-团购订金
     tapGogoPayDeposit: function () {
         var order_id = this.data.orderDeposit.id;
@@ -65,8 +71,7 @@ Page({
         key: 'group_detail',
         data: data.data,
       })
-      // that.countDown();
-      // that.getGoodBigImg()
+
     })
   },
   //获取大图
