@@ -14,6 +14,7 @@ Page({
     clock: '',
     timer: null,
     endTime: '',
+
     good_id:'',
       orderDeposit: null, //订金订单
       orderFinal:null, //尾款订单
@@ -90,10 +91,12 @@ Page({
       that.setData({
         getList: data.data,
         endTime: data.data.end_time,
-        good_id:data.data.good_id
+        good_id: data.data.good_id
       })
 
       console.log(that.data.good_id);
+      //that.countDown();
+      //缓存详情
       wx.setStorage({
         key: 'group_detail',
         data: data.data,
@@ -102,7 +105,7 @@ Page({
     })
   },
   //获取大图
-  getGoodBigImg(t_id){
+  getGoodBigImg(t_id) {
     var that = this;
     common.httpG('good/getImages',
       {
@@ -114,10 +117,9 @@ Page({
   },
 
 
-      //that.countDown();
-      //缓存详情
 
   //参团付订金,跳至订单确认页
+
     orderConfirmGroupDeposit:function(){
 wx.navigateTo({
     url: '/pages/submit_from_group1/submit_from_group1?type_=deposit&type_=3',
@@ -129,6 +131,7 @@ wx.navigateTo({
             url: '/pages/submit_from_group1/submit_from_group1?type_=deposit&type_=6',
         })
     },
+
 
 
   countDown() {
