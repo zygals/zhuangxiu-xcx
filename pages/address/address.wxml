@@ -2,7 +2,7 @@
 <!-- address-list -->
 <block wx:if='{{addressList.length>0}}'>
     <block wx:for="{{addressList}}" wx:key='id'>
-        <view class='address-list'  data-address_id="{{item.id}}" bindtap="{{item.is_default==0?'tapSetDefault':''}}">
+        <view class='address-list' data-address_id="{{item.id}}" bindtap="{{item.is_default==0?'tapSetDefault':''}}">
             <view class='address-title'>
                 <text class='add-name'>{{item.truename}}</text>
                 <text class='add-phone'>{{item.mobile}}</text>
@@ -30,10 +30,12 @@
         </view>
     </block>
 </block>
-
 <!-- bottom-button -->
 <block wx:if="{{addressList.length<5}}">
-    <navigator url='/pages/newAdd/newAdd'>
+    <navigator url='/pages/newAdd/newAdd' hidden='{{newAddHide}}'>
         <view class='add-address'>添加新地址</view>
+    </navigator>
+    <navigator url='/pages/user/user' open-type='switchTab' hidden='{{!newAddHide}}'>
+        <view class='add-address'>请前往地址管理中添加</view>
     </navigator>
 </block>

@@ -3,6 +3,7 @@
 var common = require("../../utils/util.js");
 var app = getApp();
 const imgurl = app.globalData.imgUrl;
+const wxurl = app.globalData.wxUrl;
 const ordersAll = app.globalData.orders_all;
 const groupLimitStore = app.globalData.group_limit_store;
 Page({
@@ -30,6 +31,9 @@ Page({
           wx.showToast({
               title: '请添加地址',
           })
+          wx.switchTab({
+              url: '/pages/user/user',
+          })
           return;
       }
       this.setData({
@@ -37,18 +41,16 @@ Page({
       })
       var that = this
       var username = common.getUserName()
-      common.httpG('dingdan/save_group', {
+      common.httpG('dingdan/save_group_deposit', {
           username: username,
-          group_id: that.data.goodGroup.t_id,
+          t_id: that.data.goodGroup.t_id,
           address_id: that.data.address.id,
       }, function (data) {
-
           if (data.code == 0) {
-              console.log('add group order ok');
-              return ;
+            //   console.log('add group order ok');
+            //   return ;
               //发起支付
-              that.payNow(data.data, username)
-
+              that.payNow(data.order_id, username)
           } else {
               that.setData({
                   sumitOrderSt: false,
@@ -59,16 +61,16 @@ Page({
   },
 
   //立即支付,多商家:可能一次支付多个订单
-  payNow: function (data_group, username) {
+  payNow: function (order_id, username) {
       wx.showLoading({
           title: '请求支付中...',
       })
       wx.request({
           url: wxurl + 'pay/pay_now',
           data: {
-              order_id: data.order_id,
+              order_id: order_id,
               username: username,
-			  type_: data_group.type_shop, //  类型：shop_order 或是 contact_order 
+			  type_: 3, //  限人订金类型 
 		
           },
           success: function (res) {
@@ -114,9 +116,9 @@ Page({
           }
       })
   },
-  //取缓存中的团购2商品
+  //取缓存中的团购商品
   getGroupGood:function(){
-      var group_good = wx.getStorageSync(groupLimitStore);
+      var group_good = wx.getStorageSync('group_detail');
       this.setData({
           goodGroup:group_good,
       })
@@ -141,8 +143,8 @@ Page({
                   confirmColor:'#18c469',
                   success:function(res){
                       if(res.confirm){
-                          wx.navigateTo({
-                              url: '/pages/newAdd/newAdd',
+                          wx.switchTab({
+                              url: '/pages/user/user',
                           })
                       }
                   }

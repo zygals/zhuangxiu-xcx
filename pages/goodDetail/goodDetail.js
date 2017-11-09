@@ -26,7 +26,6 @@ Page({
     this.getGoodBigImg(t_id);
   },
 
-  //获取团购详情页信息
   getList: function (t_id) {
     var that = this;
     common.httpG('group/pnuminfo', { t_id: t_id }, function (data) {
@@ -35,7 +34,12 @@ Page({
         endTime: data.data.end_time,
         good_id:data.data.good_id
       })
+
       console.log(that.data.good_id);
+      wx.setStorage({
+        key: 'group_detail',
+        data: data.data,
+      })
       // that.countDown();
       // that.getGoodBigImg()
     })
@@ -51,6 +55,17 @@ Page({
         that.setData({ goodImg: data.data })
       })
   },
+
+
+      //that.countDown();
+      //缓存详情
+ 
+  //参团付订金,跳至订单确认页
+    orderConfirmGroupDeposit:function(){
+wx.navigateTo({
+    url: '/pages/submit_from_group1/submit_from_group1?type_=deposit',
+})
+    },
 
   countDown() {
     var that = this;
