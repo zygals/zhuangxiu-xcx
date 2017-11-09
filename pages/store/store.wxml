@@ -12,11 +12,7 @@
           <image src='../../img/medal.png'></image>
           <image src='../../img/medal.png'></image>
           <image src='../../img/medal.png'></image>
-          <block wx:if="{{isGroup==1}}">
-            <text>团购商家</text>
-          </block>
-          <block wx:else>
-          </block>
+          <text>团购商家</text>
         </view>
       </view>
     </view>
@@ -93,10 +89,24 @@
       <view class='store-address-wrap' wx:for="{{shopAddr}}" wx:key="id">
         <view class='address-msg'>
           <view class='address-msg-name'>{{item.name_}}</view>
-          <text>联系人: {{item.truename_}}</text>
-          <text>电　话: {{item.mobile_}}</text>
-          <text>座　机: {{item.zuoji}}</text>
-          <text>地　址: {{item.address_}}</text>
+          <view class='bussiness-detail'>
+            <view class='bus-list'>
+              <text>联系人 :</text>
+              <text>{{item.truename_}}</text>
+            </view>
+            <view class='bus-list'>
+              <text>电　话 :</text>
+              <text>{{item.mobile_}}</text>
+            </view>
+            <view class='bus-list'>
+              <text>座　机 :</text>
+              <text>{{item.zuoji}}</text>
+            </view>
+            <view class='bus-list'>
+              <text>地　址 :</text>
+              <text>{{item.address_}}</text>
+            </view>
+          </view>
         </view>
         <!-- <image src='../../img/store.jpg'></image> -->
       </view>
