@@ -13,7 +13,8 @@ Page({
     imgurl: imgurl,
     clock: '',
     timer: null,
-    endTime: ''
+    endTime: '',
+    good_id:''
   },
 
   /**
@@ -22,34 +23,55 @@ Page({
   onLoad: function (options) {
     var t_id = options.t_id;
     this.getList(t_id);
+    this.getGoodBigImg(t_id);
   },
-//取活动详情
+
   getList: function (t_id) {
     var that = this;
     common.httpG('group/pnuminfo', { t_id: t_id }, function (data) {
       that.setData({
         getList: data.data,
-        endTime: data.data.end_time
+        endTime: data.data.end_time,
+        good_id:data.data.good_id
       })
-      //that.countDown();
-      //缓存详情
+
+      console.log(that.data.good_id);
       wx.setStorage({
-          key: 'group_detail',
-          data: data.data,
+        key: 'group_detail',
+        data: data.data,
       })
+      // that.countDown();
+      // that.getGoodBigImg()
     })
   },
+  //获取大图
+  getGoodBigImg(t_id){
+    var that = this;
+    common.httpG('good/getImages',
+      {
+        t_id: t_id
+      },
+      function (data) {
+        that.setData({ goodImg: data.data })
+      })
+  },
+
+
+      //that.countDown();
+      //缓存详情
+ 
   //参团付订金,跳至订单确认页
     orderConfirmGroupDeposit:function(){
 wx.navigateTo({
     url: '/pages/submit_from_group1/submit_from_group1?type_=deposit',
 })
     },
+
   countDown() {
     var that = this;
     let now_time = Math.floor(new Date().getTime() / 1000);  // 获取当前时间戳（毫秒）
     let total_micro_time = that.data.endTime - now_time;  // 后台返回的时间戳 — 当前时间戳 = 剩余的时间戳
-    console.log(total_micro_time);
+    // console.log(total_micro_time);
     let dateClock = that.dateFormate(total_micro_time)    // 调用日期格式化函数
     that.data.timer = setTimeout(() => {                  // 每隔一秒调用一次定时器，递归
       that.setData({
