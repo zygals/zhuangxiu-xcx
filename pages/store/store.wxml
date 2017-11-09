@@ -118,6 +118,10 @@
         <text>经营品牌 :</text>
         <text> {{shopInfo.brand}}</text>
       </view>
+      <view class='bus-list'>
+        <text>二维码 :</text>
+        <image src='../../img/collect-pic.jpg'></image>
+      </view>
     </view>
   </view>
   <!-- </swiper-item> -->
