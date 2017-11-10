@@ -20,9 +20,9 @@ Page({
     onLoad: function (options) {
         this.getBaoming()
         this.getAttendList()
-        this.setData({
-            setting:wx.getStorageSync('setting')
-        })
+        // this.setData({
+            
+        // })
     },
     //取我的在线报名
     getAttendList: function () {
@@ -33,7 +33,7 @@ Page({
         }, function (data) {
             if (data.code == 0) {
                 that.setData({
-                    attendList: data.data
+                    attendList: data.data,
                 })
             }
         })
@@ -47,7 +47,8 @@ Page({
         }, function (data) {
             if (data.code == 0) {
                 that.setData({
-                    baoming: data.data
+                    baoming: data.data,
+                    setting: wx.getStorageSync('setting')
                 })
             }
         })
