@@ -147,7 +147,7 @@ Page({
     }, function (data) {
 
       that.setData({
-        ShopEvalute: data.data,
+        ShopEvalute: data.data.data,
       });
     });
   },
