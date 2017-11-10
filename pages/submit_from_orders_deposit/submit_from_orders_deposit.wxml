@@ -45,7 +45,7 @@
         </view>
     </view>
     <view class='submit-btn'>
-        <view class='left-submit'>{{texttip}} :
+        <view class='left-submit s-left-submit'>{{texttip}} :
             <text> ¥ {{orderDetail.sum_price}}</text>
         </view>
             <block wx:if="{{from_=='to_pay'}}">
