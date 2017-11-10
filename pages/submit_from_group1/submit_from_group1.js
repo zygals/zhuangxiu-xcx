@@ -18,7 +18,7 @@ Page({
         goodGroup: {}, //团购物商品
         sumitOrderSt: false,
         type_: '3',  //默认先付订金
-     
+
     },
 
     /**
@@ -26,19 +26,24 @@ Page({
      */
     onLoad: function (options) {
         var type_ = options.type_; //3 or 6
-            this.setData({
-                type_: type_,
-            })
+        this.setData({
+            type_: type_,
+        })
         this.getGroupGood()
     },
     //提交订单前验证一下
-    validaorder:function(){
+    validaorder: function () {
         if (this.data.address == null) {
-            wx.showToast({
-                title: '请添加地址',
-            })
-            wx.switchTab({
-                url: '/pages/user/user',
+            wx.showModal({
+                title: '没有地址',
+                content: '前去添加',
+                success: function (res) {
+                    if (res.confirm) {
+                        wx.switchTab({
+                            url: '/pages/user/user',
+                        })
+                    }
+                }
             })
             return;
         }
@@ -46,7 +51,7 @@ Page({
             sumitOrderSt: true,//禁用按扭
         })
     },
-   
+
     //提交订金订单或是尾款订单:添加成功后则发起支付
     tapAddOrder: function () {
         this.validaorder()//验证地址
@@ -62,7 +67,7 @@ Page({
                 //   console.log('add group order ok');
                 //   return ;
                 //发起支付
-                that.payNow(data.order_id, data.type,username)
+                that.payNow(data.order_id, data.type, username)
             } else {
                 that.setData({
                     sumitOrderSt: false,
@@ -72,7 +77,7 @@ Page({
         })
     },
     //立即支付,多商家:可能一次支付多个订单
-    payNow: function (order_id, type_,username) {
+    payNow: function (order_id, type_, username) {
         wx.showLoading({
             title: '请求支付中...',
         })
@@ -101,7 +106,8 @@ Page({
                                     order_id: order_id,
                                     st: 'paid',
                                     type_: type_,
-                                    type_group: data_group.type_group,
+                                    username:username,
+                                    // type_group: data_group.type_group,
                                 },
                                 success: function (res) {
                                     wx.redirectTo({
@@ -141,6 +147,18 @@ Page({
             if (data.code == 0) {
                 that.setData({
                     address: data.data,
+                })
+            } else {
+                wx.showModal({
+                    title: '没有地址',
+                    content: '前去添加',
+                    success: function (res) {
+                        if (res.confirm) {
+                            wx.switchTab({
+                                url: '/pages/user/user',
+                            })
+                        }
+                    }
                 })
             }
         })

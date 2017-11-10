@@ -1,5 +1,4 @@
 // pages/submit_from_orders/submit_from_orders.js
-
 var common = require("../../utils/util.js");
 var app = getApp();
 const imgurl = app.globalData.imgUrl;
@@ -101,13 +100,13 @@ Page({
                         'paySign': data.paySign,//签名,
                         'success': function (res) {
                             //更改订单状态为已支付
-                            console.log('payok', res)
                             wx.request({
                                 url: wxurl + 'dingdan/update_pay_st',
                                 data: {
                                     order_id: order_id,
                                     st: 'paid',
                                     type_: that.data.type_,
+                                    username: username,
                                 },
                                 success: function (res) {
                                     wx.redirectTo({
@@ -115,9 +114,6 @@ Page({
                                     })
                                 }
                             })
-                            // wx.redirectTo({
-                            //     url: '/pages/orders/orders',
-                            // })
                         },
                         'fail': function (res) {
                             console.log(res)
