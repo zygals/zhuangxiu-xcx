@@ -87,8 +87,8 @@ Page({
 		var address_id = e.target.dataset.address_id;
 		var username = common.getUserName();
 		wx.showModal({
-			title: '',
-			content: '',
+			title: '删除',
+			content: '确认删除么？',
 			success: function (res) {
 				if (res.confirm) {
 					common.httpP('address/delete', {

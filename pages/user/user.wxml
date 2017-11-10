@@ -6,9 +6,7 @@
   <text class='user-name'>{{userInfo.nickName}}</text>
   </view>
 </view>
-
 <!-- nav -->
-
 <view class='user-nav'>
   <view class='nav-list'>
     <navigator url='/pages/collection/collection' hover-class='none' >
@@ -22,12 +20,12 @@
       <view class='nav-name'>全部订单</view>
     </navigator>
   </view>
-  <view class='nav-list'>
+  <!-- <view class='nav-list'>
     <navigator url='/pages/cancel/cancel' hover-class='none'>
       <image src='../../img/return-icon.png'></image>
       <view class='nav-name'>退货</view>
     </navigator>
-  </view>
+  </view> -->
   <view class='nav-list'>
     <navigator url='/pages/assess/assess' hover-class='none'>
       <image src='../../img/appraise-icon.png'></image>

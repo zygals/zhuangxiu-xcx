@@ -20,10 +20,10 @@
                 </block> -->
 
                 <view class='add-right-cont'>
-                    <text bindtap="tapEditAddress" data-address_id="{{item.id}}">编辑</text>
+                    <text catchtap="tapEditAddress" data-address_id="{{item.id}}">编辑</text>
                     <block wx:if='{{item.is_default==0}}'>
                         <text>丨</text>
-                        <text bindtap='tapDelAddress' data-address_id="{{item.id}}">删除</text>
+                        <text catchtap='tapDelAddress' data-address_id="{{item.id}}">删除</text>
                     </block>
                 </view>
             </view>
