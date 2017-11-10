@@ -34,8 +34,8 @@ Page({
     function (data) {
         that.setData({
           getList: data.data.data,
-          page: data.data.current_page,
-          last_page: data.data.last_page
+          // page: data.data.current_page,
+          // last_page: data.data.last_page
         });
       
     })
@@ -73,57 +73,57 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    wx.showToast({
-      title: '正在加载',
-      icon:'loading',
-      duration:10000
-    })
-    var that = this;
-    wx.request({
-      url: wxurl + 'fankui/getFankui',
-      success:(res)=>{
-        that.setData({
-          getList: res.data.data
-        });
-      },
-      complete:()=>{
-        //结束下拉刷新
-        wx.stopPullDownRefresh();
-        setTimeout(() => {
-          wx.hideToast();
-        }, 600)
-      }
-    })
+    // wx.showToast({
+    //   title: '正在加载',
+    //   icon:'loading',
+    //   duration:10000
+    // })
+    // var that = this;
+    // wx.request({
+    //   url: wxurl + 'fankui/getFankui',
+    //   success:(res)=>{
+    //     that.setData({
+    //       getList: res.data.data
+    //     });
+    //   },
+    //   complete:()=>{
+    //     //结束下拉刷新
+    //     wx.stopPullDownRefresh();
+    //     setTimeout(() => {
+    //       wx.hideToast();
+    //     }, 600)
+    //   }
+    // })
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    var that = this;
-    var current_page = that.data.current_page
-    var username = common.getUserName()
-    var page = current_page + 1;
-    if (current_page < that.data.last_page) {
-      wx.request({
-        url: wxurl + 'fankui/getFankui',
-        data: {
-          username:username,
-          page: page,
-        },
-        success: (res) => {
-          that.setData({
-            current_page: res.data.current_page,
-            // getList: that.data.getList.concat(res.data.data.data),
-          })
-        },
-        complete: () => {
-          setTimeout(() => {
-            wx.hideToast();
-          }, 600)
-        }
-      });
-    };
+    // var that = this;
+    // var current_page = that.data.current_page
+    // var username = common.getUserName()
+    // var page = current_page + 1;
+    // if (current_page < that.data.last_page) {
+    //   wx.request({
+    //     url: wxurl + 'fankui/getFankui',
+    //     data: {
+    //       username:username,
+    //       page: page,
+    //     },
+    //     success: (res) => {
+    //       that.setData({
+    //         current_page: res.data.current_page,
+    //         // getList: that.data.getList.concat(res.data.data.data),
+    //       })
+    //     },
+    //     complete: () => {
+    //       setTimeout(() => {
+    //         wx.hideToast();
+    //       }, 600)
+    //     }
+    //   });
+    // };
 
   },
 
