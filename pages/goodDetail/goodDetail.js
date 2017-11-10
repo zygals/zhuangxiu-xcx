@@ -17,8 +17,10 @@ Page({
 
     good_id:'',
       orderDeposit: null, //订金订单
+      orderFinal:null, //尾款订单
   },
 
+    
   /**
    * 生命周期函数--监听页面加载
    */
@@ -28,7 +30,9 @@ Page({
     this.getGoodBigImg(t_id);
         //我是否有此订金订单？
         this.hasOrderDeposit(t_id);
+        this.hasOrderFinal(t_id)
   },
+
 //我的订单有没有？
     hasOrderDeposit: function (t_id) {
         var that = this
@@ -44,13 +48,41 @@ Page({
             }
         })
     },
-
+    //我的尾款订单有没有？
+    hasOrderFinal: function (t_id) {
+        var that = this
+        var username = common.getUserName()
+        common.httpG('dingdan/has_order_group_final', {
+            username: username,
+            t_id: t_id,
+        }, function (data) {
+            if (data.code == 0) {
+                that.setData({
+                    orderFinal: data.data
+                })
+            }
+        })
+    },
     //继续支付我的订单-团购订金
     tapGogoPayDeposit: function () {
         var order_id = this.data.orderDeposit.id;
         var address_id = this.data.orderDeposit.address_id;
         wx.navigateTo({
             url: '/pages/submit_from_orders/submit_from_orders?from_=to_pay&order_id=' + order_id + '&address_id=' + address_id + "&type_=3",
+        })
+    }, 
+    //继续支付我的订单-团购尾款
+    tapGogoPayFinal:function(){
+        var order_id = this.data.orderFinal.id;
+        var address_id = this.data.orderFinal.address_id;
+        wx.navigateTo({
+            url: '/pages/submit_from_orders/submit_from_orders?from_=to_pay&order_id=' + order_id + '&address_id=' + address_id + "&type_=6",
+        })
+    },
+    //去看订单
+    tapGoToOrders:function(){
+        wx.navigateTo({
+            url: '/pages/orders/orders',
         })
     },
   getList: function (t_id) {
