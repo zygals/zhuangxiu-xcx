@@ -12,20 +12,20 @@
     <!-- house-list -->
     <swiper duration='300' current='{{currentTab}}' bindchange='houseChange' class='house-swiper' style="height: {{winHeight+'px'}}">
         <swiper-item>
-            <view class='house-cont'>
-
-                <view class='house-list' wx:for="{{yanfangList}}" wx:key='id'>
+            <view class='house-cont'wx:for="{{yanfangList}}" wx:key='id'>
+              <navigator url="/pages/baike/baike?art_id={{item.id}}">
+                <view class='house-list'>
                     <image src='{{imgurl+item.img}}'></image>
                     <text class='house-name'>{{item.name}}</text>
                     <text class='house-sub'>{{item.cont_limit}}</text>
                 </view>
-                
+              </navigator>  
             </view>
         </swiper-item>
         <swiper-item>
             <view class='house-banner'>
-                <image src='../../img/collect-pic.jpg'></image>
-                <text>就要交房了，是不是很激动。就要交房了，是不是很激动就要交房了，是不是很激动</text>
+                <image src='{{imgurl+setting.baoming_img_big}}'></image>
+                <text>{{setting.baoming_logan}}</text>
             </view>
             <!--form start-->
             <form bindsubmit='addBaoming'>
@@ -50,7 +50,7 @@
                             <input type='text' name='time_to' value='{{baoming.time_to}}' placeholder='请输入验房时间'></input>
                         </view>
                         <view class='reg-people'>
-                            <text>已参加人数 : {{baomingNum}}</text>
+                            <text>已参加人数 : {{setting.baoming_pnum}}</text>
                             <!-- <input type='text'></input> -->
                         </view>
                     </view>

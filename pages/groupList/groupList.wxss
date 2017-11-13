@@ -36,7 +36,7 @@ page {
 
 .group-banner image {
   width: 710rpx;
-  height: 600rpx;
+  height: 400rpx;
   margin: 0 auto;
   margin-top: 20rpx;
   border-radius: 5rpx;

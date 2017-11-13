@@ -13,33 +13,129 @@ Page({
     imgurl: imgurl,
     clock: '',
     timer: null,
-    endTime: ''
+    endTime: '',
+    good_id:'',
+      orderDeposit: null, //订金订单
+      orderFinal:null, //尾款订单
   },
 
+    
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var t_id = options.t_id;
     this.getList(t_id);
+    this.getGoodBigImg(t_id);
+        //我是否有此订金订单？
+        this.hasOrderDeposit(t_id);
+        this.hasOrderFinal(t_id)
   },
 
+//我的订单有没有？
+    hasOrderDeposit: function (t_id) {
+        var that = this
+        var username = common.getUserName()
+        common.httpG('dingdan/has_order_group_deposit', {
+            username: username,
+            t_id: t_id,
+        }, function (data) {
+            if (data.code == 0) {
+                that.setData({
+                    orderDeposit: data.data
+                })
+            }
+        })
+    },
+    //我的尾款订单有没有？
+    hasOrderFinal: function (t_id) {
+        var that = this
+        var username = common.getUserName()
+        common.httpG('dingdan/has_order_group_final', {
+            username: username,
+            t_id: t_id,
+        }, function (data) {
+            if (data.code == 0) {
+                that.setData({
+                    orderFinal: data.data
+                })
+            }
+        })
+    },
+    //继续支付我的订单-团购订金
+    tapGogoPayDeposit: function () {
+        var order_id = this.data.orderDeposit.id;
+        var address_id = this.data.orderDeposit.address_id;
+        wx.navigateTo({
+            url: '/pages/submit_from_orders/submit_from_orders?from_=to_pay&order_id=' + order_id + '&address_id=' + address_id + "&type_=限人",
+        })
+    }, 
+    //继续支付我的订单-团购尾款
+    tapGogoPayFinal:function(){
+        var order_id = this.data.orderFinal.id;
+        var address_id = this.data.orderFinal.address_id;
+        wx.navigateTo({
+            url: '/pages/submit_from_orders/submit_from_orders?from_=to_pay&order_id=' + order_id + '&address_id=' + address_id + "&type_=限人尾款",
+        })
+    },
+    //去看订单
+    tapGoToOrders:function(){
+        wx.navigateTo({
+            url: '/pages/orders/orders',
+        })
+    },
   getList: function (t_id) {
     var that = this;
     common.httpG('group/pnuminfo', { t_id: t_id }, function (data) {
       that.setData({
         getList: data.data,
-        endTime: data.data.end_time
+        endTime: data.data.end_time,
+        good_id:data.data.good_id
       })
-      that.countDown();
+
+      console.log(that.data.good_id);
+      wx.setStorage({
+        key: 'group_detail',
+        data: data.data,
+      })
+
     })
   },
+  //获取大图
+  getGoodBigImg(t_id){
+    var that = this;
+    common.httpG('good/getImages',
+      {
+        t_id: t_id
+      },
+      function (data) {
+        that.setData({ goodImg: data.data })
+      })
+  },
+
+
+      //that.countDown();
+      //缓存详情
+
+  //参团付订金,跳至订单确认页
+    orderConfirmGroupDeposit:function(){
+wx.navigateTo({
+    url: '/pages/submit_from_group1/submit_from_group1?type_=deposit&type_=3',
+})
+    },
+    //付尾款 
+    tapOrderGroupFinal: function () {
+        wx.navigateTo({
+            url: '/pages/submit_from_group1/submit_from_group1?type_=deposit&type_=6',
+        })
+    },
+
 
   countDown() {
     var that = this;
     let now_time = Math.floor(new Date().getTime() / 1000);  // 获取当前时间戳（毫秒）
     let total_micro_time = that.data.endTime - now_time;  // 后台返回的时间戳 — 当前时间戳 = 剩余的时间戳
-    console.log(total_micro_time);
+    // console.log(total_micro_time);
     let dateClock = that.dateFormate(total_micro_time)    // 调用日期格式化函数
     that.data.timer = setTimeout(() => {                  // 每隔一秒调用一次定时器，递归
       that.setData({
@@ -88,7 +184,7 @@ Page({
    */
   onUnload: function () {
     var that = this;
-    clearTimeout(that.data.timer); 
+    clearTimeout(that.data.timer);
   },
 
   /**

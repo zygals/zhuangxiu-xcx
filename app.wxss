@@ -31,8 +31,8 @@ page {
 }
 
 .shop-title image:nth-child(1) {
-  width: 66rpx;
-  height: 66rpx;
+  width: 50rpx;
+  height: 60rpx;
   padding: 0 20rpx;
 }
 
@@ -91,7 +91,7 @@ page {
 }
 
 .buy-list text {
-   width: 25%; 
+   width: 28%; 
 }
 
 .buy-list input {
@@ -114,9 +114,9 @@ page {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* margin-left: 20rpx; */
-  border-bottom: 1px solid #eee;
-  width: 400rpx;
+  margin-left: 30rpx; 
+  width: 400rpx; 
+  height: 180rpx;
 }
 
 .buy-list .goods .top-goods {
@@ -125,7 +125,10 @@ page {
 }
 
 .buy-list .goods .top-goods .goods-name {
-  margin-bottom: 4rpx;
+  margin-bottom: 10rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .buy-list .goods .top-goods .format {
@@ -136,6 +139,7 @@ page {
 .buy-list .goods .goods-price {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .buy-list .goods .goods-price .price {
@@ -179,4 +183,7 @@ page {
   text-align: center;
   background-color: #ff4318;
   color: #fff;
+}
+.submit-btn .s-submit {
+    width: 100%;
 }

@@ -83,7 +83,7 @@ page {
 
 .b-inner {
   background-color: #fff;
-  margin-bottom: 100rpx;
+  padding-bottom: 100rpx;
 }
 
 .b-inner text {
@@ -92,6 +92,7 @@ page {
   padding: 30rpx 20rpx;
   font-size: 32rpx;
   color: #666;
+  line-height: 54rpx;
 }
 
 .b-inner image {

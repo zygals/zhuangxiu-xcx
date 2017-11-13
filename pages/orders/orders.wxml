@@ -35,7 +35,12 @@
                     </view>
                 </view>
                 <view class='order-total'>
-                    <text>共{{shop.good_num}}件商品</text>
+<block wx:if="{{shop.type=='普通'}}">
+   <text>共{{shop.good_num}}件商品</text>
+</block>
+                 
+   <text>类型:</text>
+                    <text>{{shop.type}}</text>
                     <text>合计:</text>
                     <text>¥{{shop.sum_price}}</text>
                 </view>
@@ -49,10 +54,10 @@
                     <block wx:if="{{(shop.st=='用户取消') || shop.goodst=='已收货' || shop.goodst=='已评价'}}">
                         <text class='point-slt' bindtap="tapOrderDelete" data-order_id="{{shop.id}}">删除</text>
                     </block>
-                    <text data-order_id="{{shop.id}}" data-address_id="{{shop.address_id}}" bindtap="tapLookDetail">订单详情</text>
+                    <text data-type_="{{shop.type}}" data-order_id="{{shop.id}}" data-address_id="{{shop.address_id}}" bindtap="tapLookDetail">订单详情</text>
                     <block wx:if="{{shop.st=='待支付'}}">
                         <text bindtap="tapCancelOrder" data-order_id="{{shop.id}}">取消订单</text>
-                        <text class='point-slt' bindtap="tapGoOrderConfirm" data-order_id="{{shop.id}}" data-address_id="{{shop.address_id}}">去支付</text>
+                        <text class='point-slt' bindtap="tapGoOrderConfirm" data-order_id="{{shop.id}}" data-address_id="{{shop.address_id}}" data-type_="{{shop.type}}">去支付</text>
                     </block>
                 </view>
             </view>
@@ -85,9 +90,9 @@
                     <text>¥{{shop.sum_price}}</text>
                 </view>
                 <view class='select-btn'>
-                    <text data-order_id="{{shop.id}}" data-address_id="{{shop.address_id}}" bindtap="tapLookDetail">订单详情</text>
+                    <text data-order_id="{{shop.id}}" data-address_id="{{shop.address_id}}" bindtap="tapLookDetail" data-type_="{{shop.type}}">订单详情</text>
                     <text bindtap="tapCancelOrder" data-order_id="{{shop.id}}">取消订单</text>
-                    <text class='point-slt' bindtap="tapGoOrderConfirm" data-order_id="{{shop.id}}" data-address_id="{{shop.address_id}}">去支付</text>
+                    <text class='point-slt' bindtap="tapGoOrderConfirm" data-order_id="{{shop.id}}" data-address_id="{{shop.address_id}}" data-type_="{{shop.type_}}">去支付</text>
                 </view>
             </view>
         </swiper-item>
@@ -119,7 +124,7 @@
                     <text>¥{{shop.sum_price}}</text>
                 </view>
                 <view class='select-btn'>
-                    <text data-order_id="{{shop.id}}" data-address_id="{{shop.address_id}}" bindtap="tapLookDetail">订单详情</text>
+                    <text data-order_id="{{shop.id}}" data-address_id="{{shop.address_id}}" bindtap="tapLookDetail" data-type_="{{shop.type}}">订单详情</text>
                     <block wx:if="{{shop.st=='已支付' && shop.goodst=='已收货'}}">
                         <text class='point-slt' bindtap="tapOrderFankui" data-order_id="{{shop.id}}" data-shop_id="{{shop.shop_id}}">评价</text>
                     </block>
@@ -130,7 +135,6 @@
                         <text class='point-slt' bindtap="tapGoodConfirm" data-order_id="{{shop.id}}">确认收货</text>
                     </block>
 
-                    <!-- <text class='point-slt'>去支付</text> -->
                 </view>
             </view>
 

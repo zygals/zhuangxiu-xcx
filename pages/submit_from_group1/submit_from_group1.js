@@ -1,10 +1,12 @@
-// pages/submit_from_deposit/submit_from_deposit.js
+// pages/submit_from_group2/submit_from_group2.js 
+//团购订金或是尾款
 
 var common = require("../../utils/util.js");
 var app = getApp();
 const imgurl = app.globalData.imgUrl;
 const wxurl = app.globalData.wxUrl;
-
+const ordersAll = app.globalData.orders_all;
+const groupLimitStore = app.globalData.group_limit_store;
 Page({
 
     /**
@@ -12,91 +14,69 @@ Page({
      */
     data: {
         imgurl: imgurl,
-        address: null,     //收货地址
-        shopInfo: null, //店铺信息
-        sum_price: 0,
+        address: null,//默认地址
+        goodGroup: {}, //团购物商品
         sumitOrderSt: false,
-        type_: 4, //默认为商家订金类型
+        type_: '3',  //默认先付订金
+
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        var type_ = options.type_; //3 or 6
         this.setData({
-            shopInfo: wx.getStorageSync('shopInfo'),
-            type_: options.type_
+            type_: type_,
         })
-        var shopInfo = this.data.shopInfo;
-        var sum = shopInfo.deposit - shopInfo.youhui;
-        if(this.data.type_==5){
-            sum = shopInfo.money_all - shopInfo.youhui_all;
-        }
-        this.setData({
-            sum_price: sum,
-        })
+        this.getGroupGood()
     },
-    //监测用户输入金
-    inputDeposit: function (e) {
-        var inputDeposit = e.detail.value;
-        if (isNaN(inputDeposit)) {
-            return '';
-        }
-        var sum = inputDeposit - this.data.shopInfo.youhui
-        if(this.data.type_==5){
-            sum = inputDeposit - this.data.shopInfo.youhui_all
-        }
-        this.setData({
-            sum_price: sum,
-        })
-
-    },
-    //提交订单-商家订金
-    submitDeposit: function (e) {
+    //提交订单前验证一下
+    validaorder: function () {
         if (this.data.address == null) {
-            wx.showToast({
-                title: '请添加地址',
-            })
-            return;
-        }
-        var sum = this.data.sum_price
-        if (sum <= 0) {
-            wx.showToast({
-                title: '总计不能小于0',
+            wx.showModal({
+                title: '没有地址',
+                content: '前去添加',
+                success: function (res) {
+                    if (res.confirm) {
+                        wx.switchTab({
+                            url: '/pages/user/user',
+                        })
+                    }
+                }
             })
             return;
         }
         this.setData({
-            sumitOrderSt: true,
+            sumitOrderSt: true,//禁用按扭
         })
-        //添加订单，成功后直接支付
-        var beizhu = e.detail.value.beizhu
-        var that = this;
+    },
+
+    //提交订金订单或是尾款订单:添加成功后则发起支付
+    tapAddOrder: function () {
+        this.validaorder()//验证地址
+        var that = this
         var username = common.getUserName()
-        var youhui = that.data.shopInfo.youhui;
-        if (this.data.type_ == 5) {
-            youhui = that.data.shopInfo.youhui_all
-        }
-        common.httpP('dingdan/save_deposit', {
-            type_: that.data.type_,
+        common.httpG('dingdan/save_group_deposit', {
             username: username,
-            shop_id: that.data.shopInfo.shop_id,
-            sum_price: that.data.sum_price,
+            t_id: that.data.goodGroup.t_id,
             address_id: that.data.address.id,
-            shop_youhui:youhui,
-            beizhu: beizhu,
+            type_: that.data.type_, //限人订金类型或是尾款类型
         }, function (data) {
             if (data.code == 0) {
-                //添加订单成功
+                //   console.log('add group order ok');
+                //   return ;
+                //发起支付
                 that.payNow(data.order_id, data.type, username)
-            }else{
+            } else {
                 that.setData({
                     sumitOrderSt: false,
                 })
             }
+
         })
     },
-    //发起支付请示
+    //立即支付,多商家:可能一次支付多个订单
     payNow: function (order_id, type_, username) {
         wx.showLoading({
             title: '请求支付中...',
@@ -106,7 +86,7 @@ Page({
             data: {
                 order_id: order_id,
                 username: username,
-                type_: type_,
+                type_: type_, //  限人订金类型 或是尾款类型
             },
             success: function (res) {
                 var data = res.data;
@@ -120,20 +100,20 @@ Page({
                         'paySign': data.paySign,//签名,
                         'success': function (res) {
                             //更改订单状态为已支付
-                            console.log('payok', res)
                             wx.request({
                                 url: wxurl + 'dingdan/update_pay_st',
                                 data: {
                                     order_id: order_id,
                                     st: 'paid',
                                     type_: type_,
+                                    username:username,
+                                    // type_group: data_group.type_group,
                                 },
                                 success: function (res) {
-                                    console.log(res.data.msg);
+                                    wx.redirectTo({
+                                        url: '/pages/orders/orders',
+                                    })
                                 }
-                            })
-                            wx.redirectTo({
-                                url: '/pages/orders/orders',
                             })
                         },
                         'fail': function (res) {
@@ -150,17 +130,11 @@ Page({
             }
         })
     },
-    //改地址
-    tapAddress: function (e) {
-
-        if (this.data.address == null) {
-            wx.switchTab({
-                url: '/pages/user/user',
-            })
-            return;
-        }
-        wx.navigateTo({
-            url: '/pages/address/address?from_=orderConfirm',
+    //取缓存中的团购商品
+    getGroupGood: function () {
+        var group_good = wx.getStorageSync('group_detail');
+        this.setData({
+            goodGroup: group_good,
         })
     },
     //取默认地址
@@ -174,7 +148,7 @@ Page({
                 that.setData({
                     address: data.data,
                 })
-            }else{
+            } else {
                 wx.showModal({
                     title: '没有地址',
                     content: '前去添加',
@@ -189,20 +163,24 @@ Page({
             }
         })
     },
+    //改地址
+    tapAddress: function (e) {
+        wx.navigateTo({
+            url: '/pages/address/address?from_=orderConfirm',
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
 
     },
-
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
         this.getAddress()
     },
-
     /**
      * 生命周期函数--监听页面隐藏
      */

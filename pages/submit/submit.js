@@ -71,11 +71,9 @@ Page({
 			sum_price_all: sum_price_all,
 			address_id: that.data.address.id,
 		}, function (data) {
-
 			if (data.code == 0) {
 				//发起支付
                 that.payNow(data.type, data.data, username)
-
 			} else {
 				that.setData({
 					sumitOrderSt: false,
@@ -109,7 +107,6 @@ Page({
 						'paySign': data.paySign,//签名,
 						'success': function (res) {
 							//更改订单状态为已支付
-							console.log('payok', res)
 							wx.request({
 								url: wxurl + 'dingdan/update_pay_st',
 								data: {
@@ -118,12 +115,14 @@ Page({
                                     type_:type_,
 								},
 								success: function (res) {
-									console.log(res.data.msg);
+                                    wx.redirectTo({
+                                        url: '/pages/orders/orders',
+                                    })
 								}
 							})
-							wx.redirectTo({
-								url: '/pages/orders/orders',
-							})
+							// wx.redirectTo({
+							// 	url: '/pages/orders/orders',
+							// })
 						},
 						'fail': function (res) {
 							console.log(res)

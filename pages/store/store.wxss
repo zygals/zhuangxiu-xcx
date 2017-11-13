@@ -10,7 +10,7 @@ page {
   display: flex;
   flex-wrap: wrap;
   /* justify-content: center; */
-  width: 716rpx;
+  /* width: 716rpx; */
   margin: 10rpx auto;
   margin-bottom: 100rpx;
   padding-left: 34rpx;
@@ -90,8 +90,14 @@ page {
   font-size: 28rpx;
   margin-left: 30rpx;
   margin-top: 15rpx;
-  padding-bottom: 20rpx;
+  /* padding-bottom: 20rpx; */
   color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* white-space: nowrap; */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 /* swiper */
@@ -107,7 +113,7 @@ page {
   height: 60rpx;
   margin-top: 20rpx;
   margin-left: 20rpx;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .swiper-wrap image {
@@ -215,15 +221,17 @@ page {
 .address-msg {
   display: flex;
   flex-direction: column;
-  margin-left: 34rpx;
-  width: 55%;
+  /* margin-left: 34rpx; */
+  width: 100%;
   flex-wrap: wrap;
+  /* padding-bottom: 100rpx; */
 }
 
 .address-msg-name {
   margin-top: 20rpx;
   margin-bottom: 30rpx;
   font-size: 32rpx;
+  margin-left: 34rpx;
 }
 
 .address-msg text {
@@ -288,7 +296,7 @@ page {
 .bottom-goods-slt .comments {
   display: flex;
   flex-direction: column;
-  width: 18%;
+  width: 12%;
   justify-content: center;
   align-items: center;
   background-color: #fff;
@@ -300,7 +308,7 @@ page {
 }
 
 .bottom-goods-slt .earnest {
-  width: 41%;
+  width: 38%;
   text-align: center;
   line-height: 100rpx;
   background-color: #fe9a24;
@@ -308,7 +316,7 @@ page {
 }
 
 .bottom-goods-slt .purchase {
-  width: 41%;
+  width: 38%;
   background-color: #ff6e1f;
   text-align: center;
   line-height: 100rpx;
@@ -326,6 +334,9 @@ page {
   margin-left: 20rpx;
 }
 
+ .bussiness-detail .bus-list text:first-child {
+  width: 28%;
+} 
 .bussiness-detail .bus-list .bus-list-info {
   width: 22%;
 }
@@ -336,10 +347,17 @@ page {
 .bussiness-detail .bus-list text:last-child {
   /* margin-left: 20rpx; */
   margin-right: 20rpx;
+  width: 100%;
 }
 
+ .bussiness-detail .bus-list image {
+   width: 180rpx;
+   height: 180rpx;
+   margin-left: -46rpx;
+ }
+
 .bottom-goods-slt .b-favorate {
-  width: 18%;
+  width: 12%;
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -358,6 +376,7 @@ page {
 
 .switch-wrap {
   width: 100%;
+  padding-bottom: 100rpx;
 }
 .switch-wrap .show {
   display: block;

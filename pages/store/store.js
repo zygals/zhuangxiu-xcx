@@ -13,9 +13,9 @@ Page({
   data: {
     imgurl: imgurl,
     information: [
-      { textUrl: '无最新的资讯啊啊啊' },
-      { textUrl: '有最新的资讯啊啊啊' },
-      { textUrl: '啊最新的资讯啊啊啊' }
+      { textUrl: '双11优惠来啦！' },
+      { textUrl: '55家居微信小程序正式上线啦！' },
+      { textUrl: '全场最低9折起！' }
     ],
     winHeight: '',
     currentTab: 0,
@@ -27,6 +27,7 @@ Page({
     username: '',
     Collect: "",
     ShopEvalute: [],
+    shopInfo:{},
   },
 
   /**
@@ -52,27 +53,24 @@ Page({
     //调用shop/addr
     this.shopAddr(shop_id)
     this.getShopEvalute(shop_id)
-    console.log(shop_id)
+    // this.isGroup(shop_id)
+    // console.log(shop_id)
   },
   //店铺付订金
   tapOrderConfirmDeposit:function(e){
      wx.navigateTo({
-		 url: '/pages/submit_from_deposit/submit_from_deposit',
+		 url: '/pages/submit_from_deposit/submit_from_deposit?type_=4',
 	 })
   },
 //付全款
   tapOrderConfirmAllMoney: function (e) {
 	  wx.navigateTo({
-		  url: '/pages/submit_from_deposit/submit_from_deposit',
+		  url: '/pages/submit_from_deposit/submit_from_deposit?type_=5',
 	  })
   },
   shopInfo: function (shop_id) {
     var that = this;
-    var username = wx.getStorageSync('username')
-    if (!username) {
-      app.register()
-      username = wx.getStorageSync('username');
-    }
+    var username = common.getUserName()
     common.httpG('shop/read', {
       shop_id: shop_id,
       username: username
@@ -81,6 +79,11 @@ Page({
 
       that.setData({
         shopInfo: data.data,
+        isGroup:data.data.isGroup.data
+      })
+      wx.setStorage({
+          key: 'shopInfo',
+          data: data.data,
       })
       if (data.is_collect == 'true') {
         that.setData({
@@ -91,6 +94,18 @@ Page({
       }
     });
   },
+
+  //是否参加团购
+  // isGroup: function (shop_id){
+  //   var that = this;
+  //   common.httpG('shop/isGroup'),{
+  //     shop_id: shop_id,
+  //   },function(data){
+  //     that.setData({
+  //       isGroup:data
+  //     })
+  //   }
+  // },
 
   shopGoods: function (shop_id) {
     var that = this;
@@ -132,7 +147,7 @@ Page({
     }, function (data) {
 
       that.setData({
-        ShopEvalute: data.data,
+        ShopEvalute: data.data.data,
       });
     });
   },

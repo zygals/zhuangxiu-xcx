@@ -9,25 +9,46 @@ Page({
      */
     data: {
         imgurl: imgurl,
-        baomingList: [],
+        baoming: [],  //难房报名，只有一个
+        attendList: [], //在线报名列表
+        setting:null,
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.getBaomingList()
+        this.getBaoming()
+        this.getAttendList()
+        // this.setData({
+            
+        // })
     },
-    //取我的报名
-    getBaomingList: function () {
+    //取我的在线报名
+    getAttendList: function () {
         var that = this;
-        var username = common.getUserName();
-        common.httpG('baoming/index', {
+        var username = common.getUserName()
+        common.httpG('activity/my_attend', {
             username: username,
         }, function (data) {
             if (data.code == 0) {
                 that.setData({
-                    baomingList: data.data
+                    attendList: data.data,
+                })
+            }
+        })
+    },
+    //取我的验房报名
+    getBaoming: function () {
+        var that = this;
+        var username = common.getUserName();
+        common.httpG('baoming/read', {
+            username: username,
+        }, function (data) {
+            if (data.code == 0) {
+                that.setData({
+                    baoming: data.data,
+                    setting: wx.getStorageSync('setting')
                 })
             }
         })
