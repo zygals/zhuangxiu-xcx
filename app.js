@@ -1,12 +1,14 @@
 //app.js
 
 App({
+	// 初次加载会执行，再次进入不一定会执行
   onLaunch: function () {
-    var username = wx.getStorageSync('username');
-    if (!username) {
-      this.register();
-    }
-    this.getAbout() //取系统设置并缓存
+	  this.register()
+  },
+  	// 第次进入都会执行
+  onShow:function(){
+	  //设置用户名及系统设置缓存
+	  this.getAbout();
   },
   //注册
   register: function () {
@@ -18,7 +20,6 @@ App({
         if (res.code) {
 
           //发起网络请求,注册用户
-
           wx.request({
             url: that.globalData.wxUrl + 'user',
             data: {
@@ -46,6 +47,7 @@ App({
       }
     });
   },
+  //取设置
   getAbout: function () {
     var that = this
     wx.request({
@@ -62,10 +64,28 @@ App({
     })
 
   },
-  //隐藏时清除缓存数据
+  //隐藏时清除缓存数据,用户名不清
   onHide: function () {
-    // Do something when hide.
-    wx.clearStorage();
+    wx.removeStorage({
+		key: 'cartShopGoodList',
+		success: function(res) {},
+	})
+	wx.removeStorage({
+		key: 'orders_all',
+		success: function (res) { },
+	})
+	wx.removeStorage({
+		key: 'shopInfo',
+		success: function (res) { },
+	})
+	wx.removeStorage({
+		key: 'sum_price_all',
+		success: function (res) { },
+	})
+	  wx.removeStorage({
+		  key: 'setting',
+		  success: function (res) { },
+	  })
   },
   globalData: {
     wxUrl: 'https://huahui.qingyy.net/zhuangxiutp/public/api/',

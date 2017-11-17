@@ -45,11 +45,8 @@ Page({
 
                 });
                 //将用户信息：头像和昵称发送服务器
-                var username = wx.getStorageSync('username');
-                if (!username) {
-                    app.register();
-                    username = wx.getStorageSync('username')
-                }
+				var username = common.getUserName()
+      
                 common.httpP('user/save', {
                     'username': username,
                     'vistar': userInfo.avatarUrl,

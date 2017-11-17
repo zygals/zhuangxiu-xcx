@@ -17,6 +17,8 @@ const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
+
+//取用户名
 function getUserName(){
 	var username = wx.getStorageSync('username');
 	if (!username) {
@@ -25,6 +27,15 @@ function getUserName(){
 	}
 	return username;
 }
+//缓存设置
+// function getSetting() {
+// 	var setting = wx.getStorageSync('setting');
+// 	if (!setting) {
+// 		app.getAbout();
+// 		setting = wx.getStorageSync('setting')
+// 	}
+// 	return setting;
+// }
 function httpG(url, data, callback) {
 	wx.showLoading({
 		title: '努力加载中^^...',
@@ -40,8 +51,8 @@ function httpG(url, data, callback) {
 		},
 		complete: function (res) {
 			wx.hideLoading();
-			  console.log("get-complete:", res.data)
-			  if (res.data.code && res.data.code != 0) {
+			 // console.log("get-complete:", res.data)
+			  if (res.data.code && res.data.code != 0 && res.data.msg) {
 				wx.showToast({
 					 title: res.data.msg,
 				})
@@ -63,8 +74,8 @@ function httpP(url, data, callback) {
       console.log('request-post error:', res);
     },
     complete: function (res) {
-      console.log("post-complete:", res.data)
-      if (res.data.code  && res.data.code != 0) {
+      //console.log("post-complete:", res.data)
+	  if (res.data.code && res.data.code != 0 && res.data.msg) {
         wx.showToast({
            title: res.data.msg,
        })
@@ -78,5 +89,6 @@ module.exports = {
   httpP: httpP,
   httpG: httpG,
   getUserName: getUserName,
-  formatNumber: formatNumber
+  formatNumber: formatNumber,
+ // getSetting: getSetting,
 }

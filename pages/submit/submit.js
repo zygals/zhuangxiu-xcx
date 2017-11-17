@@ -9,13 +9,15 @@ Page({
 
 	/**
 	 * 页面的初始数据
-	 */
+	 */    
 	data: {
 		imgurl: imgurl,
 		address: null,     //收货地址
 		shopGoodList: [],  //店铺 + 商品数据
 		sum_price_all: 0,
 		sumitOrderSt: false, //默认没有提交，提交后变为true
+		order_deposit:[], //所有订金订单
+		order_money_all: [], //所有全款订单
 	},
 
 	/**
@@ -29,6 +31,42 @@ Page({
 			wx.navigateBack({})
 		}
 		this.setData({ shopGoodList: shopGoodList, sum_price_all: sum_price_all })
+		//取用户支付过的订金
+		this.getOrderDeposit();
+		//取用户支付过的全款
+		this.getOrderMoneyAll();
+
+	},
+	//取用户支付过的订金
+	getOrderDeposit:function(){
+		var that = this;
+		var username = common.getUserName()
+		common.httpG('dingdan/order_user_deposit', {
+			username: username,
+			type_:'4'
+		}, function (data) {
+			if (data.code == 0) {
+				that.setData({
+					order_deposit: data.data,
+
+				})
+			}
+		})
+	},
+	//取用户支付过的全款
+	getOrderMoneyAll: function () {
+		var that = this;
+		var username = common.getUserName()
+		common.httpG('dingdan/order_user_deposit', {
+			username: username,
+			type_: '5'
+		}, function (data) {
+			if (data.code == 0) {
+				that.setData({
+					order_money_all: data.data,
+				})
+			}
+		})
 	},
 	//取默认地址
 	getAddress: function () {

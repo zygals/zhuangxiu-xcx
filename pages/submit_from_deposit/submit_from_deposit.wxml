@@ -38,10 +38,18 @@
                 <text>备注 : </text>
                 <input type='text' name='beizhu' placeholder='请输入备注'></input>
             </view>
-            <view class='buy-list'>
-                <text>优惠价格 : </text>
-                <text class='deposit'> ¥ {{type_==4?shopInfo.youhui:shopInfo.youhui_all}}</text>
-            </view>
+            <block wx:if="{{type_==4 && shopInfo.youhui>0}}">
+                <view class='buy-list'>
+                    <text>订金优惠 : </text>
+                    <text class='deposit'> ¥{{shopInfo.youhui}}</text>
+                </view>
+            </block>
+            <block wx:if="{{type_==5 && shopInfo.youhui_all>0}}">
+                <view class='buy-list'>
+                    <text>全款优惠 : </text>
+                    <text class='deposit'> ¥{{shopInfo.youhui_all}}</text>
+                </view>
+            </block>
         </view>
     </view>
     <view class='submit-btn'>

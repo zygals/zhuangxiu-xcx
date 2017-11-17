@@ -15,7 +15,7 @@ Page({
 		baomingNum: 0, //报名人数
 		yanfangList: [], //验房列表
 		baoming: null, //我的验房报名
-        setting:null, //系统设置
+		setting: null, //系统设置
 	},
 
     /**
@@ -33,11 +33,11 @@ Page({
 		//取验房列表
 		this.getYanfangList()
 
-        //取设置
-        var setting= wx.getStorageSync('setting')
-         this.setData({
-             setting: setting,
-         })
+		//取设置
+		var setting = wx.getStorageSync('setting')
+		this.setData({
+			setting: setting,
+		})
 
 	},
 	//取我的验房报名
@@ -72,8 +72,8 @@ Page({
 		var username = common.getUserName();
 		var truename = data_baoming.truename, mobile = data_baoming.mobile, time_to = data_baoming.time_to, address = data_baoming.address;
 		var jiekou = 'baoming/save';
-		if (this.data.baoming){
-			jiekou='baoming/update';
+		if (this.data.baoming) {
+			jiekou = 'baoming/update';
 		}
 		common.httpP(jiekou, {
 			truename: truename,
@@ -86,10 +86,10 @@ Page({
 				wx.showToast({
 					title: data.msg,
 				})
-				if (jiekou =='baoming/save'){
-		wx.navigateTo({
-					url: '/pages/register/register',
-				})
+				if (jiekou == 'baoming/save') {
+					wx.navigateTo({
+						url: '/pages/register/register',
+					})
 				}
 			}
 		})
@@ -136,8 +136,8 @@ Page({
      * 生命周期函数--监听页面显示
      */
 	onShow: function () {
-        //取我的验房报名
-        this.myBaoming()
+		//取我的验房报名
+		this.myBaoming()
 	},
 
     /**
@@ -158,7 +158,7 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
 	onPullDownRefresh: function () {
-
+		wx.stopPullDownRefresh()
 	},
 
     /**

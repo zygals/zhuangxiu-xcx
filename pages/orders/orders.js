@@ -34,7 +34,12 @@ Page({
     //取我的订单列表，缓存本地
     getOrders: function () {
         var that = this
-        var username = common.getUserName();
+        //var username = common.getUserName();
+		var username = wx.getStorageSync('username');
+		if (!username) {
+			app.register();
+			username = wx.getStorageSync('username')
+		}
         common.httpG('dingdan/index', {
             username: username,
         }, function (data) {
@@ -42,6 +47,11 @@ Page({
                 that.setData({
                     orders: data.data
                 })
+				wx.stopPullDownRefresh();
+				wx.showToast({
+					title: '成功了',
+					duration:6000,
+				})
 
             } else {
                 that.setData({
@@ -202,7 +212,31 @@ Page({
 
         }
     },
-
+	//申请退款
+	tapRefund:function(e){
+		var that = this;
+		var order_id = e.target.dataset.order_id;
+		wx.showModal({
+			title: '申请退款',
+			content: '商家审核后会退还成功',
+			success: function (res) {
+				if (res.confirm) {
+					common.httpP('dingdan/update_st', {
+						order_id: order_id,
+						st: 'refundByUser'
+					}, function (data) {
+						if (data.code == 0) {
+							wx.showToast({
+								title: '提交申请成功',
+								duration:8000,
+							})
+							that.getOrders()
+						}
+					});
+				}
+			}
+		})
+	},
 
     /**
      * 生命周期函数--监听页面初次渲染完成
@@ -241,7 +275,8 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-
+		this.getOrders();
+      
     },
 
     /**

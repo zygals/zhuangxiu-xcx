@@ -148,19 +148,7 @@ Page({
                 that.setData({
                     address: data.data,
                 })
-            } else {
-                wx.showModal({
-                    title: '没有地址',
-                    content: '前去添加',
-                    success: function (res) {
-                        if (res.confirm) {
-                            wx.switchTab({
-                                url: '/pages/user/user',
-                            })
-                        }
-                    }
-                })
-            }
+            } 
         })
     },
     //改地址

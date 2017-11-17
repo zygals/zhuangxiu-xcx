@@ -60,6 +60,7 @@ Page({
 	getShopAndGoodList: function () {
 		var that = this;
 		var username = common.getUserName()
+		
 		common.httpG('cart/index', {
 			username: username
 		}, function (data) {
@@ -127,7 +128,8 @@ Page({
 	 * 页面相关事件处理函数--监听用户下拉动作
 	 */
 	onPullDownRefresh: function () {
-
+		this.getShopAndGoodList();
+		wx.stopPullDownRefresh();
 	},
 
 	/**

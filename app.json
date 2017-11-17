@@ -35,7 +35,8 @@
 		"backgroundTextStyle": "light",
 		"navigationBarBackgroundColor": "#d1a87a",
 		"navigationBarTitleText": "55家居",
-		"navigationBarTextStyle": "white"
+		"navigationBarTextStyle": "white",
+		"enablePullDownRefresh":true
 	},
 	"tabBar": {
 		"color": "#000",
