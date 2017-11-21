@@ -19,14 +19,18 @@ Page({
     indicatorDots: true,
     IMGURL:IMGURL
   },
-  
   onLoad: function () {
-
-    this.getAdvs();
-    this.getDecorate();
     
   },
   getAdvs() {
+	  var advs=[];
+	  if(advs=wx.getStorageSync('advs')){
+		  this.setData({
+			  advs: advs
+		  })
+		  return ;
+	  }
+	  
     var that =this;
     wx.request({
       url: WXURL + 'ad/index',
@@ -34,27 +38,45 @@ Page({
         that.setData({
           advs: res.data.data
         })
+		wx.setStorage({
+			key: 'advs',
+			data: res.data.data,
+		})
       }
     })
   },
   getDecorate() {
     var that = this;
+	var decorate = [];
+	if (decorate = wx.getStorageSync('articles_index')) {
+		this.setData({
+			decorate: decorate
+		})
+		return;
+	}
     wx.request({
       url: WXURL + 'article/index_show',
       success: (res) => {
         that.setData({
           decorate: res.data.data
         })
+		//缓存
+		wx.setStorage({
+			key: 'articles_index',
+			data: res.data.data,
+		})
       }
+	
     })
   },
 onShow:function(){
-
-},
-onPullDownRefresh(){
 	this.getAdvs();
 	this.getDecorate();
-	wx.stopPullDownRefresh();
+},
+onPullDownRefresh(){
+	// this.getAdvs();
+	// this.getDecorate();
+	// wx.stopPullDownRefresh();
 },
   /**
      * 用户点击右上角分享

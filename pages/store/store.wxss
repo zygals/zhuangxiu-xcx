@@ -99,6 +99,18 @@ page {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
+.store-tag-see {
+	font-size: 28rpx;
+  margin-left: 30rpx;
+  margin-top: 15rpx;
+  /* padding-bottom: 20rpx; */
+  color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* white-space: nowrap; */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
 
 /* swiper */
 

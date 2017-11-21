@@ -32,9 +32,9 @@ Page({
 		}
 		this.setData({ shopGoodList: shopGoodList, sum_price_all: sum_price_all })
 		//取用户支付过的订金
-		this.getOrderDeposit();
+		//this.getOrderDeposit();
 		//取用户支付过的全款
-		this.getOrderMoneyAll();
+		//this.getOrderMoneyAll();
 
 	},
 	//取用户支付过的订金

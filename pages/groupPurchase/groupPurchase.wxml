@@ -22,6 +22,11 @@
 </view>
 <block wx:if="{{type_==''}}">
     <navigator url="/pages/acRegister/acRegister?activity_id={{rowActivity.id}}">
-        <view class='purchase-btn'>去团购报名</view>
+        <view class='purchase-btn'>活动报名</view>
     </navigator>
 </block>
+
+
+
+
+

@@ -20,7 +20,7 @@
             <view class='info-assess'>评价: 0</view>
         </view>
     </view>
-    <view class='store-tag'>{{shopInfo.info}}</view>
+    <view class="{{ tapSee ? 'store-tag-see'  : 'store-tag'}}" bindtap='tapDesc'>{{shopInfo.info}}</view>
 </view>
 <!-- swiper -->
 <view class='swiper-scroll-wrap'>
@@ -176,10 +176,11 @@
 </swiper> -->
 
 <view class='bottom-goods-slt'>
-    <view class='comments'>
+    <view class='comments' bindtap='tapMessage'>
         <image src='../../img/message-icon.png'></image>
         <text>留言</text>
     </view>
+
     <view class='b-favorate' bindtap='tapCollectShop' data-shop_id="{{shop_id}}">
         <image src='../../img/{{collect_star}}'></image>
         <text class="{{Collect ? 'isCollect' : ''}}">收藏</text>

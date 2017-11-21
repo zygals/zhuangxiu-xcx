@@ -120,7 +120,6 @@ Page({
                         'paySign': data.paySign,//签名,
                         'success': function (res) {
                             //更改订单状态为已支付
-                            console.log('payok', res)
                             wx.request({
                                 url: wxurl + 'dingdan/update_pay_st',
                                 data: {

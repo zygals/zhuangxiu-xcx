@@ -124,3 +124,14 @@ page {
   height: 0;
   color: transparent;
 }
+
+.time_create,.orderno{
+	font-size:26rpx;
+	color:#666;
+	margin-bottom: 20rpx;
+	text-align: right;
+
+}
+/* .time_create{
+	padding-bottom:20rpx;
+} */

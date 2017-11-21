@@ -15,7 +15,8 @@ Page({
         from_: 'to_pay', //默认来自‘去支付’
         payNowSt: false, //立即支付按扭状态
         orderDetail: null,      //订单详情
-        texttip: '商家订金',
+        type_number: '4', //默认类型为商家订金
+		texttip:'商家订金', //提示文字说明
     },
     /**
      * 生命周期函数--监听页面加载
@@ -32,7 +33,8 @@ Page({
         }
         if (type_ == '商家全款') {
             this.setData({
-                texttip: type_,
+				type_number: 5,
+				texttip: '商家全款',
             })
         }
         //从订单缓存中取出订单
@@ -66,10 +68,7 @@ Page({
         var order_id = this.data.orderDetail.id;
         var username = common.getUserName();
         var that = this
-        var type_number = 4;//商家订金
-        if (this.data.texttip == '商家全款') {
-            type_number = 5;
-        }
+        
         wx.showLoading({
             title: '请求支付中...',
         })
@@ -78,7 +77,7 @@ Page({
             data: {
                 order_id: order_id,
                 username: username,
-                type_: type_number, //  类型：shop_order 或是 contact_order 
+				type_: that.data.type_number
             },
             success: function (res) {
                 var data = res.data;
@@ -92,13 +91,12 @@ Page({
                         'paySign': data.paySign,//签名,
                         'success': function (res) {
                             //更改订单状态为已支付
-                            console.log('payok', res)
                             wx.request({
                                 url: wxurl + 'dingdan/update_pay_st',
                                 data: {
                                     order_id: order_id,
                                     st: 'paid',
-                                    type_: 1,
+                                    type_: that.data.type_number,
                                 },
                                 success: function (res) {
                                     console.log(res.data.msg);

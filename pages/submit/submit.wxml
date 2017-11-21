@@ -41,8 +41,7 @@
             </view>
         </view>
     </view>
-
-       
+<!-- 
     <block wx:if="{{order_deposit!==null}}">
 
         <view class='deposit_view' wx:for="{{order_deposit}}" wx:id='id' wx:key="order_deposit">
@@ -62,7 +61,7 @@
             </view>
         </view>
 
-    </block>
+    </block> -->
 </view>
 <view class='submit-btn'>
     <view class='left-submit'>合计金额 :

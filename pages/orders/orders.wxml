@@ -30,7 +30,7 @@
                             <block wx:if="{{shop.st=='已支付'}}">
                                 <text>物流 : {{good.st}}</text>
                             </block>
-                            <text>订单号:{{shop.orderno}}</text>
+
                         </view>
                     </view>
                 </view>
@@ -66,6 +66,14 @@
                     <text>{{shop.type}}</text>
                     <text>合计:</text>
                     <text>¥{{shop.sum_price}}</text>
+                </view>
+                <block wx:if="{{shop.type!='商家订金' && shop.type!='商家全款'}}">
+                    <view class='orderno'>
+                        <text>订单号：{{shop.orderno}}</text>
+                    </view>
+                </block>
+                <view class='time_create'>
+                    <text>创建时间：{{shop.create_time}}</text>
                 </view>
                 <view class='select-btn'>
                     <block wx:if="{{shop.st=='已支付'}}">
@@ -168,7 +176,7 @@
                         </view>
                     </view>
                 </view>
-				<!--如果是订金则显示-->
+                <!--如果是订金则显示-->
                 <block wx:if="{{shop.type=='商家订金'}}">
                     <view class='order-info'>
                         <image src='../../img/dingjin.jpg'></image>
@@ -178,7 +186,8 @@
                             </view>
                         </view>
                     </view>
-                </block><!--如果是全款则显示-->
+                </block>
+                <!--如果是全款则显示-->
                 <block wx:if="{{shop.type=='商家全款'}}">
                     <view class='order-info'>
                         <image src='../../img/quankuan.jpg'></image>
@@ -201,7 +210,7 @@
                     <text>¥{{shop.sum_price}}</text>
                 </view>
                 <view class='select-btn'>
-				  <text class='point-slt' bindtap="tapRefund" data-order_id="{{shop.id}}">申请退款</text>
+                    <text class='point-slt' bindtap="tapRefund" data-order_id="{{shop.id}}">申请退款</text>
                     <text data-order_id="{{shop.id}}" data-address_id="{{shop.address_id}}" bindtap="tapLookDetail" data-type_="{{shop.type}}">订单详情</text>
                     <block wx:if="{{shop.st=='已支付' && shop.goodst=='已收货'}}">
                         <text class='point-slt' bindtap="tapOrderFankui" data-order_id="{{shop.id}}" data-shop_id="{{shop.shop_id}}">评价</text>

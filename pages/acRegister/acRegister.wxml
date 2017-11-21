@@ -30,10 +30,10 @@
                 <text>小区名称 :</text>
                 <input type='text' name='xiaoqu' value="{{rowAttend.xiaoqu}}" placeholder='小区名称'></input>
             </view>
-            <view class='ac-item'>
+            <!-- <view class='ac-item'>
                 <text>购买商 :</text>
                 <input type='text' name='nigou' value="{{rowAttend.nigou}}" placeholder='请输入购买商'></input>
-            </view>
+            </view> -->
         </view>
 
         <button type='primary' form-type='submit'>
