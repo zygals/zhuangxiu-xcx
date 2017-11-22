@@ -12,30 +12,34 @@
     <swiper-item>
       <view class='goods-col-cont'>
         <block wx:for="{{goodCollect}}" wx:key='id'>
-          <navigator url='/pages/bDetail/bDetail?good_id={{item.collect_id}}'>
-            <view class='goods-col-list'>
-              <image src='{{imgurl+item.img}}'></image>
-              <view class='goods-col-info'>
-                <text class='goods-col-title'>{{item.name}}</text>
-                <text class='goods-col-price'>¥ {{item.price}}</text>
+          <view data-id='{{item.c_id}}' bindlongpress='delCollect'>
+            <navigator url='/pages/bDetail/bDetail?good_id={{item.collect_id}}'>
+              <view class='goods-col-list'>
+                <image src='{{imgurl+item.img}}'></image>
+                <view class='goods-col-info'>
+                  <text class='goods-col-title'>{{item.name}}</text>
+                  <text class='goods-col-price'>¥ {{item.price}}</text>
+                </view>
               </view>
-            </view>
-          </navigator>
+            </navigator>
+          </view> 
         </block>
       </view>
     </swiper-item>
     <swiper-item>
       <view class='house-cont'>
-      <block wx:for="{{shopCollect}}" wx:key='index'>
-        <navigator url='/pages/store/store?shop_id={{item.collect_id}}'>
-          <view class='goods-col-list'>
-            <image src='{{imgurl+item.img}}'></image>
-            <view class='goods-col-info'>
-              <text class='goods-col-title'>{{item.name}}</text>
-              <text class='goods-col-enter'>进入店铺</text>
-            </view>
+        <block wx:for="{{shopCollect}}" wx:key='index'>
+          <view data-id='{{item.c_id}}' bindlongpress='delCollect'>
+            <navigator url='/pages/store/store?shop_id={{item.collect_id}}'>
+              <view class='goods-col-list'>
+                <image src='{{imgurl+item.img}}'></image>
+                <view class='goods-col-info'>
+                  <text class='goods-col-title'>{{item.name}}</text>
+                  <text class='goods-col-enter'>进入店铺</text>
+                </view>
+              </view>
+            </navigator>
           </view>
-        </navigator>
         </block>
       </view>
     </swiper-item>
