@@ -23,7 +23,7 @@
                     </navigator>
                     <view class='order-cont'>
                         <text class='order-cont-title'>{{good.name}}</text>
-                        <view class='order-format'>
+                        <view  class='order-format'>
                             <text>规格 :{{good.unit}}</text>
                             <text>单价 : {{good.price}}</text>
                             <text>数量 : {{good.num}}</text>
@@ -40,7 +40,11 @@
                         <image src='../../img/dingjin.jpg'></image>
                         <view class='order-cont'>
                             <view class='order-format'>
+
                                 <text>订单号:{{shop.orderno}}</text>
+                                <block wx:if="{{shop.orderno_youhui}}">
+                                    <text>抵扣订单号:{{shop.orderno_youhui}}</text>
+                                </block>
                             </view>
                         </view>
                     </view>
@@ -50,8 +54,10 @@
                         <image src='../../img/quankuan.jpg'></image>
                         <view class='order-cont'>
                             <view class='order-format'>
-
                                 <text>订单号:{{shop.orderno}}</text>
+								   <block wx:if="{{shop.sum_price_youhui}}">
+                                    <text>用订金:{{shop.sum_price_youhui}}元</text>
+                                </block>
                             </view>
                         </view>
                     </view>
@@ -61,11 +67,11 @@
                     <block wx:if="{{shop.type=='普通'}}">
                         <text>共{{shop.good_num}}件商品</text>
                     </block>
-
                     <text>类型:</text>
                     <text>{{shop.type}}</text>
                     <text>合计:</text>
-                    <text>¥{{shop.sum_price}}</text>
+                    <text>¥{{shop.sum_price}} <block wx:if="{{shop.sum_price_youhui && shop.type=='普通'}}"> (用订金:{{shop.sum_price_youhui}}元)   </block>
+					</text>
                 </view>
                 <block wx:if="{{shop.type!='商家订金' && shop.type!='商家全款'}}">
                     <view class='orderno'>
@@ -85,7 +91,7 @@
                     <block wx:if="{{shop.st=='已支付' && shop.goodst=='已发货'}}">
                         <text class='point-slt' bindtap="tapGoodConfirm" data-order_id="{{shop.id}}">确认收货</text>
                     </block>
-                    <block wx:if="{{(shop.st=='用户取消') || shop.goodst=='已收货' || shop.goodst=='已评价' || shop.st=='已退款'}}">
+                    <block wx:if="{{(shop.st=='用户取消') || shop.goodst=='已收货' || shop.goodst=='已评价' || shop.st=='已退款' || shop.st=='订金抵扣全款'|| shop.st=='订金抵扣商品'}}"> 
                         <text class='point-slt' bindtap="tapOrderDelete" data-order_id="{{shop.id}}">删除</text>
                     </block>
                     <text data-type_="{{shop.type}}" data-order_id="{{shop.id}}" data-address_id="{{shop.address_id}}" bindtap="tapLookDetail">订单详情</text>
@@ -123,6 +129,9 @@
                         <view class='order-cont'>
                             <view class='order-format'>
                                 <text>订单号:{{shop.orderno}}</text>
+								 <block wx:if="{{shop.orderno_youhui}}">
+                                    <text>抵扣订单:{{shop.orderno_youhui}}</text>
+                                </block>
                             </view>
                         </view>
                     </view>
@@ -183,6 +192,9 @@
                         <view class='order-cont'>
                             <view class='order-format'>
                                 <text>订单号:{{shop.orderno}}</text>
+								 <block wx:if="{{shop.orderno_youhui}}">
+                                    <text>抵扣订单号:{{shop.orderno_youhui}}</text>
+                                </block>
                             </view>
                         </view>
                     </view>
@@ -193,8 +205,10 @@
                         <image src='../../img/quankuan.jpg'></image>
                         <view class='order-cont'>
                             <view class='order-format'>
-
                                 <text>订单号:{{shop.orderno}}</text>
+								  <block wx:if="{{shop.sum_price_youhui}}">
+                                    <text>用订金:{{shop.sum_price_youhui}}元</text>
+                                </block>
                             </view>
                         </view>
                     </view>
@@ -207,7 +221,8 @@
                     <text>{{shop.type}}</text>
 
                     <text>合计:</text>
-                    <text>¥{{shop.sum_price}}</text>
+                  <text>¥{{shop.sum_price}} <block wx:if="{{shop.sum_price_youhui && shop.type=='普通'}}"> (用订金:{{shop.sum_price_youhui}}元)   </block>
+					</text>
                 </view>
                 <view class='select-btn'>
                     <text class='point-slt' bindtap="tapRefund" data-order_id="{{shop.id}}">申请退款</text>

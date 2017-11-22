@@ -1,10 +1,10 @@
 {
 	"pages": [
-    "pages/index/index",
-    "pages/submit_from_deposit/submit_from_deposit",
-        "pages/submit_from_orders_deposit/submit_from_orders_deposit",
+		"pages/index/index",
+		"pages/submit_from_deposit/submit_from_deposit",
+		"pages/submit_from_orders_deposit/submit_from_orders_deposit",
 		"pages/group/group",
-			"pages/groupList/groupList",
+		"pages/groupList/groupList",
 		"pages/addCommen/addCommen",
 		"pages/register/register",
 		"pages/house/house",
@@ -13,7 +13,7 @@
 		"pages/bDetail/bDetail",
 		"pages/submit/submit",
 		"pages/submit_from_orders/submit_from_orders",
-        "pages/submit_from_group1/submit_from_group1",
+		"pages/submit_from_group1/submit_from_group1",
 		"pages/shopCart/shopCart",
 		"pages/user/user",
 		"pages/store/store",
@@ -29,14 +29,14 @@
 		"pages/address/address",
 		"pages/baike/baike",
 		"pages/groupPurchase/groupPurchase",
-		"pages/acRegister/acRegister"
+		"pages/acRegister/acRegister",
+		"pages/contact/contact"
 	],
 	"window": {
 		"backgroundTextStyle": "light",
 		"navigationBarBackgroundColor": "#d1a87a",
 		"navigationBarTitleText": "55家居",
-		"navigationBarTextStyle": "white",
-		"enablePullDownRefresh":true
+		"navigationBarTextStyle": "white"
 	},
 	"tabBar": {
 		"color": "#000",

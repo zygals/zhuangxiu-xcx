@@ -152,9 +152,12 @@ Page({
 			shop_id: shop_id,
 
 		}, function (data) {
+			if(data.code==0){
 				that.setData({
 					ShopEvalute: data.data.data,
 				});
+			}
+		
 		});
 	},
 

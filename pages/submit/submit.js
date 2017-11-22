@@ -16,8 +16,9 @@ Page({
 		shopGoodList: [],  //店铺 + 商品数据
 		sum_price_all: 0,
 		sumitOrderSt: false, //默认没有提交，提交后变为true
-		order_deposit:[], //所有订金订单
-		order_money_all: [], //所有全款订单
+		deposit:null, //支付过的订金订单
+		is_deposit_check:false,
+	
 	},
 
 	/**
@@ -31,43 +32,65 @@ Page({
 			wx.navigateBack({})
 		}
 		this.setData({ shopGoodList: shopGoodList, sum_price_all: sum_price_all })
-		//取用户支付过的订金
-		//this.getOrderDeposit();
+        if(shopGoodList.length==1){//如果是单商家
+			//取用户支付过的订金
+			this.getOrderDeposit(shopGoodList[0].shop_id);
+		}
+		
+
 		//取用户支付过的全款
 		//this.getOrderMoneyAll();
 
 	},
 	//取用户支付过的订金
-	getOrderDeposit:function(){
+	getOrderDeposit:function(shop_id){
 		var that = this;
 		var username = common.getUserName()
-		common.httpG('dingdan/order_user_deposit', {
+		common.httpG('dingdan/my_shop_deposit', {
 			username: username,
-			type_:'4'
-		}, function (data) {
+			shop_id:shop_id,
+			}, function (data) {
 			if (data.code == 0) {
 				that.setData({
-					order_deposit: data.data,
+					deposit: data.data,
 
 				})
 			}
 		})
 	},
-	//取用户支付过的全款
-	getOrderMoneyAll: function () {
-		var that = this;
-		var username = common.getUserName()
-		common.httpG('dingdan/order_user_deposit', {
-			username: username,
-			type_: '5'
-		}, function (data) {
-			if (data.code == 0) {
-				that.setData({
-					order_money_all: data.data,
-				})
-			}
-		})
+	//选或不选订金
+	checkboxChange:function(e){
+		var deposit_check = e.detail.value//数组
+		var sum_price_all = this.data.sum_price_all
+		var deposit_price = this.data.deposit.sum_price
+
+		if (deposit_check[0] > 0) {//选择中
+			this.setData({
+				sum_price_all: sum_price_all - deposit_price,
+				is_deposit_check: true,
+			})
+		} else {
+			this.setData({
+				sum_price_all: sum_price_all + Number(deposit_price),
+				is_deposit_check: false,
+			})
+		}
 	},
+	//取用户支付过的全款
+	// getOrderMoneyAll: function () {
+	// 	var that = this;
+	// 	var username = common.getUserName()
+	// 	common.httpG('dingdan/order_user_deposit', {
+	// 		username: username,
+	// 		type_: '5'
+	// 	}, function (data) {
+	// 		if (data.code == 0) {
+	// 			that.setData({
+	// 				order_money_all: data.data,
+	// 			})
+	// 		}
+	// 	})
+	// },
 	//取默认地址
 	getAddress: function () {
 		var that = this;
@@ -103,11 +126,18 @@ Page({
 		var username = common.getUserName()
 		var shop_good_list = wx.getStorageSync(CART_GOOD)
 		var sum_price_all = wx.getStorageSync('sum_price_all')
+
+		var order_id_deposit = 0
+		if (this.data.is_deposit_check && this.data.deposit.id){
+			order_id_deposit = this.data.deposit.id
+			sum_price_all -= this.data.deposit.sum_price
+		}
 		common.httpG('dingdan/save_all', {
 			username: username,
 			shop_good_list: shop_good_list,
 			sum_price_all: sum_price_all,
 			address_id: that.data.address.id,
+			order_id_deposit: order_id_deposit,
 		}, function (data) {
 			if (data.code == 0) {
 				//发起支付
@@ -132,6 +162,7 @@ Page({
                 order_id: order_id,
 				username: username,
                 type_: type_, //  类型：shop_order 或是 contact_order 
+			
 			},
 			success: function (res) {
                 var data = res.data;

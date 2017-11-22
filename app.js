@@ -1,5 +1,4 @@
 //app.js
-
 App({
 	// 初次加载会执行，再次进入不一定会执行
   onLaunch: function () {
@@ -84,6 +83,14 @@ App({
 	})
 	  wx.removeStorage({
 		  key: 'setting',
+		  success: function (res) { },
+	  })
+	  wx.removeStorage({
+		  key: 'articles_index',
+		  success: function (res) { },
+	  })
+	  wx.removeStorage({
+		  key: 'advs',
 		  success: function (res) { },
 	  })
   },

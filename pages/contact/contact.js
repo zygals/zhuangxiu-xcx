@@ -11,8 +11,8 @@ Page({
 		shop_id: 0, //商家编号
 		msg: '',  //用户写的
 		msgs: [],//所有对话
-		last_page:1, //总页数
-		woshuo:'', //输入框内容
+
+		woshuo: '', //输入框内容
 	},
 
 	/**
@@ -40,8 +40,8 @@ Page({
 		}, function (data) {
 			if (data.code == 0) {
 				that.setData({
-					msgs: data.data.data,
-					last_page:data.last_page,
+					msgs: data.data,
+
 				})
 			}
 		})
@@ -51,8 +51,8 @@ Page({
 		var that = this;
 		var msg = e.detail.value.msg;
 		this.setData({
-			woshuo:'',
-		
+			woshuo: '',
+
 		})
 
 		common.httpP('message/save', {
@@ -68,6 +68,30 @@ Page({
 			}
 
 		})
+	},
+	//删除一条
+	ltapDelMsg: function (e) {
+		var msg_id = e.target.dataset.msg_id
+		var that = this
+		wx.showModal({
+			title: '删除',
+			content: '确定删除消息么？',
+			success: function (res) {
+				if (res.confirm) {
+					common.httpP('message/del_by_user', {
+						msg_id: msg_id,
+					}, function (data) {
+						if (data.code == 0) {
+							wx.showToast({
+								title: '删除成功',
+							})
+							that.getMessages();
+						}
+					})
+				}
+			}
+		})
+
 	},
 	/**
 	 * 生命周期函数--监听页面初次渲染完成

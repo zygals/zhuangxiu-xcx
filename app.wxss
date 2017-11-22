@@ -22,7 +22,6 @@ page {
   background-color: #f8f8f8;
 }
 
-
 .shop-title {
   display: flex;
   align-items: center;
@@ -31,7 +30,7 @@ page {
 }
 
 .shop-title image:nth-child(1) {
-  width: 50rpx;
+  width: 98rpx;
   height: 60rpx;
   padding: 0 20rpx;
 }

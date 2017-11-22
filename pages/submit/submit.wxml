@@ -41,27 +41,20 @@
             </view>
         </view>
     </view>
-<!-- 
-    <block wx:if="{{order_deposit!==null}}">
 
-        <view class='deposit_view' wx:for="{{order_deposit}}" wx:id='id' wx:key="order_deposit">
-            <text>订金优惠：</text>
-            <view>
-                <checkbox name='deposit' value='100' data-order_id="1" data-sum_price='100'>已付订金:{{order_deposit.sum_price}}</checkbox>
-            </view>
-        </view>
+     <block wx:if="{{deposit && deposit.sum_price>0}}">
+                <view class='buy-list'>
+                    <text>可用订金 : </text>
+                    <view class='deposit_check'>
+                        <checkbox-group bindchange="checkboxChange">
+                            <label class="checkbox">
+                                <checkbox checked='' value="{{deposit.sum_price}}" />¥{{deposit.sum_price}}(注：每次限用一个，提交订单为已使用。)
+                            </label>
+                        </checkbox-group>
+                    </view>
+                </view>
+            </block>
 
-    </block>
-	 <block wx:if="{{order_money_all!==null}}">
-
-        <view class='deposit_view' wx:for="{{order_money_all}}" wx:id='id' wx:key="order_money_all">
-            <text>全款优惠：</text>
-            <view>
-                <checkbox name='deposit' value='100' data-order_id="1" data-sum_price='100'>已付全款:{{order_money_all.sum_price}}</checkbox>
-            </view>
-        </view>
-
-    </block> -->
 </view>
 <view class='submit-btn'>
     <view class='left-submit'>合计金额 :

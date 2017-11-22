@@ -56,9 +56,9 @@ page {
 
 .chat-menu .chat-send {
   width: 20%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #3a8bde;
-  color: #fff;
+}
+.chat-menu .chat-send button {
+	background-color: #3a8bde;
+	height: 100%;
+ 	color: #fff;
 }

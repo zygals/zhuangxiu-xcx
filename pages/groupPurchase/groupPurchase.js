@@ -33,6 +33,7 @@ Page({
 		var that = this
 		common.httpG('activity/read', { activity_id: activity_id }, function (data) {
 			if (data.code == 0) {
+				//在赋值前先进行字符串替换
 				that.setData({ rowActivity: data.data })
 				wx.setStorage({
 					key: 'rowActivity',

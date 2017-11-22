@@ -2,18 +2,20 @@
 <scroll-view scroll-y class='chat-area'>
     <block wx:for="{{msgs}}" wx:key='id'>
         <view class="{{item.type=='1'?'c-chat':'b-chat'}}">
-            <text>{{item.message}}</text>
+            <text data-msg_id='{{item.id}}' bindlongtap="{{item.type==1?'ltapDelMsg':''}}">{{item.message}}</text>
         </view>
     </block>
 </scroll-view>
 <!-- <view class='chat-menu'> -->
-    <form bindsubmit='submitSendMsg' class='chat-menu'>
+    <form bindsubmit='submitSendMsg'>
+	<view class='chat-menu'>
          <view class='chat'> 
             <input type='text' name='msg' placeholder='请输入您想说的话' placeholder-class='chat-holder' confirm-type='send' value='{{woshuo}}'></input>
          </view> 
 		 <view class='chat-send'> 
         <button form-type='submit'>发送</button>
 		 </view> 
+		 </view>
     </form>
 <!-- 
 </view> -->
