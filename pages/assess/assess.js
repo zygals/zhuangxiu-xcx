@@ -45,7 +45,7 @@ Page({
   //删除评价
   delEva: function (e) {
     var that = this
-    console.log(e)
+    // console.log(e)
     var id = e.currentTarget.dataset.id
     wx.showModal({
       title: '提示',
