@@ -1,11 +1,11 @@
 <form bindsubmit="fankui">
   <view class='commen-wrap'>
     <view class='commen-detail'>
-      <text class='commen-detail-info'>订单信息：</text>
+      <text class='commen-detail-info'>订单编号：</text>
       <text class='commen-detail-num'>{{Info[0].orderno}}</text>
     </view>
     <view class='commen-detail'>
-      <text class='commen-detail-info'>店铺信息：</text>
+      <text class='commen-detail-info'>店铺名称：</text>
       <text class='commen-detail-num'>{{Info[0].shop_name}}</text>
     </view>
     <view class='commen-list'>

@@ -4,7 +4,9 @@
 page {
   background-color: #eee;
 }
-
+.shopCart-wrap {
+	padding-bottom: 100rpx;
+}
 .buy {
   background-color: #fff;
   margin-bottom: 30rpx;
@@ -13,7 +15,6 @@ page {
   padding: 20rpx 0;
   border-bottom: 1px solid #eee;
 }
-
 .buy checkbox {
   padding: 20rpx 0;
   margin-left: 20rpx;

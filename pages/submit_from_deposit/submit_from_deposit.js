@@ -18,7 +18,8 @@ Page({
 		sumitOrderSt: false,
 		type_: 4, //默认为商家订金类型
 		deposit: {},
-		is_deposit_check:false, //默认不选中订金
+		is_deposit_check: false, //默认不选中订金
+		deposit_yuanlai: 0, //实际可用订金
 	},
 
     /**
@@ -30,15 +31,16 @@ Page({
 			type_: options.type_
 		})
 		var shopInfo = this.data.shopInfo;
-		var sum = shopInfo.deposit - shopInfo.youhui;
+		var sum = common.numSub(shopInfo.deposit ,shopInfo.youhui);
 		if (this.data.type_ == 5) {
-			sum = shopInfo.money_all - shopInfo.youhui_all;
+			sum = common.numSub( shopInfo.money_all , shopInfo.youhui_all);
+			//取已付过的订金
+			this.getDeposit(shopInfo)
 		}
 		this.setData({
 			sum_price: sum,
 		})
-		//取已付过的订金
-		this.getDeposit(shopInfo)
+
 	},
 	//取我的订金，只取一个，按时间正序
 	getDeposit: function (shopInfo) {
@@ -53,25 +55,28 @@ Page({
 			if (data.code == 0) {
 				that.setData({
 					deposit: data.data,
+					deposit_yuanlai: Number(data.data.sum_price) + Number(data.data.sum_price_youhui)
 				})
 			}
 		})
 
 	},
+
+
 	//是否选中checkbox
 	checkboxChange: function (e) {
 		var deposit_check = e.detail.value
 		var sum_price = this.data.sum_price
-		var deposit = this.data.deposit.sum_price
-		
+		var deposit = this.data.deposit_yuanlai //实际可用订金
+
 		if (deposit_check[0] > 0) {//选择中
 			this.setData({
-				sum_price: sum_price - deposit,
-				is_deposit_check:true,
+				sum_price: common.numSub(sum_price , deposit),
+				is_deposit_check: true,
 			})
 		} else {
 			this.setData({
-				sum_price: sum_price + Number(deposit),
+				sum_price: Number(sum_price) + Number(deposit),
 				is_deposit_check: false,
 			})
 		}
@@ -83,16 +88,16 @@ Page({
 		if (isNaN(inputDeposit)) {
 			return '';
 		}
-		var deposit = this.data.deposit.sum_price
+		var deposit = this.data.deposit_yuanlai //实际可用订金
 		var is_deposit_check = this.data.is_deposit_check
-		var sum = inputDeposit - this.data.shopInfo.youhui
+		var sum = common.numSub(inputDeposit , this.data.shopInfo.youhui)
 
 		if (this.data.type_ == 5) {
-			sum = inputDeposit - this.data.shopInfo.youhui_all
+			sum = common.numSub(inputDeposit ,this.data.shopInfo.youhui_all)
 
 		}
 		if (deposit > 0 && is_deposit_check) {
-			sum -= deposit
+			sum = common.numSub(sum,deposit)
 		}
 		this.setData({
 			sum_price: sum,
@@ -125,20 +130,20 @@ Page({
 		if (this.data.type_ == 5) {
 			youhui = that.data.shopInfo.youhui_all
 		}
-		var order_id_deposit=0;
-		if (this.data.is_deposit_check && this.data.deposit.id ){
-		    order_id_deposit = this.data.deposit.id; 
+		var order_id_deposit = 0;
+		if (this.data.is_deposit_check && this.data.deposit.id) {
+			order_id_deposit = this.data.deposit.id;
 		}
-	
+
 		common.httpP('dingdan/save_deposit', {
 			type_: that.data.type_,
 			username: username,
 			shop_id: that.data.shopInfo.shop_id,
 			sum_price: that.data.sum_price,
 			address_id: that.data.address.id,
-			shop_youhui: youhui,
+			youhui: youhui, //后台设置订金或全款优惠
 			beizhu: beizhu,
-			order_id_deposit:order_id_deposit, //用于做抵扣的订金
+			order_id_deposit: order_id_deposit, //用于做抵扣的订金
 		}, function (data) {
 			if (data.code == 0) {
 				//添加订单成功
@@ -161,7 +166,7 @@ Page({
 				order_id: order_id,
 				username: username,
 				type_: type_,
-			
+
 			},
 			success: function (res) {
 				var data = res.data;
@@ -181,15 +186,26 @@ Page({
 									order_id: order_id,
 									st: 'paid',
 									type_: type_,
-									order_id_deposit: order_id_deposit
+									order_id_deposit: order_id_deposit,
+									prepay_id: data.prepay_id
 								},
 								success: function (res) {
-									console.log(res.data.msg);
+									wx.showModal({
+										title: '支付成功',
+										content: '订单支付成功,前去我的订单列表查看',
+										success: function (res) {
+											if (res.confirm) {
+												wx.redirectTo({
+													url: '/pages/orders/orders',
+												})
+											}
+
+										}
+									})
+								
 								}
 							})
-							wx.redirectTo({
-								url: '/pages/orders/orders',
-							})
+					
 						},
 						'fail': function (res) {
 							console.log(res)

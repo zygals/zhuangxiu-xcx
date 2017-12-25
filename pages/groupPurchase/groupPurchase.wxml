@@ -1,6 +1,6 @@
 <!--pages/groupPurchase/groupPurchase.wxml 活动详情页-->
 <view class='purchase-wrap'>
-    <image src='{{imgurl+rowActivity.img_big}}'></image>
+    <image src='{{imgurl+rowActivity.img_big}}'  mode="widthFix" ></image>
     <view class='purchase-list'>
         <view class='purchase-item'>
             <text class='purchase-title'>活动标题 :</text>
@@ -17,7 +17,11 @@
         <view class='purchase-item'>
             <text class='purchase-title'>活动内容 :</text>
             <text class='purchase-info'>{{rowActivity.info}}</text>
+
         </view>
+        <block wx:if="{{rowActivity.imgs}}">
+            <image src='{{imgurl+rowActivity.imgs}}' mode="widthFix" style=''></image>
+        </block>
     </view>
 </view>
 <block wx:if="{{type_==''}}">
@@ -25,5 +29,3 @@
         <view class='purchase-btn'>活动报名</view>
     </navigator>
 </block>
-
-

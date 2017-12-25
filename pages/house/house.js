@@ -12,10 +12,10 @@ Page({
 		imgurl: imgurl,
 		winWidth: '',
 		currentTab: 0,
-		baomingNum: 0, //报名人数
-		yanfangList: [], //验房列表
+		yanfangHistory: [], //验房列表
 		baoming: null, //我的验房报名
-		setting: null, //系统设置
+		yanfangNow: null, //正在的验房
+		rowAttend:null, //我的报名
 	},
 
     /**
@@ -32,24 +32,60 @@ Page({
 		})
 		//取验房列表
 		this.getYanfangList()
-
-		//取设置
-		var setting = wx.getStorageSync('setting')
-		this.setData({
-			setting: setting,
-		})
-
+		//取现在验房
+		this.getYanfangNow()
 	},
-	//取我的验房报名
-	myBaoming: function () {
+		//取现在验房
+	getYanfangNow:function(){
 		var that = this
-		var username = common.getUserName()
-		common.httpG('baoming/read', {
-			username: username,
+		common.httpG('activity/activity_yanfang', {
 		}, function (data) {
 			if (data.code == 0) {
 				that.setData({
-					baoming: data.data
+					yanfangNow: data.data
+				})
+				that.getAttend();
+			}
+		})
+	},
+	//取我验房报名
+	getAttend: function () {
+		var username = common.getUserName();
+		var that = this;
+		common.httpG('activity/read_attend', {
+			username: username,
+			activity_id: that.data.yanfangNow.id
+		}, function (data) {
+			if (data.code == 0) {
+				that.setData({
+					rowAttend: data.data
+				})
+			}
+		})
+	},
+	//添加/修改在线报名
+	attendAdd: function (e) {
+		var that = this
+		var data_post = e.detail.value
+		var username = common.getUserName()
+		data_post.activity_id = this.data.yanfangNow.id;
+		data_post.username = username;
+		common.httpP('activity/save', data_post, function (data) {
+			if (data.code == 0 && that.data.rowAttend == null) {
+				wx.showModal({
+					title: '验房报名成功',
+					content: '验房报名成功，前去我的报名查看',
+					success: function () {
+						wx.navigateTo({
+							url: '/pages/register/register',
+						})
+					}
+				})
+			
+			}
+			if (data.code == 0 && that.data.rowAttend ){
+				wx.showToast({
+					title: '修改成功',
 				})
 			}
 		})
@@ -57,57 +93,16 @@ Page({
 	//取验房列表
 	getYanfangList: function () {
 		var that = this
-		common.httpG('article/article_yanfang', {}, function (data) {
+		common.httpG('activity/activity_yanfang_lishi', {}, function (data) {
 			if (data.code == 0) {
 				that.setData({
-					yanfangList: data.data.data
+					yanfangHistory: data.data,
+					// last_page:data.last_page
 				})
 			}
 		})
 	},
-	//添加报名 
-	addBaoming: function (event) {
-		var data_baoming = event.detail.value;
-		console.log(data_baoming)
-		var username = common.getUserName();
-		var truename = data_baoming.truename, mobile = data_baoming.mobile, time_to = data_baoming.time_to, address = data_baoming.address;
-		var jiekou = 'baoming/save';
-		if (this.data.baoming) {
-			jiekou = 'baoming/update';
-		}
-		common.httpP(jiekou, {
-			truename: truename,
-			mobile: mobile,
-			time_to: time_to,
-			address: address,
-			username: username,
-		}, function (data) {
-			if (data.code == 0) {
-				wx.showToast({
-					title: data.msg,
-				})
-				if (jiekou == 'baoming/save') {
-					wx.navigateTo({
-						url: '/pages/register/register',
-					})
-				}
-			}
-		})
-	},
-	//取报名人数
-	// getBaomingNum: function () {
-	// 	var that = this
-	// 	var username = common.getUserName();
-	// 	common.httpG('baoming/getnum', {
-	// 		'username': username,
-	// 	}, function (data) {
-	// 		if (data.code == 0) {
-	// 			that.setData({
-	// 				baomingNum: data.data,
-	// 			})
-	// 		}
-	// 	})
-	// },
+	
 	houseChange(e) {
 		var that = this;
 		that.setData({
@@ -137,7 +132,7 @@ Page({
      */
 	onShow: function () {
 		//取我的验房报名
-		this.myBaoming()
+	//	this.getAttend()
 	},
 
     /**

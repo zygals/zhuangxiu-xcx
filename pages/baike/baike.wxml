@@ -1,5 +1,5 @@
 <!--pages/baike/baike.wxml-->
-
+<block wx:if="{{type_=='baike'}}">
 <view class='article-wrap'>
   <view class='article-title'>
     <text>{{articleList.name}}</text>
@@ -16,3 +16,22 @@
     </text>
   </view>
 </view>
+</block>
+<block wx:if='{{type_=="activity"}}'>
+<view class='article-wrap'>
+  <view class='article-title'>
+    <text>{{articleList.name}}</text>
+  </view>
+  <view class='article-subTitle'>
+    <text class='article-time'>{{articleList.create_time}}</text>
+    <!-- <image src='../../img/eye.png'></image> -->
+    <!-- <text>{{articleList.clicks}}</text> -->
+  </view>
+
+  <view class='article-cont'>
+    <image src='{{imgurl+articleList.img_big}}'></image>
+    <text>{{articleList.info}}
+    </text>
+  </view>
+</view>
+</block>

@@ -43,16 +43,28 @@ Page({
 	addActivityAttend: function (e) {
 		var that = this
 		var data_post = e.detail.value
-		var username=common.getUserName()
+		var username = common.getUserName()
 		data_post.activity_id = this.data.activity_id;
 		data_post.username = username;
-         
+
 		common.httpP('activity/save', data_post, function (data) {
-			if (data.code == 0 && that.data.rowAttend==null){
-				wx.navigateTo({
-					url: '/pages/register/register',
+			if (data.code == 0 && that.data.rowAttend == null) {
+				wx.showModal({
+					title: '活动报名成功',
+					content: '活动报名成功，前去我的报名查看',
+					success:function(){
+						wx.navigateTo({
+							url: '/pages/register/register',
+						})
+					}
 				})
-			 }
+			
+			}
+			if (data.code == 0 && that.data.rowAttend) {
+				wx.showToast({
+					title: '修改成功',
+				})
+			}
 		})
 	},
 	/**

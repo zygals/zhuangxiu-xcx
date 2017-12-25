@@ -23,7 +23,7 @@
         <text class='g-group'>【{{getList.pnum}}人团】 <text class='g-group-title'>{{getList.good_name}}</text></text>
         <view class='g-info'>
             <text class='g-price'>¥{{getList.price_group}} <text class='g-price-line'>¥{{getList.good_price}}</text></text>
-            <text class='g-people'>已有{{getList.attend_pnum}}人参团</text>
+            <text class='g-people'>已有{{getList.attend_pnum>0?getList.attend_pnum:getList.attend_order_count}}人参团</text>
         </view>
     </view>
 
@@ -77,9 +77,14 @@
         </view>
     </block>
          
-    <block wx:if='{{orderDeposit==null && orderFinal==null}}'>
+    <block wx:if='{{orderDeposit==null && orderFinal==null && (getList.group_st=="正在进行" && getList.attend_order_count<getList.pnum)}}'>
         <view class='good-enter' bindtap='orderConfirmGroupDeposit'>
             <text>我要参团,付订金（{{getList.deposit}}元）</text>
+        </view>
+    </block>
+	   <block wx:if='{{getList.group_st=="活动成功" || getList.attend_order_count>=getList.pnum}}' >
+        <view class='good-enter'>
+            <text>参团人数已满</text>
         </view>
     </block>
 </view>

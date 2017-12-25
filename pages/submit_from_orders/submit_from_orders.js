@@ -107,11 +107,21 @@ Page({
                                     st: 'paid',
                                     type_: that.data.type_,
                                     username: username,
+									prepay_id: data.prepay_id
                                 },
                                 success: function (res) {
-                                    wx.redirectTo({
-                                        url: '/pages/orders/orders',
-                                    })
+									wx.showModal({
+										title: '支付成功',
+										content: '订单支付成功,前去我的订单列表查看',
+										success: function (res) {
+											if (res.confirm) {
+												wx.redirectTo({
+													url: '/pages/orders/orders',
+												})
+											}
+
+										}
+									})
                                 }
                             })
                         },

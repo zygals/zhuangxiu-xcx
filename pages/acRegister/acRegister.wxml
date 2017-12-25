@@ -4,16 +4,15 @@
     <view class='ac-top-cont'>
         <view class='ac-item'>
             <text>活动标题</text>
-
-            <input type='text' value="{{rowActivity.name}}" disabled=''></input>
+            <input type='text'  value="{{rowActivity.name}}" disabled='true'></input>
         </view>
         <view class='ac-item'>
             <text>活动时间</text>
-            <input value="{{rowActivity.start_time}} 至 {{rowActivity.end_time}}" disabled=''></input>
+            <input value="{{rowActivity.start_time}} 至 {{rowActivity.end_time}}" disabled='true'></input>
         </view>
         <view class='ac-item'>
             <text>活动地址</text>
-            <input type='text' value="{{rowActivity.address}}" disabled=''></input>
+            <input type='text' value="{{rowActivity.address}}" disabled='true'></input>
         </view>
     </view>
     <form bindsubmit='addActivityAttend'>
@@ -30,6 +29,9 @@
                 <text>小区名称 :</text>
                 <input type='text' name='xiaoqu' value="{{rowAttend.xiaoqu}}" placeholder='小区名称'></input>
             </view>
+			<view class='reg-people'>
+					<text>已参加人数 : {{rowActivity.attend_num>0?rowActivity.attend_num:rowActivity.pnum}}</text>
+					</view>
             <!-- <view class='ac-item'>
                 <text>购买商 :</text>
                 <input type='text' name='nigou' value="{{rowAttend.nigou}}" placeholder='请输入购买商'></input>

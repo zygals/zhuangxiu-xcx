@@ -56,7 +56,7 @@
                     <view class='deposit_check'>
                         <checkbox-group bindchange="checkboxChange">
                             <label class="checkbox">
-                                <checkbox checked='' value="{{deposit.sum_price}}" />¥{{deposit.sum_price}}(注：每次限用一个，提交订单为已使用。)
+                                <checkbox checked='' value="{{deposit_yuanlai}}" />¥{{deposit_yuanlai}}(注：每次限用一个，提交订单为已使用。)
                             </label>
                         </checkbox-group>
                     </view>

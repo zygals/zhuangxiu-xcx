@@ -12,7 +12,8 @@ Page({
   data: {
     getArticle:{},
     art_id: '',
-    imgurl:imgurl
+    imgurl:imgurl,
+	type_:'baike',//
   },
 
   /**
@@ -21,11 +22,19 @@ Page({
   onLoad: function (options) {
     var that = this;
     var art_id = options.art_id
-   
-    this.setData({
-      art_id: art_id
-    })
-    this.getArticle(art_id)
+    var type_= options.type;
+	if(type_=='activity'){
+		this.getActivity(art_id)
+		this.setData({
+			type_: type_
+		})
+	}else{
+		this.setData({
+			art_id: art_id
+		})
+		this.getArticle(art_id)
+	}
+ 
   },
   getArticle: function (art_id){
     var that = this;
@@ -38,7 +47,18 @@ Page({
       })
     });
   },
+  //取活动
+  getActivity: function (activity_id) {
+	  var that = this;
+	  common.httpG('activity/read', {
+		  activity_id: activity_id,
+	  }, function (data) {
 
+		  that.setData({
+			  articleList: data.data,
+		  })
+	  });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -1,5 +1,4 @@
 <!--pages/submit/submit.wxml 付订金-->
-
 <view class='shop-wrap'>
     <view class='shop-title'>
         <image src='../../img/location-icon.png'></image>

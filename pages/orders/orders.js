@@ -125,7 +125,7 @@ Page({
             }
         })
     },
-    //删除取消后的订单
+    //删除取消/退款/完成后的订单
     tapOrderDelete: function (e) {
         var that = this;
         var order_id = e.target.dataset.order_id;
@@ -226,11 +226,14 @@ Page({
 						st: 'refundByUser'
 					}, function (data) {
 						if (data.code == 0) {
-							wx.showToast({
-								title: '提交申请成功',
-								duration:8000,
+							wx.showModal({
+								title: '申请成功',
+								content: '退款申请成功，我们审核后将返还到您的支付账户哦！',
+								success:function(res){
+									that.getOrders()
+								}
 							})
-							that.getOrders()
+				
 						}
 					});
 				}
