@@ -1,9 +1,9 @@
 <!--pages/assess/assess.wxml-->
 <view class='assess-nav'>
   <view class='assess-total'>全部</view>
-  <view>好评({{evalute.best==null?'0':evalute.best}})</view>
-  <view>中评({{evalute.mid==null?'0':evalute.mid}})</view>
-  <view>差评({{evalute.bad==null?'0':evalute.bad}})</view>
+  <view bindtap='gethp'>好评({{evalute.best==null?'0':evalute.best}})</view>
+  <view bindtap='getzp'>中评({{evalute.mid==null?'0':evalute.mid}})</view>
+  <view bindtap='getcp'>差评({{evalute.bad==null?'0':evalute.bad}})</view>
 </view>
 
 

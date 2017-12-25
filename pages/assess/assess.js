@@ -21,19 +21,20 @@ Page({
 	 */
 	onLoad: function (options) {
 		var that = this;
-	
+
 		this.getList();
 	},
+
 
 	//获取我的所有评价
 	getList: function (hp) {
 		var that = this;
 		var username = common.getUserName();
-		if(hp==undefined){
-			hp='all';
+		if (hp == undefined) {
+			hp = 'all';
 		}
 		common.httpG('fankui/getFankui',
-			{ username: username,hp:hp },
+			{ username: username, hp: hp },
 			function (data) {
 				if (data.code == 0) {
 					that.setData({
@@ -77,6 +78,7 @@ Page({
 	 * 生命周期函数--监听页面初次渲染完成
 	 */
 	onReady: function () {
+		
 
 	},
 
