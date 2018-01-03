@@ -14,6 +14,10 @@ Page({
 		username: '',
 		current_page: 1,
 		last_page: 1,
+		active_all:true,
+		active_hp: false,
+		active_zp: false,
+		active_cp: false,
 	},
 
 	/**
@@ -27,14 +31,14 @@ Page({
 
 
 	//获取我的所有评价
-	getList: function (hp) {
+	getList: function (star) {
 		var that = this;
 		var username = common.getUserName();
-		if (hp == undefined) {
-			hp = 'all';
+		if (star == undefined) {
+			star = 0;
 		}
 		common.httpG('fankui/getFankui',
-			{ username: username, hp: hp },
+			{ username: username, star: star },
 			function (data) {
 				if (data.code == 0) {
 					that.setData({
@@ -43,17 +47,48 @@ Page({
 						page: data.data.current_page,
 						last_page: data.data.last_page
 					});
+				}else{
+					that.setData({
+						List: [],
+					})
 				}
 			})
 	},
+	getall: function (e) {
+		this.getList(0)
+		this.setData({
+			active_all: true,
+			active_hp: false,
+			active_zp: false,
+			active_cp: false,
+		})
+	},
 	gethp: function (e) {
 		this.getList(1)
+		this.setData({
+			active_all: false,
+			active_hp: true,
+			active_zp: false,
+			active_cp: false,
+		})
 	},
 	getzp: function (e) {
 		this.getList(2)
+		this.setData({
+			active_all: false,
+			active_hp: false,
+			active_zp: true,
+			active_cp: false,
+		})
 	},
 	getcp: function (e) {
 		this.getList(3)
+		this.setData({
+			active_all: false,
+			active_hp: false,
+			active_zp: false,
+			active_cp: true,
+		})
 	},
 	//删除评价
 	delEva: function (e) {

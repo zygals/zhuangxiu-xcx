@@ -10,6 +10,7 @@
     <view class='group-banner'>
       <image src='{{imgurl+item.img_big}}'></image>
       <text class='banner-explain'>{{item.name}}</text>
+	  <text class='banner-explain'>{{item.charm}}</text>
     </view>
   </navigator>
 </block>

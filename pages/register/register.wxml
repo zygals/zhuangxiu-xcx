@@ -1,22 +1,26 @@
-<block  wx:for='{{attendList}}' wx:key='id'>
-<view class='sign-list' bindlongtap='tapDel' data-id="{{item.id}}">
-  <view class='sign-pic'>
-    <image src='{{imgurl+item.img_big}}' mode="widthFix"></image>
-  </view>
-  <view class='sign-info'>
-    <text class='sign-title'>活动名称： {{item.activity_name}}</text>
-<block wx:if="{{item.type==1}}">
-    <text class='sign-add'>活动地址：{{item.activity_address}}</text>
-</block>
-<block wx:else>
-    <text class='sign-add'>验房时间:{{item.time_to}}</text>
-</block>
-    <text class='sign-truename'>姓名：{{item.truename}} </text>
-    <text class='sign-mobile'>手机：{{item.mobile}} </text>
-    <text class='sign-xiaoqu'>小区/地址：{{item.xiaoqu}}</text>
-	   <text class='sign-xiaoqu'>状态：报名成功</text>
-  </view>
+<block wx:for='{{attendList}}' wx:key='id'>
+ 
 
-</view>
+        <view class='sign-list' bindlongtap='tapDel' data-id="{{item.id}}" bindtap='lookDetail'>
+            <view class='sign-pic'>
+                <image src='{{imgurl+item.img_big}}' mode="widthFix"></image>
+            </view>
+            <view class='sign-info'>
+                <text class='sign-title'>活动名称： {{item.activity_name}}</text>
+                <block wx:if="{{item.type==1}}">
+                    <text class='sign-add'>活动地址：{{item.activity_address}}</text>
+                </block>
+                <block wx:else>
+                    <text class='sign-add'>验房时间:{{item.time_to}}</text>
+                </block>
+                <text class='sign-truename'>姓名：{{item.truename}} </text>
+                <text class='sign-mobile'>手机：{{item.mobile}} </text>
+                <text class='sign-xiaoqu'>小区/地址：{{item.xiaoqu}}</text>
+                <text class='sign-xiaoqu'>状态：报名成功</text>
+            </view>
+
+        </view>
+
+
 
 </block>

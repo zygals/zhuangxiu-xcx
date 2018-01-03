@@ -39,6 +39,11 @@ Page({
 					key: 'rowActivity',
 					data: data.data,
 				})
+			}else{
+				wx.showModal({
+					title: '活动不存在',
+					content: '活动删除或已下架！',
+				})
 			}
 		
 		})

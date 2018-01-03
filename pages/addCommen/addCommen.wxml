@@ -17,11 +17,10 @@
       </block>
       <view class='radio-slt'>
         <radio-group class="radio-group" bindchange="radioChange" name="star">
-          <label class="radio">
-            <radio value="1" checked="true" />好评
-            <radio value="2" />中评
-            <radio value="3" />差评
-          </label>
+          <label class="radio"><radio value="1" checked="true" />好评</label>
+            <label class="radio"> <radio value="2" />中评</label>
+             <label class="radio"><radio value="3" />差评</label>
+          
         </radio-group>
       </view>
       <view class='commen-area'>

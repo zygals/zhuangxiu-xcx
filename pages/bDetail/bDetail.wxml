@@ -40,10 +40,10 @@
 </view>
 
 <view class='b-bottom-option'>
-    <view class='b-comment'>
+    <!-- <view class='b-comment'>
         <image src='../../img/message-icon.png'></image>
         <text>留言</text>
-    </view>
+    </view> -->
     <view class='b-favorate' bindtap='tapCollectGood' data-good_id="{{good.id}}">
         <image src='../../img/{{collect_star}}'></image>
         <text class="{{Collect ? 'isCollect' : ''}}">收藏</text>
@@ -53,9 +53,7 @@
     </view>
 
     <view class='b-enter'>
-
             <text bindtap='tapAddCartGood' data-mai='true' data-good_id="{{good.id}}">立即购买</text>
-      
     </view>
 
 

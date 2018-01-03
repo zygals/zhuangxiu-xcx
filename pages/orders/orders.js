@@ -110,7 +110,7 @@ Page({
         var order_id = e.currentTarget.dataset.order_id;
         wx.showModal({
             title: '取消订单',
-            content: '确认取消吗？取消后可以列表删除',
+            content: '确认取消吗？取消后可以在列表删除',
             success: function (res) {
                 if (res.confirm) {
                     common.httpP('dingdan/update_st', {

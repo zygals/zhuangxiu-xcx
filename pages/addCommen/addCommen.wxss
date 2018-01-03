@@ -39,6 +39,9 @@ page {
   align-items: center;
   margin-bottom: 20rpx;
 }
+.radio-slt .radio{
+	margin-right: 16rpx;
+}
 
 .commen-area textarea {
   width: 90%;

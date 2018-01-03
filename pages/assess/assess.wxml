@@ -1,11 +1,10 @@
 <!--pages/assess/assess.wxml-->
 <view class='assess-nav'>
-  <view class='assess-total'>全部</view>
-  <view bindtap='gethp'>好评({{evalute.best==null?'0':evalute.best}})</view>
-  <view bindtap='getzp'>中评({{evalute.mid==null?'0':evalute.mid}})</view>
-  <view bindtap='getcp'>差评({{evalute.bad==null?'0':evalute.bad}})</view>
+  <view bindtap='getall' class="{{active_all?'assess-total':''}}">全部</view>
+  <view bindtap='gethp'  class="{{active_hp?'assess-total':''}}">好评({{evalute.best==null?'0':evalute.best}})</view>
+  <view bindtap='getzp'  class="{{active_zp?'assess-total':''}}">中评({{evalute.mid==null?'0':evalute.mid}})</view>
+  <view bindtap='getcp'  class="{{active_cp?'assess-total':''}}">差评({{evalute.bad==null?'0':evalute.bad}})</view>
 </view>
-
 
 <view class='assess-wrap'>
   <block wx:for="{{List}}" wx:key="id">
