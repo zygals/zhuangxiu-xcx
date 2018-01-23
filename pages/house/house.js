@@ -15,7 +15,7 @@ Page({
 		yanfangHistory: [], //验房列表
 		baoming: null, //我的验房报名
 		yanfangNow: null, //正在的验房
-		rowAttend:null, //我的报名
+		rowAttend: null, //我的报名
 	},
 
     /**
@@ -35,8 +35,8 @@ Page({
 		//取现在验房
 		this.getYanfangNow()
 	},
-		//取现在验房
-	getYanfangNow:function(){
+	//取现在验房
+	getYanfangNow: function () {
 		var that = this
 		common.httpG('activity/activity_yanfang', {
 		}, function (data) {
@@ -68,8 +68,15 @@ Page({
 		var that = this
 		var data_post = e.detail.value
 		var username = common.getUserName()
+		if (!this.data.yanfangNow) {
+			wx.showToast({
+				title: '暂无活动请期待！',
+			})
+			return ;
+		}
 		data_post.activity_id = this.data.yanfangNow.id;
 		data_post.username = username;
+		//	console.log(data_post)
 		common.httpP('activity/save', data_post, function (data) {
 			if (data.code == 0 && that.data.rowAttend == null) {
 				wx.showModal({
@@ -81,9 +88,9 @@ Page({
 						})
 					}
 				})
-			
+
 			}
-			if (data.code == 0 && that.data.rowAttend ){
+			if (data.code == 0 && that.data.rowAttend) {
 				wx.showToast({
 					title: '修改成功',
 				})
@@ -102,7 +109,7 @@ Page({
 			}
 		})
 	},
-	
+
 	houseChange(e) {
 		var that = this;
 		that.setData({
@@ -132,7 +139,7 @@ Page({
      */
 	onShow: function () {
 		//取我的验房报名
-	//	this.getAttend()
+		//	this.getAttend()
 	},
 
     /**

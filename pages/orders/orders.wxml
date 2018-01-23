@@ -22,7 +22,7 @@
                         <image src='{{imgurl+good.img}}'></image>
                     </navigator>
                     <view class='order-cont'>
-                        <text class='order-cont-title'>{{good.name}}</text>
+                        <text class='order-cont-title'>{{good.good_name}}</text>
                         <view class='order-format'>
                             <text>规格 :{{good.unit}}</text>
                             <text>单价 : {{good.price}}</text>
@@ -58,6 +58,7 @@
                                 <text>订单号:{{shop.orderno}}</text>
                                 <block wx:if="{{shop.sum_price_youhui>0}}">
                                     <text>用订金或优惠:{{shop.sum_price_youhui}}元</text>
+									  <text>抵扣订单号:{{shop.orderno_youhui}}</text>
                                 </block>
                             </view>
                         </view>
@@ -83,16 +84,19 @@
                     <text>创建时间：{{shop.create_time}}</text>
                 </view>
                 <view class='select-btn'>
-                    <block wx:if="{{shop.st=='已支付' && shop.goodst=='没发货'}}">
+                    <block wx:if="{{shop.st=='已支付' && shop.goodst!='已收货' &&  shop.goodst!='已评价' }}">
                         <text class='point-slt' bindtap="tapRefund" data-order_id="{{shop.id}}">申请退款</text>
+                    </block>
+					<block wx:if="{{shop.st=='申请退款' }}">
+                        <text class='point-slt' bindtap="tapRefundCancel" data-order_id="{{shop.id}}">取消退款</text>
                     </block>
                     <block wx:if="{{shop.st=='已支付' && shop.goodst=='已收货' && shop.type=='普通'}}">
                         <text class='point-slt' bindtap="tapOrderFankui" data-order_id="{{shop.id}}">评价</text>
                     </block>
-                    <block wx:if="{{shop.st=='已支付' && shop.goodst=='已发货'}}">
+                    <block wx:if="{{shop.st=='已支付' && shop.goodst=='已发货' }}">
                         <text class='point-slt' bindtap="tapGoodConfirm" data-order_id="{{shop.id}}">确认收货</text>
                     </block>
-                    <block wx:if="{{(shop.st=='用户取消') || shop.goodst=='已收货' || shop.goodst=='已评价' || shop.st=='已退款' || shop.st=='订金抵扣全款'|| shop.st=='订金抵扣商品' || shop.st=='管理员删除'}}">
+                    <block wx:if="{{(shop.st=='用户取消') || shop.goodst=='已收货' || shop.goodst=='已评价' || shop.st=='已退款' || shop.st=='订金抵扣全款'|| shop.st=='订金抵扣商品' || shop.st=='管理员删除' || shop.st=='团购成功'}}">
                         <text class='po int-slt' bindtap="tapOrderDelete" data-order_id="{{shop.id}}">删除</text>
                     </block>
                     <text data-type_="{{shop.type}}" data-order_id="{{shop.id}}" data-address_id="{{shop.address_id}}" bindtap="tapLookDetail">订单详情</text>
@@ -115,8 +119,9 @@
                 <view class='order-info' wx:for="{{shop.goods}}" wx:key='good_id' wx:for-item='good'>
                     <image src='{{imgurl+good.img}}'></image>
                     <view class='order-cont'>
-                        <text class='order-cont-title'>{{good.name}}</text>
+                        <text class='order-cont-title'>{{good.good_name}}</text>
                         <view class='order-format'>
+				
                             <text>规格 :{{good.unit}}</text>
                             <text>单价 : {{good.price}}</text>
                             <text>数量 : {{good.num}}</text>
@@ -130,7 +135,7 @@
                         <view class='order-cont'>
                             <view class='order-format'>
                                 <text>订单号:{{shop.orderno}}</text>
-								 <block wx:if="{{shop.sum_price_youhui}}">
+								 <block wx:if="{{shop.sum_price_youhui>0}}">
                                         <text>优惠:{{shop.sum_price_youhui}}元</text>
                                     </block>
                                 <block wx:if="{{shop.orderno_youhui}}">
@@ -179,8 +184,9 @@
                 <view class='order-info' wx:for="{{shop.goods}}" wx:key='good_id' wx:for-item='good'>
                     <image src='{{imgurl+good.img}}'></image>
                     <view class='order-cont'>
-                        <text class='order-cont-title'>{{}}</text>
+                        <text class='order-cont-title'>{{good.good_name}}</text>
                         <view class='order-format'>
+					
                             <text>规格 :{{good.unit}}</text>
                             <text>单价 : {{good.price}}</text>
                             <text>数量 : {{good.num}}</text>

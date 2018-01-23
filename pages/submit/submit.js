@@ -71,7 +71,7 @@ Page({
 			})
 		} else {
 			this.setData({
-				sum_price_all: Number(sum_price_all) + Number(deposit_price),
+				sum_price_all: (Number(sum_price_all) + Number(deposit_price)).toFixed(2),
 				is_deposit_check: false,
 			})
 		}
@@ -110,14 +110,14 @@ Page({
 		})
 		var that = this
 		var username = common.getUserName()
-		var shop_good_list = wx.getStorageSync(CART_GOOD)
+		var shop_good_list = JSON.stringify(wx.getStorageSync(CART_GOOD))
 		var sum_price_all = wx.getStorageSync('sum_price_all')
 		var order_id_deposit = 0
 		if (this.data.is_deposit_check && this.data.deposit.id) {
 			order_id_deposit = this.data.deposit.id
 			sum_price_all = common.numSub(sum_price_all, this.data.deposit_yuanlai)//实际可用订金
 		}
-		common.httpG('dingdan/save_all', {
+		common.httpP('dingdan/save_all', {
 			username: username,
 			shop_good_list: shop_good_list,
 			sum_price_all: sum_price_all,
@@ -161,30 +161,19 @@ Page({
 						'paySign': data.paySign,//签名,
 						'success': function (res) {
 							//更改订单状态为已支付
-							wx.request({
-								url: wxurl + 'dingdan/update_pay_st',
-								data: {
-									order_id: order_id,
-									st: 'paid',
-									type_: type_,
-									prepay_id:data.prepay_id
-								},
+							wx.showModal({
+								title: '支付成功',
+								content: '订单支付成功,前去我的订单列表查看',
 								success: function (res) {
-									wx.showModal({
-										title: '支付成功',
-										content: '订单支付成功,前去我的订单列表查看',
-										success:function(res){
-											if(res.confirm){
-												wx.redirectTo({
-													url: '/pages/orders/orders',
-												})
-											}
-											
-										}
-									})
-							
+									if (res.confirm) {
+										wx.redirectTo({
+											url: '/pages/orders/orders',
+										})
+									}
+
 								}
 							})
+						
 						},
 						'fail': function (res) {
 							console.log(res)

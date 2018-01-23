@@ -32,10 +32,8 @@
 </block>
 <!-- bottom-button -->
 <block wx:if="{{addressList.length<5}}">
-    <navigator url='/pages/newAdd/newAdd' hidden='{{newAddHide}}'>
+    <navigator url='/pages/newAdd/newAdd' >
         <view class='add-address'>添加新地址</view>
     </navigator>
-    <navigator url='/pages/user/user' open-type='switchTab' hidden='{{!newAddHide}}'>
-        <view class='add-address'>请前往地址管理中添加</view>
-    </navigator>
+
 </block>

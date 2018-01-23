@@ -150,6 +150,7 @@ Page({
     tapGoodConfirm: function (e) {
         var that = this;
         var order_id = e.target.dataset.order_id;
+		var username = common.getUserName();
         wx.showModal({
             title: '确认收货',
             content: '确认所有货都收到了吗?否则人财两空。',
@@ -157,7 +158,9 @@ Page({
                 if (res.confirm) {
                     common.httpP('dingdan/update_st', {
                         order_id: order_id,
-                        st: 'taken'//收到货了
+                        st: 'taken',//收到货了
+						username:username,
+
                     }, function (data) {
                         if (data.code == 0) {
                             that.getOrders()
@@ -240,7 +243,41 @@ Page({
 			}
 		})
 	},
-
+	//申请退款-取消
+	tapRefundCancel: function (e) {
+		var that = this;
+		var order_id = e.target.dataset.order_id;
+		wx.showModal({
+			title: '取消退款',
+			content: '确定取消退款?',
+			success: function (res) {
+				if (res.confirm) {
+					common.httpP('dingdan/update_st', {
+						order_id: order_id,
+						st: 'refundCancelByUser'
+					}, function (data) {
+						if (data.code == 0) {
+							wx.showModal({
+								title: '取消成功',
+								content: '取消退款',
+								success: function (res) {
+									that.getOrders()
+								}
+							})
+						}else{
+							wx.showModal({
+								title: data.msg,
+								content: data.msg,
+								success: function (res) {
+									that.getOrders()
+								}
+							})
+						}
+					});
+				}
+			}
+		})
+	},
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

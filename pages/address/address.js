@@ -14,18 +14,18 @@ Page({
 		imgurl: imgurl,
 		addressList: [],
 		from_: '',//从哪个页面来，默认 为空是从我的地址管理
-        newAddHide:false,
+    
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-      if(getCurrentPages().length==5){
-          this.setData({
-              newAddHide:true,
-          })
-      }
+    //   if(getCurrentPages().length==5){
+    //       this.setData({
+    //           newAddHide:true,
+    //       })
+    //   }
         
 		this.setData({
 			from_: options.from_

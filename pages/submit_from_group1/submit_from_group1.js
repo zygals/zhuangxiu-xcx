@@ -99,32 +99,21 @@ Page({
                         'signType': 'MD5',
                         'paySign': data.paySign,//签名,
                         'success': function (res) {
-                            //更改订单状态为已支付
-                            wx.request({
-                                url: wxurl + 'dingdan/update_pay_st',
-                                data: {
-                                    order_id: order_id,
-                                    st: 'paid',
-                                    type_: type_,
-                                    username:username,
-									prepay_id: data.prepay_id
-                                    // type_group: data_group.type_group,
-                                },
-                                success: function (res) {
-									wx.showModal({
-										title: '支付成功',
-										content: '订单支付成功,前去我的订单列表查看',
-										success: function (res) {
-											if (res.confirm) {
-												wx.redirectTo({
-													url: '/pages/orders/orders',
-												})
-											}
+                            //更改订单状态为已支付后：
+							wx.showModal({
+								title: '支付成功',
+								content: '订单支付成功,前去我的订单列表查看',
+								success: function (res) {
+									if (res.confirm) {
+										wx.redirectTo({
+											url: '/pages/orders/orders',
+										})
+									}
 
-										}
-									})
-                                }
-                            })
+								}
+							})
+
+                          
                         },
                         'fail': function (res) {
                             console.log(res)

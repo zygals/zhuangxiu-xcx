@@ -16,7 +16,7 @@
             </view>
         </view>
         <view class='right-info'>
-            <view class='info-sale'>订单量: {{shopInfo.ordernum}}</view>
+            <view class='info-sale'>销量: {{shopInfo.tradenum}}</view>
             <view class='info-assess'>评价: 0</view>
         </view>
     </view>

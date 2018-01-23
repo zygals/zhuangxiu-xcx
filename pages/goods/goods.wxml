@@ -42,7 +42,7 @@
           <image src='{{IMGURL + item.img}}' mode='aspectFill' ></image>
           <text class='store-name'>{{item.shop_name}}</text>
           <view class='store-info'>
-            <text class='goods-order'>订单数: {{item.ordernum}}</text>
+            <text class='goods-order'>订单数: {{item.ordernum}}</text> 
             <text class='goods-trade'>交易数: {{item.tradenum}}</text>
           </view>
           <view class='enter'>进入店铺</view>

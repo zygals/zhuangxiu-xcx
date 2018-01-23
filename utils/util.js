@@ -75,9 +75,7 @@ function httpP(url, data, callback) {
     data: data,
     method: "post",
     success: function (res) {
-      if (res.data.code == 0) {
         callback(res.data);
-      }
     },
     fail: function (res) {
       console.log('request-post error:', res);
