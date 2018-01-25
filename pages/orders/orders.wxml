@@ -84,7 +84,7 @@
                     <text>创建时间：{{shop.create_time}}</text>
                 </view>
                 <view class='select-btn'>
-                    <block wx:if="{{shop.st=='已支付' && shop.goodst!='已收货' &&  shop.goodst!='已评价' }}">
+                    <block wx:if="{{shop.st=='已支付' && shop.goodst!='已发货' && shop.goodst!='已收货' &&  shop.goodst!='已评价' }}">
                         <text class='point-slt' bindtap="tapRefund" data-order_id="{{shop.id}}">申请退款</text>
                     </block>
 					<block wx:if="{{shop.st=='申请退款' }}">
