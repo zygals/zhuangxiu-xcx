@@ -147,7 +147,7 @@
             </view>
             <view class='bus-list'>
                 <text>二维码 :</text>
-                <image src='../../img/collect-pic.jpg'></image>
+                <image src='{{imgurl+shopInfo.qrcode}}'></image>
             </view>
         </view>
     </view>
