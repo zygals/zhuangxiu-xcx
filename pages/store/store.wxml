@@ -147,7 +147,7 @@
             </view>
             <view class='bus-list'>
                 <text>二维码 :</text>
-                <image src='{{imgurl+shopInfo.qrcode}}'></image>
+                <image src='{{imgurl+shopInfo.qrcode}}' bindtap="bigCode"></image>
             </view>
         </view>
     </view>
@@ -187,4 +187,8 @@
     </view>
     <view class='earnest' bindtap='tapOrderConfirmDeposit'>付订金</view>
     <view class='purchase' bindtap='tapOrderConfirmAllMoney'>付全款</view>
+</view>
+
+<view class="big-code {{codetap ? 'big-code-show' : ''}}" bindtap='smallCode'>
+  <image class='qr-code' src='{{imgurl+shopInfo.qrcode}}'></image>
 </view>

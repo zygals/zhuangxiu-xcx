@@ -28,7 +28,8 @@ Page({
 		Collect: "",
 		ShopEvalute: [],
 		shopInfo: {},
-		tapSee: false
+		tapSee: false,
+    codetap: false
 	},
 
 	/**
@@ -219,7 +220,19 @@ Page({
 		}
 
 	},
-
+  // 二维码点击放大
+  bigCode() {
+    var that = this;
+    that.setData({
+      codetap: true
+    })
+  },
+  smallCode() {
+    var that = this;
+    that.setData({
+      codetap: false
+    })
+  },
 	/**
 	 * 生命周期函数--监听页面初次渲染完成
 	 */
