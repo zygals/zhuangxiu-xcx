@@ -147,7 +147,7 @@
             </view>
             <view class='bus-list'>
                 <text>二维码 :</text>
-                <image src='{{imgurl+shopInfo.qrcode}}' bindtap="bigCode"></image>
+                <image src='{{imgurl+qrcode}}' bindtap="bigCode"></image>
             </view>
         </view>
     </view>
@@ -190,5 +190,5 @@
 </view>
 
 <view class="big-code {{codetap ? 'big-code-show' : ''}}" bindtap='smallCode'>
-  <image class='qr-code' src='{{imgurl+shopInfo.qrcode}}'></image>
+  <image class='qr-code' src='{{imgurl+qrcode}}'></image>
 </view>

@@ -55,6 +55,7 @@ Page({
 		//调用shop/addr
 		this.shopAddr(shop_id)
 		this.getShopEvalute(shop_id)
+    this.getQrCode(shop_id)
 		// this.isGroup(shop_id)
 		// console.log(shop_id)
 	},
@@ -76,6 +77,15 @@ Page({
 			url: '/pages/submit_from_deposit/submit_from_deposit?type_=5',
 		})
 	},
+  //获取商户微信二维码
+  getQrCode:function(shop_id){
+    var that = this;
+    common.httpG('shop/at',{shop_id:shop_id},function(data){
+      that.setData({
+        qrcode:data.wx_qrcode
+      })
+    })
+  },
 	shopInfo: function (shop_id) {
 		var that = this;
 		var username = common.getUserName()
