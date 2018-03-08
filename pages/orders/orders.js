@@ -153,7 +153,7 @@ Page({
 		var username = common.getUserName();
         wx.showModal({
             title: '确认收货',
-            content: '确认所有货都收到了吗?否则人财两空。',
+            content: '是否确认收货？',
             success: function (res) {
                 if (res.confirm) {
                     common.httpP('dingdan/update_st', {
